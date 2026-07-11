@@ -1,0 +1,35 @@
+# frontend-phase4.yaml
+#
+# Phase 4 controller-hardening config: same service parameters as frontend-local
+# but evidence goes to a separate Phase 4 JSONL file and the forecaster is loaded
+# from the Phase 3 model registry (SARIMA, selected by lowest RMSE on trace_like).
+#
+# Run with:
+#   MODEL_REGISTRY=experiments/results/phase3_*_model_registry.yaml \
+#   DRY_RUN=1 MAX_TICKS=15 \
+#   bash bin/run-controller.sh controller/configs/frontend-phase4.yaml
+
+service: frontend
+namespace: default
+
+r_min: 1
+r_max: 6
+delta_s: 2
+
+# Per-pod CPU capacity: cpu_limit(200m) × target_utilisation(0.50) = 0.100 cores.
+rho: 0.100
+
+k: 1.5
+sigma_max: 0.20
+sigma_warn_ratio: 0.7
+
+horizon_seconds: 30
+tick_seconds: 15
+history_seconds: 600
+
+target_utilisation: 0.50
+hpa_stabilisation_window_seconds: 300
+
+metric_source: cpu
+
+evidence_path: experiments/results/phase4-frontend.jsonl

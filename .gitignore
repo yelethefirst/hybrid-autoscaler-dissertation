@@ -1,0 +1,92 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# uv / venv
+.venv/
+venv/
+env/
+
+# Data — kept out of git; archived to Zenodo as part of reproducibility package
+data/raw/
+data/parquet/
+data/features_out/
+# Use * (not trailing slash) so !-exceptions below can un-ignore specific files.
+# Directory-level ignore blocks all nested exceptions.
+experiments/results/*
+# Exception: small Phase 1 JSONL evidence bundles committed for reproducibility.
+# Phase 2+ CSV/Parquet/JSONL data files go to Zenodo, not git.
+!experiments/results/phase1-frontend.jsonl
+!experiments/results/phase1-calibration-run.jsonl
+# Phase 3 synthetic-data proof-of-pipeline outputs (will be overwritten by real campaigns)
+!experiments/results/phase3_*_selection.csv
+!experiments/results/phase3_*_h1.csv
+!experiments/results/phase3_*_model_registry.yaml
+# Phase 4 controller-hardening evidence bundles
+!experiments/results/phase4-frontend.jsonl
+!experiments/results/phase4-frontend-fault.jsonl
+!experiments/results/phase0-verify.txt
+# canonical pilot results + evidence (committed for the record — appendix material)
+!experiments/results/results_canonical-ab-10-trials.jsonl
+!experiments/results/ab-frontend.jsonl
+!experiments/results/stats_report.csv
+!experiments/results/logs/
+!experiments/results/logs/**
+# Phase 5 canonical A/B results and statistical analysis
+!experiments/results/results_canonical-ab-v2.jsonl
+!experiments/results/phase5_stats.json
+!experiments/results/phase7_narratives.jsonl
+!experiments/results/phase7_h4.json
+# selected model artefacts — the registry is useless without them (review 2026-07-05)
+!experiments/results/models/
+!experiments/results/models/**
+!experiments/results/phase4-frontend-fault.jsonl
+
+# Model artefacts
+*.pt
+*.pkl
+*.joblib
+forecasting/artifacts/
+explain/artifacts/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*~
+
+# Local secrets / overrides
+.env
+.env.local
+*.local.yaml
+
+# Helm
+charts/*.tgz
+
+# Logs
+*.log
+logs/
+
+# Terraform (infra/terraform) — state and secrets stay local; the lock file IS committed
+infra/terraform/.terraform/
+infra/terraform/*.tfstate
+infra/terraform/*.tfstate.*
+infra/terraform/terraform.tfvars
+infra/terraform/crash.log
+
+# Ansible — real inventory contains the VM IP; the example is committed
+infra/ansible/inventory.ini

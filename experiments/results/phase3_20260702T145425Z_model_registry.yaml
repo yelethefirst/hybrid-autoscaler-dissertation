@@ -1,0 +1,280 @@
+generated_at_utc: '2026-07-02T14:54:25.322983+00:00'
+source_telemetry: data/parquet/synthetic_20260702T145252Z_trace_like.parquet
+full_grid: false
+entries:
+- service: adservice
+  namespace: default
+  target_metric: cpu
+  horizon_seconds: 30
+  forecaster: xgboost
+  params: {}
+  validation:
+    selection_reason: lowest RMSE (0.0056)
+    rmse_vs_mae_selection_agrees: true
+    mean_rmse: 0.005566030861505642
+    mean_mae: 0.004601594684039677
+    mean_pinball_q70: 0.0026330236950721925
+    inference_p95_seconds: 0.0019187664016499183
+    n_parameters: 3200
+    failed_folds: 0
+    fold_rmses:
+    - 0.00554460717738357
+    - 0.00660687376415905
+    - 0.0045466116429743065
+    fold_maes:
+    - 0.0045953220492013225
+    - 0.005709588921500375
+    - 0.003499873081417333
+  artifact_path: models/adservice-h30-xgboost
+- service: cartservice
+  namespace: default
+  target_metric: cpu
+  horizon_seconds: 30
+  forecaster: xgboost
+  params: {}
+  validation:
+    selection_reason: lowest RMSE (0.0078)
+    rmse_vs_mae_selection_agrees: false
+    mean_rmse: 0.007790989681685986
+    mean_mae: 0.006835463063828477
+    mean_pinball_q70: 0.003957374753819289
+    inference_p95_seconds: 0.0019524920018739067
+    n_parameters: 3200
+    failed_folds: 0
+    fold_rmses:
+    - 0.009813122862844066
+    - 0.0070869104165655564
+    - 0.0064729357656483355
+    fold_maes:
+    - 0.008844657790335548
+    - 0.006424738211578156
+    - 0.005236993189571728
+  artifact_path: models/cartservice-h30-xgboost
+- service: checkoutservice
+  namespace: default
+  target_metric: cpu
+  horizon_seconds: 30
+  forecaster: holt_winters
+  params:
+    period_seconds: 60
+    sample_interval_seconds: 15
+    refit_each_predict: true
+  validation:
+    selection_reason: lowest RMSE (0.0100)
+    rmse_vs_mae_selection_agrees: true
+    mean_rmse: 0.009967514666726943
+    mean_mae: 0.008358110520130543
+    mean_pinball_q70: 0.004380757228646951
+    inference_p95_seconds: 0.003706958198745269
+    n_parameters: 10
+    failed_folds: 0
+    fold_rmses:
+    - 0.01054934553029809
+    - 0.010197675876422875
+    - 0.00915552259345986
+    fold_maes:
+    - 0.009478601083047343
+    - 0.008114275975565537
+    - 0.007481454501778753
+- service: currencyservice
+  namespace: default
+  target_metric: cpu
+  horizon_seconds: 30
+  forecaster: xgboost
+  params: {}
+  validation:
+    selection_reason: lowest RMSE (0.0032)
+    rmse_vs_mae_selection_agrees: false
+    mean_rmse: 0.003166144695008812
+    mean_mae: 0.0024313513729941317
+    mean_pinball_q70: 0.001337806042269244
+    inference_p95_seconds: 0.0019696749994182025
+    n_parameters: 3200
+    failed_folds: 0
+    fold_rmses:
+    - 0.002743099248948552
+    - 0.0027965446215876782
+    - 0.003958790214490205
+    fold_maes:
+    - 0.0023101653350211635
+    - 0.001980012998631267
+    - 0.0030038757853299643
+  artifact_path: models/currencyservice-h30-xgboost
+- service: emailservice
+  namespace: default
+  target_metric: cpu
+  horizon_seconds: 30
+  forecaster: holt_winters
+  params:
+    period_seconds: 60
+    sample_interval_seconds: 15
+    refit_each_predict: true
+  validation:
+    selection_reason: lowest RMSE (0.0031)
+    rmse_vs_mae_selection_agrees: true
+    mean_rmse: 0.0030512944089915776
+    mean_mae: 0.0026498607787564707
+    mean_pinball_q70: 0.0012888805751064942
+    inference_p95_seconds: 0.0019391663983697072
+    n_parameters: 10
+    failed_folds: 0
+    fold_rmses:
+    - 0.002475014328398467
+    - 0.0030468337439919055
+    - 0.0036320351545843592
+    fold_maes:
+    - 0.0021216048166274636
+    - 0.0026415402462670145
+    - 0.0031864372733749337
+- service: frontend
+  namespace: default
+  target_metric: cpu
+  horizon_seconds: 30
+  forecaster: sarima
+  params:
+    period_seconds: 60
+    sample_interval_seconds: 15
+    refit_each_predict: true
+  validation:
+    selection_reason: lowest RMSE (0.0186)
+    rmse_vs_mae_selection_agrees: true
+    mean_rmse: 0.018578482826989377
+    mean_mae: 0.015295511498111043
+    mean_pinball_q70: 0.00792285616914077
+    inference_p95_seconds: 0.000437034000060521
+    n_parameters: 3
+    failed_folds: 0
+    fold_rmses:
+    - 0.021610375140081555
+    - 0.020678953086841673
+    - 0.013446120254044899
+    fold_maes:
+    - 0.019322249236193693
+    - 0.015109798770096716
+    - 0.011454486488042724
+- service: loadgenerator
+  namespace: default
+  target_metric: cpu
+  horizon_seconds: 30
+  forecaster: xgboost
+  params: {}
+  validation:
+    selection_reason: lowest RMSE (0.0054)
+    rmse_vs_mae_selection_agrees: true
+    mean_rmse: 0.005406923355290871
+    mean_mae: 0.0045803750498499204
+    mean_pinball_q70: 0.002125765102322603
+    inference_p95_seconds: 0.0021506669996597338
+    n_parameters: 3200
+    failed_folds: 0
+    fold_rmses:
+    - 0.006833429525431427
+    - 0.004451153151306664
+    - 0.004936187389134522
+    fold_maes:
+    - 0.006344457008433646
+    - 0.003755577573248568
+    - 0.003641090567867547
+  artifact_path: models/loadgenerator-h30-xgboost
+- service: paymentservice
+  namespace: default
+  target_metric: cpu
+  horizon_seconds: 30
+  forecaster: xgboost
+  params: {}
+  validation:
+    selection_reason: lowest RMSE (0.0035)
+    rmse_vs_mae_selection_agrees: true
+    mean_rmse: 0.003542126993751534
+    mean_mae: 0.002399387134132383
+    mean_pinball_q70: 0.0013996645156478997
+    inference_p95_seconds: 0.0019635585995274596
+    n_parameters: 800
+    failed_folds: 0
+    fold_rmses:
+    - 0.003784094669207242
+    - 0.00442464566005421
+    - 0.002417640651993149
+    fold_maes:
+    - 0.0027584582075783123
+    - 0.002991767374312447
+    - 0.00144793582050639
+  artifact_path: models/paymentservice-h30-xgboost
+- service: productcatalogservice
+  namespace: default
+  target_metric: cpu
+  horizon_seconds: 30
+  forecaster: sarima
+  params:
+    period_seconds: 60
+    sample_interval_seconds: 15
+    refit_each_predict: true
+  validation:
+    selection_reason: lowest RMSE (0.0052)
+    rmse_vs_mae_selection_agrees: true
+    mean_rmse: 0.005235691470128149
+    mean_mae: 0.004525767411675892
+    mean_pinball_q70: 0.0019415151851850726
+    inference_p95_seconds: 0.0004133578011533245
+    n_parameters: 5
+    failed_folds: 0
+    fold_rmses:
+    - 0.005074013136342292
+    - 0.006063046587015885
+    - 0.00457001468702627
+    fold_maes:
+    - 0.0045857933122629225
+    - 0.005517979097427741
+    - 0.003473529825337013
+- service: recommendationservice
+  namespace: default
+  target_metric: cpu
+  horizon_seconds: 30
+  forecaster: sarima
+  params:
+    period_seconds: 60
+    sample_interval_seconds: 15
+    refit_each_predict: true
+  validation:
+    selection_reason: RMSE tied; broken by lowest p95 inference latency (0.4 ms)
+    rmse_vs_mae_selection_agrees: true
+    mean_rmse: 0.016231174695157946
+    mean_mae: 0.013829574019119365
+    mean_pinball_q70: 0.008673223471399245
+    inference_p95_seconds: 0.00041302439931314435
+    n_parameters: 3
+    failed_folds: 0
+    fold_rmses:
+    - 0.013354705301576909
+    - 0.02349119925232956
+    - 0.011847619531567372
+    fold_maes:
+    - 0.009774930197689838
+    - 0.021756189416352236
+    - 0.009957602443316017
+- service: shippingservice
+  namespace: default
+  target_metric: cpu
+  horizon_seconds: 30
+  forecaster: xgboost
+  params: {}
+  validation:
+    selection_reason: lowest RMSE (0.0055)
+    rmse_vs_mae_selection_agrees: true
+    mean_rmse: 0.005501525528979302
+    mean_mae: 0.0048626072573069124
+    mean_pinball_q70: 0.0025499253019352582
+    inference_p95_seconds: 0.001965691398800118
+    n_parameters: 3200
+    failed_folds: 0
+    fold_rmses:
+    - 0.006890895559040163
+    - 0.004838676458927256
+    - 0.004775004568970486
+    fold_maes:
+    - 0.006113130041961951
+    - 0.004233855828020042
+    - 0.004240835901938744
+  artifact_path: models/shippingservice-h30-xgboost
+selection_csv: /Users/omoyeleolabode/Documents/ysj school work/Dissertation/hybrid-autoscaler/experiments/results/phase3_20260702T145425Z_selection.csv
+h1_csv: /Users/omoyeleolabode/Documents/ysj school work/Dissertation/hybrid-autoscaler/experiments/results/phase3_20260702T145425Z_h1.csv

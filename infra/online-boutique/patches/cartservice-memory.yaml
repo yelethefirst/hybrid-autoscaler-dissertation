@@ -1,0 +1,30 @@
+# patches/cartservice-memory.yaml
+#
+# Increases cartservice memory limits for local dev (arm64 / Apple Silicon).
+#
+# Root cause: the .NET CLR baseline on arm64 exceeds the upstream manifest
+# limit of 128Mi when the loadgenerator is running, causing OOMKilled restarts.
+# 256Mi provides ~100 MiB headroom above the observed working set.
+#
+# The cloud profile (kind-cloud.yaml, 4 vCPU / 12 GiB per worker) has
+# sufficient node memory that this limit is never hit; the patch is applied
+# unconditionally by install.sh for consistency.
+#
+# See docs/deviations.md DEV-007.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cartservice
+  namespace: default
+spec:
+  template:
+    spec:
+      containers:
+        - name: server
+          resources:
+            requests:
+              cpu: 200m
+              memory: 128Mi
+            limits:
+              cpu: 300m
+              memory: 256Mi

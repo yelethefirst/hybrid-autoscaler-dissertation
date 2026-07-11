@@ -1,0 +1,34 @@
+# frontend-phase4-fault.yaml
+#
+# Phase 4 forced-fault config: identical to frontend-phase4 except history_seconds
+# is set to 60 (4 samples at 15s step), below SARIMA's minimum of 12 samples
+# (3 × period_samples = 3 × 4 = 12). This forces FALLBACK_FORECASTER_FAULT for
+# every tick, demonstrating the HPA-equivalent fallback path.
+#
+# Run with:
+#   MODEL_REGISTRY=experiments/results/phase3_*_model_registry.yaml \
+#   DRY_RUN=1 MAX_TICKS=5 \
+#   bash bin/run-controller.sh controller/configs/frontend-phase4-fault.yaml
+
+service: frontend
+namespace: default
+
+r_min: 1
+r_max: 6
+delta_s: 2
+
+rho: 0.100
+k: 1.5
+sigma_max: 0.20
+sigma_warn_ratio: 0.7
+
+horizon_seconds: 30
+tick_seconds: 15
+history_seconds: 60         # forced fault: 4 samples < SARIMA minimum of 12
+
+target_utilisation: 0.50
+hpa_stabilisation_window_seconds: 300
+
+metric_source: cpu
+
+evidence_path: experiments/results/phase4-frontend-fault.jsonl

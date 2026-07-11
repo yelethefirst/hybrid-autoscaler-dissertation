@@ -1,0 +1,49 @@
+# kind-local.yaml
+#
+# Local-development cluster profile for laptop use (Apple Silicon, 16 GiB host RAM).
+# This is NOT the §3.10 specification — it deliberately scales down so the cluster
+# fits comfortably on a developer machine alongside the IDE, browser and Docker
+# Desktop. Use kind-cloud.yaml for measured runs.
+#
+# Pinned versions (§3.10):
+#   - Kubernetes v1.33  (node image pinned to SHA256 — see below)
+#   - kind v0.32 (ships Kubernetes v1.33 default image)
+#
+# Resource footprint:
+#   - 1 control-plane node: 2 vCPU, 2 GiB
+#   - 2 worker nodes:       2 vCPU, 4 GiB each
+#   - Total:                6 vCPU, 10 GiB
+#
+# Image digest pinned per §3.10. Source: kind v0.32.0 release notes
+# https://github.com/kubernetes-sigs/kind/releases/tag/v0.32.0
+
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+name: hybrid-autoscaler-local
+
+# A single port mapping exposes the Online Boutique frontend NodePort on the host.
+# Load generators (Locust/wrk2) target http://localhost:30080.
+nodes:
+  - role: control-plane
+    image: kindest/node:v1.33.12@sha256:3f5c8443c620245e4d355cfe09e96a91ead32ceaa569d3f1ca9edf0cb2fe2ff4
+    extraPortMappings:
+      - containerPort: 30080
+        hostPort: 30080
+        listenAddress: "127.0.0.1"
+        protocol: TCP
+    kubeadmConfigPatches:
+      - |
+        kind: InitConfiguration
+        nodeRegistration:
+          kubeletExtraArgs:
+            node-labels: "ingress-ready=true"
+  - role: worker
+    image: kindest/node:v1.33.12@sha256:3f5c8443c620245e4d355cfe09e96a91ead32ceaa569d3f1ca9edf0cb2fe2ff4
+  - role: worker
+    image: kindest/node:v1.33.12@sha256:3f5c8443c620245e4d355cfe09e96a91ead32ceaa569d3f1ca9edf0cb2fe2ff4
+
+# Default CNI (kindnet) per §3.10.
+networking:
+  disableDefaultCNI: false
+  podSubnet: "10.244.0.0/16"
+  serviceSubnet: "10.96.0.0/16"

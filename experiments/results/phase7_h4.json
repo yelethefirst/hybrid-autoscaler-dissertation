@@ -1,0 +1,17 @@
+{
+  "hypothesis": "H4",
+  "outcome": "factscore",
+  "workload": null,
+  "n_pairs": 30,
+  "mean_hybrid": 0.648,
+  "mean_hpa": 0.8,
+  "mean_diff": -0.152,
+  "t_stat": null,
+  "p_value": 0.999989,
+  "holm_p": null,
+  "holm_threshold": null,
+  "significant": false,
+  "cohens_d_z": null,
+  "bca_ci": null,
+  "verdict": "fail to reject H_null"
+}

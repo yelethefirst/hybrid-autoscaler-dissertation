@@ -1,0 +1,202 @@
+# provision.yml — measurement VM (§3.10-A) environment build.
+#
+# Replaces the planned bootstrap-ubuntu.sh with an idempotent, declarative,
+# checksum-pinned definition (decision 2026-07-05: Ansible over bash — re-run
+# safe, diffable, and executes from the researcher's machine over SSH so the
+# VM needs nothing pre-installed).
+#
+# Run (no local Ansible install needed):
+#   uvx --from ansible-core ansible-playbook -i inventory.ini provision.yml
+#
+# Every version below IS the committed §3.10-A specification. Changing one for
+# a measured run is a deviation → docs/deviations.md.
+
+- name: Provision hybrid-autoscaler measurement host
+  hosts: measurement
+  become: true
+  gather_facts: true
+
+  vars:
+    # ── Pinned versions (checksums fetched + verified 2026-07-05) ──────────
+    kind_version: "v0.32.0"
+    kind_sha256: "50030de23cf40a18505f20426f6a8506bedf13c6e509244bd1fa9463721b0f54"
+    kubectl_version: "v1.33.12"          # matches the pinned kindest/node image
+    kubectl_sha256: "fe80ae4133b44fa2077db4af144e80765eb1b3b2eede55fbff6933c4374d8c6e"
+    helm_version: "v3.16.4"
+    helm_sha256: "fc307327959aa38ed8f9f7e66d45492bb022a66c3e5da6063958254b9767d179"
+    uv_version: "0.8.24"                 # matches the dev Mac
+    wrk2_repo: "https://github.com/giltene/wrk2.git"
+    wrk2_commit: "44a94c17d8e6a0bac8559b53da76848e430cb7a7"   # master HEAD (2019-09-24, stable)
+    docker_apt_version_glob: "5:26.*"    # Docker Engine 26 (§3.10-A)
+    campaign_user: ubuntu
+
+  tasks:
+    # ── Base ────────────────────────────────────────────────────────────────
+    - name: Base packages
+      tags: base
+      ansible.builtin.apt:
+        update_cache: true
+        cache_valid_time: 3600
+        name:
+          - git
+          - curl
+          - build-essential
+          - libssl-dev
+          - zlib1g-dev
+          - unzip
+          - tmux
+          - jq
+          - rsync
+          - python3-venv
+        state: present
+
+    # ── Docker Engine 26 (official repo) ───────────────────────────────────
+    - name: Docker apt key
+      tags: docker
+      ansible.builtin.get_url:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        dest: /etc/apt/keyrings/docker.asc
+        mode: "0644"
+
+    - name: Docker apt repository
+      tags: docker
+      ansible.builtin.apt_repository:
+        repo: "deb [arch=amd64 signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
+        state: present
+
+    - name: Docker Engine (pinned major {{ docker_apt_version_glob }})
+      tags: docker
+      ansible.builtin.apt:
+        name:
+          - "docker-ce={{ docker_apt_version_glob }}"
+          - "docker-ce-cli={{ docker_apt_version_glob }}"
+          - containerd.io
+        state: present
+        update_cache: true
+
+    - name: campaign user in docker group
+      tags: docker
+      ansible.builtin.user:
+        name: "{{ campaign_user }}"
+        groups: docker
+        append: true
+
+    # ── kind / kubectl / helm (checksum-pinned binaries) ────────────────────
+    - name: kind {{ kind_version }}
+      tags: kind
+      ansible.builtin.get_url:
+        url: "https://github.com/kubernetes-sigs/kind/releases/download/{{ kind_version }}/kind-linux-amd64"
+        dest: /usr/local/bin/kind
+        mode: "0755"
+        checksum: "sha256:{{ kind_sha256 }}"
+
+    - name: kubectl {{ kubectl_version }} (client within ±1 minor of cluster v1.33)
+      tags: kubectl
+      ansible.builtin.get_url:
+        url: "https://dl.k8s.io/release/{{ kubectl_version }}/bin/linux/amd64/kubectl"
+        dest: /usr/local/bin/kubectl
+        mode: "0755"
+        checksum: "sha256:{{ kubectl_sha256 }}"
+
+    - name: helm {{ helm_version }} tarball
+      tags: helm
+      ansible.builtin.get_url:
+        url: "https://get.helm.sh/helm-{{ helm_version }}-linux-amd64.tar.gz"
+        dest: /tmp/helm.tgz
+        checksum: "sha256:{{ helm_sha256 }}"
+
+    - name: helm unpack
+      tags: helm
+      ansible.builtin.unarchive:
+        src: /tmp/helm.tgz
+        dest: /tmp
+        remote_src: true
+        creates: /tmp/linux-amd64/helm
+
+    - name: helm install
+      tags: helm
+      ansible.builtin.copy:
+        src: /tmp/linux-amd64/helm
+        dest: /usr/local/bin/helm
+        mode: "0755"
+        remote_src: true
+
+    # ── uv (pinned, per-user) ───────────────────────────────────────────────
+    - name: uv {{ uv_version }}
+      tags: uv
+      become_user: "{{ campaign_user }}"
+      ansible.builtin.shell: |
+        curl -LsSf https://astral.sh/uv/{{ uv_version }}/install.sh | sh
+      args:
+        creates: "/home/{{ campaign_user }}/.local/bin/uv"
+
+    # ── wrk2 (built from pinned source; §3.9 CO-corrected measurement) ──────
+    - name: wrk2 source @ {{ wrk2_commit }}
+      tags: wrk2
+      ansible.builtin.git:
+        repo: "{{ wrk2_repo }}"
+        dest: /opt/wrk2
+        version: "{{ wrk2_commit }}"
+
+    - name: wrk2 build
+      tags: wrk2
+      ansible.builtin.command: make -j2
+      args:
+        chdir: /opt/wrk2
+        creates: /opt/wrk2/wrk
+
+    - name: wrk2 install (binary name MUST be wrk2 — supervisor detects via `which wrk2`)
+      tags: wrk2
+      ansible.builtin.copy:
+        src: /opt/wrk2/wrk
+        dest: /usr/local/bin/wrk2
+        mode: "0755"
+        remote_src: true
+
+    # ── Load-test kernel/ulimit tuning ──────────────────────────────────────
+    - name: sysctl for load generation
+      tags: tuning
+      ansible.builtin.copy:
+        dest: /etc/sysctl.d/99-loadtest.conf
+        mode: "0644"
+        content: |
+          net.ipv4.ip_local_port_range = 1024 65535
+          net.core.somaxconn = 4096
+          fs.inotify.max_user_watches = 524288
+          fs.inotify.max_user_instances = 512
+      notify: reload sysctl
+
+    - name: nofile limits for load generation
+      tags: tuning
+      ansible.builtin.copy:
+        dest: /etc/security/limits.d/99-loadtest.conf
+        mode: "0644"
+        content: |
+          * soft nofile 65535
+          * hard nofile 65535
+
+    # ── Verification (the playbook's exit criterion) ────────────────────────
+    - name: verify tool versions
+      tags: verify
+      become: false
+      ansible.builtin.command: "{{ item }}"
+      loop:
+        - docker --version
+        - kind version
+        - kubectl version --client
+        - helm version --short
+        - /home/{{ campaign_user }}/.local/bin/uv --version
+        - wrk2 --help
+      register: versions
+      changed_when: false
+      failed_when: >
+        versions.rc != 0 and 'wrk2' not in item
+
+    - name: show versions
+      tags: verify
+      ansible.builtin.debug:
+        msg: "{{ versions.results | map(attribute='stdout_lines') | list }}"
+
+  handlers:
+    - name: reload sysctl
+      ansible.builtin.command: sysctl --system

@@ -1,0 +1,58 @@
+# kind-cloud.yaml
+#
+# AT-SPECIFICATION cluster profile (§3.10). Use this on the single large cloud VM
+# for measured runs. Do not run on a laptop — total footprint is 14 vCPU, 40 GiB
+# RAM plus per-node overhead.
+#
+# Methodology (§3.10):
+#   - 1 control-plane: 2 vCPU, 4 GiB
+#   - 3 workers:       4 vCPU, 12 GiB each
+#   - Total:           14 vCPU, 40 GiB
+#   - Kubernetes:      v1.33  (node image pinned to SHA256 — see below)
+#   - kind:            v0.32 (ships Kubernetes v1.33 default image)
+#   - CNI:             kindnet (default)
+#
+# Host (selected 2026-07-04 — see docs/IMPLEMENTATION_LOG.md, Decision M.1):
+# AWS m6a.4xlarge (16 vCPU AMD EPYC Milan, 64 GiB), eu-west-2, Ubuntu 24.04,
+# Docker Engine 26. Fallback: m7i.4xlarge. Alternatives: GCP c3-standard-16,
+# Hetzner CCX43. Load generation runs on the same host, disclosed in §3.10-A
+# (a second same-zone VM is a bonus, not a requirement).
+
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+name: hybrid-autoscaler-cloud
+
+nodes:
+  - role: control-plane
+    image: kindest/node:v1.33.12@sha256:3f5c8443c620245e4d355cfe09e96a91ead32ceaa569d3f1ca9edf0cb2fe2ff4
+    extraPortMappings:
+      - containerPort: 30080
+        hostPort: 30080
+        listenAddress: "0.0.0.0"      # cloud VM: accept from load-generator VM
+        protocol: TCP
+    kubeadmConfigPatches:
+      - |
+        kind: InitConfiguration
+        nodeRegistration:
+          kubeletExtraArgs:
+            node-labels: "ingress-ready=true"
+  - role: worker
+    image: kindest/node:v1.33.12@sha256:3f5c8443c620245e4d355cfe09e96a91ead32ceaa569d3f1ca9edf0cb2fe2ff4
+  - role: worker
+    image: kindest/node:v1.33.12@sha256:3f5c8443c620245e4d355cfe09e96a91ead32ceaa569d3f1ca9edf0cb2fe2ff4
+  - role: worker
+    image: kindest/node:v1.33.12@sha256:3f5c8443c620245e4d355cfe09e96a91ead32ceaa569d3f1ca9edf0cb2fe2ff4
+
+# Default CNI (kindnet) per §3.10.
+networking:
+  disableDefaultCNI: false
+  podSubnet: "10.244.0.0/16"
+  serviceSubnet: "10.96.0.0/16"
+
+# Note on per-node resource limits:
+# kind does not enforce CPU/memory limits on its node containers directly —
+# the host docker provides them via Docker Desktop / Docker Engine settings,
+# or on Linux via systemd cgroups. On the cloud VM, ensure the Docker daemon
+# is given the full machine resources, and rely on the kubelet's static-pod
+# QoS to share them across the four nodes. Per-pod limits are set in the
+# Online Boutique manifests in Phase 2 calibration.

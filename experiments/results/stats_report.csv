@@ -1,0 +1,7 @@
+hypothesis,workload,n_pairs,mean_diff_ms,t_stat,p_raw,p_holm,d_z,ci_low,ci_high,reject,mean_diff
+H0,burst,2,259.8499999999999,4.038073038073042,0.15454515463407495,0.6181806185362998,2.855348828148012,195.5,324.1999999999998,False,
+H0,ramp,1,,,,1.0,,,,False,
+H0,periodic,1,,,,1.0,,,,False,
+H0,trace_replay,1,,,,1.0,,,,False,
+H2,burst,2,,-1.3529411764705883,0.20260685772251033,0.40521371544502066,-0.9566738804288584,-300.0,-45.0,False,-172.5
+H2,ramp,1,,,,1.0,,,,False,

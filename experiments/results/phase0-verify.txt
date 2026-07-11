@@ -1,0 +1,19 @@
+▶  Checking cluster reachability and Kubernetes version…
+✓  Kubernetes server: v1.33.12
+▶  Checking Online Boutique pods in namespace 'default'…
+✓  All 11 Online Boutique deployments present.
+✓  All Online Boutique pods Running.
+▶  Checking kube-prometheus-stack pods in namespace 'monitoring'…
+✓  All observability pods Running.
+✓  Prometheus version OK: quay.io/prometheus/prometheus:v2.52.0
+✓  kube-state-metrics OK: registry.k8s.io/kube-state-metrics/kube-state-metrics:v2.12.0
+✓  node-exporter OK: quay.io/prometheus/node-exporter:v1.8.0
+✓  Grafana OK: docker.io/grafana/grafana:10.4.1
+▶  Port-forwarding Prometheus and probing the five §3.5 metric families…
+✓  CPU usage — 102 series returned
+✓  Memory working set — 102 series returned
+✓  Pod ready count — 96 series returned
+✓  Network rx (req-rate proxy) — 330 series returned
+✓  Histograms (API server + Prometheus internal) — 1 series returned
+
+✅  Phase 0 exit criterion MET. Ready for Phase 1 (vertical slice).

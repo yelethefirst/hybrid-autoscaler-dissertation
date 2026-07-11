@@ -1,0 +1,36 @@
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: frontend
+  namespace: default
+  labels:
+    app: frontend
+    component: autoscaler
+    baseline: hpa
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: frontend
+  minReplicas: 1
+  maxReplicas: 8   # == hybrid r_max (T1.4 baseline equivalence)
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 50      # u* = 50 %, matches Hybrid controller rho derivation
+  behavior:
+    scaleDown:
+      stabilizationWindowSeconds: 300   # same as Hybrid hpa_stabilisation_window_seconds
+      policies:
+      - type: Pods
+        value: 2
+        periodSeconds: 15
+    scaleUp:
+      stabilizationWindowSeconds: 0
+      policies:
+      - type: Pods
+        value: 2
+        periodSeconds: 15

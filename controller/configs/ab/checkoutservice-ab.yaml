@@ -1,0 +1,28 @@
+# checkoutservice-ab.yaml
+#
+# A/B experiment controller config for checkoutservice.
+# rho = cpu_request(100m) x target_utilisation(50%) = 0.0500 cores (HPA parity — DEV-020).
+# Forecaster selected by Phase 3 real-data burst campaign (FULL_GRID=1, N_SPLITS=5).
+#
+service: checkoutservice
+namespace: default
+
+r_min: 1
+r_max: 4
+delta_s: 2
+
+rho: 0.0500
+k: 1.5
+sigma_max: 0.20
+sigma_warn_ratio: 0.7
+
+horizon_seconds: 30
+tick_seconds: 15
+history_seconds: 600
+
+target_utilisation: 0.5
+hpa_stabilisation_window_seconds: 300
+
+metric_source: cpu
+
+evidence_path: experiments/results/ab-checkoutservice.jsonl

@@ -1,0 +1,294 @@
+generated_at_utc: '2026-07-03T09:02:49.789364+00:00'
+source_telemetry: data/parquet/burst
+full_grid: true
+entries:
+- service: adservice
+  namespace: default
+  target_metric: cpu
+  horizon_seconds: 30
+  forecaster: holt_winters
+  params:
+    period_seconds: 60
+    sample_interval_seconds: 15
+    refit_each_predict: true
+  validation:
+    selection_reason: lowest RMSE (0.0093)
+    rmse_vs_mae_selection_agrees: true
+    mean_rmse: 0.009300435101516362
+    mean_mae: 0.0047288149912039805
+    mean_pinball_q70: 0.0023650763935212527
+    inference_p95_seconds: 0.049465416801103855
+    n_parameters: 10
+    failed_folds: 0
+    fold_rmses:
+    - 0.006061468215318047
+    - 0.012759101582210854
+    - 0.011507053691653772
+    - 0.009121883600151225
+    - 0.007052668418247912
+    fold_maes:
+    - 0.0032674342754863374
+    - 0.005388407198957862
+    - 0.005816196628744033
+    - 0.005093471184854027
+    - 0.004078565667977643
+- service: cartservice
+  namespace: default
+  target_metric: cpu
+  horizon_seconds: 30
+  forecaster: holt_winters
+  params:
+    period_seconds: 60
+    sample_interval_seconds: 15
+    refit_each_predict: true
+  validation:
+    selection_reason: lowest RMSE (0.0052)
+    rmse_vs_mae_selection_agrees: true
+    mean_rmse: 0.0051928455383664805
+    mean_mae: 0.0029931035249065934
+    mean_pinball_q70: 0.0014960485584099644
+    inference_p95_seconds: 0.04173363399895606
+    n_parameters: 10
+    failed_folds: 0
+    fold_rmses:
+    - 0.00505155670387575
+    - 0.0056226757916552515
+    - 0.005130933727717269
+    - 0.005562159163628882
+    - 0.004596902304955253
+    fold_maes:
+    - 0.002773179780722363
+    - 0.00309224530102487
+    - 0.0031600329920234383
+    - 0.0031551994414728006
+    - 0.002784860109289496
+- service: checkoutservice
+  namespace: default
+  target_metric: cpu
+  horizon_seconds: 30
+  forecaster: holt_winters
+  params:
+    period_seconds: 60
+    sample_interval_seconds: 15
+    refit_each_predict: true
+  validation:
+    selection_reason: lowest RMSE (0.0002)
+    rmse_vs_mae_selection_agrees: false
+    mean_rmse: 0.0002397749130226672
+    mean_mae: 0.00015961143815475517
+    mean_pinball_q70: 7.958877825808665e-05
+    inference_p95_seconds: 0.027917382805026137
+    n_parameters: 10
+    failed_folds: 0
+    fold_rmses:
+    - 0.00020814236668367504
+    - 0.00018185664415575973
+    - 0.00013602360807061828
+    - 0.00028532296275874866
+    - 0.0003875289834445344
+    fold_maes:
+    - 0.0001425887330397969
+    - 0.00011361062121229291
+    - 0.00010137779055378171
+    - 0.00019184860300316977
+    - 0.00024863144296473447
+- service: currencyservice
+  namespace: default
+  target_metric: cpu
+  horizon_seconds: 30
+  forecaster: xgboost
+  params: {}
+  validation:
+    selection_reason: lowest RMSE (0.0171)
+    rmse_vs_mae_selection_agrees: false
+    mean_rmse: 0.017075086511793607
+    mean_mae: 0.011336715920884354
+    mean_pinball_q70: 0.005956092645077423
+    inference_p95_seconds: 0.0027925415997742675
+    n_parameters: 800
+    failed_folds: 0
+    fold_rmses:
+    - 0.01620252162969321
+    - 0.017180711872028853
+    - 0.013887401686784623
+    - 0.016326938897918742
+    - 0.021777858472542617
+    fold_maes:
+    - 0.010798195929309914
+    - 0.01109393740303455
+    - 0.008887853645401416
+    - 0.01046792087710496
+    - 0.015435671749570926
+  artifact_path: models/currencyservice-h30-xgboost
+- service: emailservice
+  namespace: default
+  target_metric: cpu
+  horizon_seconds: 30
+  forecaster: xgboost
+  params: {}
+  validation:
+    selection_reason: lowest RMSE (0.0004)
+    rmse_vs_mae_selection_agrees: true
+    mean_rmse: 0.0004298438192393888
+    mean_mae: 0.00024723912022666186
+    mean_pinball_q70: 0.00011738003573487286
+    inference_p95_seconds: 0.0027658500024699603
+    n_parameters: 800
+    failed_folds: 0
+    fold_rmses:
+    - 0.00038772480074842453
+    - 0.0002606294228601457
+    - 0.0007440220601014056
+    - 0.0003323498506140804
+    - 0.0004244929618728877
+    fold_maes:
+    - 0.0002371989806054749
+    - 0.00017589889059059727
+    - 0.00029766975876120336
+    - 0.0002381405065475874
+    - 0.00028728746462844634
+  artifact_path: models/emailservice-h30-xgboost
+- service: frontend
+  namespace: default
+  target_metric: cpu
+  horizon_seconds: 30
+  forecaster: xgboost
+  params: {}
+  validation:
+    selection_reason: RMSE tied; broken by lowest p95 inference latency (2.8 ms)
+    rmse_vs_mae_selection_agrees: false
+    mean_rmse: 0.016523113329099233
+    mean_mae: 0.011069058356557577
+    mean_pinball_q70: 0.00550796733294297
+    inference_p95_seconds: 0.0027540919996681622
+    n_parameters: 3200
+    failed_folds: 0
+    fold_rmses:
+    - 0.014832560191819288
+    - 0.015666156043186812
+    - 0.017377209988408648
+    - 0.016360032477308103
+    - 0.018379607944773314
+    fold_maes:
+    - 0.010356586793276765
+    - 0.009977987090419874
+    - 0.010783055735350343
+    - 0.010914339187261483
+    - 0.01331332297647941
+  artifact_path: models/frontend-h30-xgboost
+- service: paymentservice
+  namespace: default
+  target_metric: cpu
+  horizon_seconds: 30
+  forecaster: xgboost
+  params: {}
+  validation:
+    selection_reason: lowest RMSE (0.0003)
+    rmse_vs_mae_selection_agrees: true
+    mean_rmse: 0.0003166142785523523
+    mean_mae: 0.00018306944443531288
+    mean_pinball_q70: 9.23041722126065e-05
+    inference_p95_seconds: 0.0027119334015878846
+    n_parameters: 800
+    failed_folds: 0
+    fold_rmses:
+    - 0.00020476226800250698
+    - 0.0005633212224661827
+    - 0.00027656326795013323
+    - 0.0002792369396392071
+    - 0.00025918769470373147
+    fold_maes:
+    - 0.00014037005809784526
+    - 0.00021209739894467218
+    - 0.00017806428455914523
+    - 0.0002001224666674303
+    - 0.00018469301390747135
+  artifact_path: models/paymentservice-h30-xgboost
+- service: productcatalogservice
+  namespace: default
+  target_metric: cpu
+  horizon_seconds: 30
+  forecaster: holt_winters
+  params:
+    period_seconds: 60
+    sample_interval_seconds: 15
+    refit_each_predict: true
+  validation:
+    selection_reason: lowest RMSE (0.0055)
+    rmse_vs_mae_selection_agrees: true
+    mean_rmse: 0.005504792897503339
+    mean_mae: 0.003179148064967631
+    mean_pinball_q70: 0.001590156543998376
+    inference_p95_seconds: 0.047515691599983256
+    n_parameters: 10
+    failed_folds: 0
+    fold_rmses:
+    - 0.0045351880358056465
+    - 0.006027043361427114
+    - 0.005529085552782655
+    - 0.005673867663248168
+    - 0.005758779874253111
+    fold_maes:
+    - 0.002572525932994929
+    - 0.0035637172958369323
+    - 0.0030706956469289666
+    - 0.0031828089275621396
+    - 0.003505992521515187
+- service: recommendationservice
+  namespace: default
+  target_metric: cpu
+  horizon_seconds: 30
+  forecaster: xgboost
+  params: {}
+  validation:
+    selection_reason: lowest RMSE (0.0121)
+    rmse_vs_mae_selection_agrees: false
+    mean_rmse: 0.012082974059191797
+    mean_mae: 0.006781518578269845
+    mean_pinball_q70: 0.0034778913864525938
+    inference_p95_seconds: 0.002519175196357537
+    n_parameters: 800
+    failed_folds: 0
+    fold_rmses:
+    - 0.011158392445810522
+    - 0.011959678608248005
+    - 0.011672810483900965
+    - 0.013594925442990792
+    - 0.012029063315008701
+    fold_maes:
+    - 0.0063177814321197295
+    - 0.00630523664562052
+    - 0.006148079205444508
+    - 0.007279564957396387
+    - 0.007856930650768078
+  artifact_path: models/recommendationservice-h30-xgboost
+- service: shippingservice
+  namespace: default
+  target_metric: cpu
+  horizon_seconds: 30
+  forecaster: xgboost
+  params: {}
+  validation:
+    selection_reason: RMSE tied; broken by lowest p95 inference latency (2.9 ms)
+    rmse_vs_mae_selection_agrees: false
+    mean_rmse: 0.000786253742300649
+    mean_mae: 0.000505443227268332
+    mean_pinball_q70: 0.00027475091732274027
+    inference_p95_seconds: 0.002923392000957392
+    n_parameters: 1600
+    failed_folds: 0
+    fold_rmses:
+    - 0.0008441479199531776
+    - 0.0008976177014201589
+    - 0.0006014431873669977
+    - 0.0008626762410429182
+    - 0.0007253836617199922
+    fold_maes:
+    - 0.0005593335367583446
+    - 0.0005567551046395323
+    - 0.00038751154415536855
+    - 0.000544120054640271
+    - 0.0004794958961481438
+  artifact_path: models/shippingservice-h30-xgboost
+selection_csv: /Users/omoyeleolabode/Documents/ysj school work/Dissertation/hybrid-autoscaler/experiments/results/phase3_20260703T090249Z_selection.csv
+h1_csv: /Users/omoyeleolabode/Documents/ysj school work/Dissertation/hybrid-autoscaler/experiments/results/phase3_20260703T090249Z_h1.csv

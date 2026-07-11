@@ -1,0 +1,42 @@
+# frontend-local.yaml
+#
+# Phase 1 vertical-slice configuration: drive the Hybrid Controller against the
+# Online Boutique `frontend` Deployment on a local kind cluster.
+#
+# These parameters are intentionally conservative for laptop development.
+# Phase 3 will recalibrate per-service ρ and σ_max from collected telemetry.
+
+service: frontend
+namespace: default
+
+# Safety bounds
+r_min: 1
+r_max: 6                     # generous upper bound for local dev
+delta_s: 2                   # ΔS — max ±2 replicas per 15-second tick
+
+# Per-pod target capacity (cores) — interpreted as the CPU rate one frontend pod
+# can sustain at the target utilisation.
+# Derived: cpu_limit(200m) × target_utilisation(0.50) = 0.100 cores.
+# Original placeholder 0.30 exceeded the container's CPU limit; corrected after
+# Phase 1 calibration run. Phase 2 will refine from steady-state telemetry.
+rho: 0.100
+
+# Confidence-margin parameters
+k: 1.5                       # §3.7 default
+sigma_max: 0.20              # cores of forecast σ above which we fall back to HPA
+sigma_warn_ratio: 0.7        # CONFIDENCE_MARGIN_HIGH at σ > 0.7 · sigma_max
+
+# Horizon + cadence
+horizon_seconds: 30          # h=2 scrape intervals (§3.6)
+tick_seconds: 15             # matches Prometheus scrape (§3.5)
+history_seconds: 600         # 10 minutes of context for Seasonal Naive
+
+# HPA-equivalent fallback
+target_utilisation: 0.50     # u* = 50% CPU, matches Kubernetes HPA default
+hpa_stabilisation_window_seconds: 300
+
+# Metric source — Phase 1 uses CPU (the HPA default signal)
+metric_source: cpu
+
+# Evidence bundle output
+evidence_path: experiments/results/phase1-frontend.jsonl

@@ -1,0 +1,17 @@
+{
+  "captured_at_utc": "2026-07-02T15:53:35.151443+00:00",
+  "hostname": "Mac",
+  "platform": "macOS-26.5.1-arm64-arm-64bit",
+  "architecture": "arm64",
+  "cpu_model": "Apple M3 Pro",
+  "cpu_logical_cores": 11,
+  "ram_total_gb": 18.0,
+  "python_version": "3.11.13",
+  "python_implementation": "CPython",
+  "kind_version": "kind v0.23.0 go1.21.10 darwin/arm64",
+  "kubectl_version": "clientVersion:\n  buildDate: \"2026-04-22T13:51:51Z\"\n  compiler: gc\n  gitCommit: ecf6decece6a6de25a57aad9ba90b6ce580f6f78\n  gitTreeState: clean\n  gitVersion: v1.36.0\n  goVersion: go1.26.2\n  major: \"1\"\n  minor: \"36\"\n  platform: darwin/arm64\nkustomizeVersion: v5.8.1",
+  "docker_version": "28.5.1",
+  "uv_version": "hybrid-autoscaler 0.1.0",
+  "git_commit": "b5e9b8456d65292a1d402133c91d98a419425c73",
+  "git_dirty": true
+}

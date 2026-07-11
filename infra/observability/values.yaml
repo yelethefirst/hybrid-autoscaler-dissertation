@@ -1,0 +1,110 @@
+# values.yaml — kube-prometheus-stack helm chart overrides.
+#
+# Chart: prometheus-community/kube-prometheus-stack
+# Pinned chart version: 58.7.2  (ships Prometheus 2.50.x, kube-state-metrics
+# 2.12.x, node-exporter 1.7.x, Grafana 10.4.x — verify post-install).
+#
+# §3.5 / §3.10 requirements honoured below:
+#   - Prometheus scrape interval: 15s (matches HPA sync period).
+#   - Five metric families exposed via cAdvisor (CPU, memory), kube-state-metrics
+#     (pod-ready count), node-exporter (host metrics) and Online Boutique's own
+#     instrumentation (request rate, error rate, response-time histograms).
+#   - Grafana enabled for visualisation only — not used as a measurement source.
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Prometheus
+# ─────────────────────────────────────────────────────────────────────────────
+prometheus:
+  prometheusSpec:
+    # 15-second scrape interval — single source of truth for §3.5.
+    scrapeInterval: 15s
+    evaluationInterval: 15s
+
+    # Retain 24h locally; experiments are short-lived and we export to Parquet.
+    retention: 24h
+    retentionSize: ""
+
+    # Discover any ServiceMonitor in any namespace (avoids label-selector friction
+    # for the Online Boutique ServiceMonitor we install separately).
+    serviceMonitorSelectorNilUsesHelmValues: false
+    podMonitorSelectorNilUsesHelmValues: false
+    serviceMonitorSelector: {}
+    serviceMonitorNamespaceSelector: {}
+
+    # Modest resource budget — Phase 0 doesn't generate heavy load yet.
+    resources:
+      requests:
+        cpu: 200m
+        memory: 512Mi
+      limits:
+        cpu: 1000m
+        memory: 2Gi
+
+# Disable AlertManager — not used in this dissertation; one less moving part.
+alertmanager:
+  enabled: false
+
+# ─────────────────────────────────────────────────────────────────────────────
+# kube-state-metrics (pinned via sub-chart; provides kube_pod_status_ready etc.)
+# ─────────────────────────────────────────────────────────────────────────────
+kube-state-metrics:
+  # Use chart default (kube-state-metrics 2.12.x at chart 58.7.2).
+  # No overrides required for §3.5 metric coverage.
+  resources:
+    requests:
+      cpu: 50m
+      memory: 64Mi
+    limits:
+      cpu: 200m
+      memory: 256Mi
+
+# ─────────────────────────────────────────────────────────────────────────────
+# node-exporter (host CPU / memory / disk; ensures node-level signals available)
+# ─────────────────────────────────────────────────────────────────────────────
+prometheus-node-exporter:
+  # Default node-exporter 1.7.x at chart 58.7.2.
+  resources:
+    requests:
+      cpu: 50m
+      memory: 64Mi
+    limits:
+      cpu: 200m
+      memory: 128Mi
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Grafana — visualisation only, NOT measurement
+# ─────────────────────────────────────────────────────────────────────────────
+grafana:
+  enabled: true
+  adminPassword: "admin"          # local dev only — change for cloud profile
+  service:
+    type: ClusterIP               # access via `kubectl port-forward`
+
+  # Sidecar watches ConfigMaps labelled grafana_dashboard=1 in any namespace
+  # and auto-imports them into the "Hybrid Autoscaler" folder.
+  sidecar:
+    dashboards:
+      enabled: true
+      label: grafana_dashboard
+      labelValue: "1"
+      searchNamespace: ALL
+      folderAnnotation: grafana_folder
+      provider:
+        foldersFromFilesStructure: false
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Disable subcharts we don't need for this dissertation
+# ─────────────────────────────────────────────────────────────────────────────
+prometheusOperator:
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 500m
+      memory: 512Mi
+
+# Don't ship default Kubernetes recording rules / dashboards we won't use —
+# keeps the cluster lean. (Phase-1 dashboards can be added in observability/dashboards/.)
+defaultRules:
+  create: false

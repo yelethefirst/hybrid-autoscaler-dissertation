@@ -1,0 +1,304 @@
+generated_at_utc: '2026-07-09T00:10:52.746979+00:00'
+source_telemetry: data/parquet/all
+full_grid: true
+entries:
+- service: adservice
+  namespace: default
+  target_metric: cpu
+  horizon_seconds: 30
+  forecaster: holt_winters
+  params:
+    period_seconds: 60
+    sample_interval_seconds: 15
+    refit_each_predict: true
+  validation:
+    selection_reason: lowest RMSE (0.0033)
+    rmse_vs_mae_selection_agrees: true
+    mean_rmse: 0.003348477702188918
+    mean_mae: 0.001939348963176037
+    mean_pinball_q70: 0.0009679601207910084
+    inference_p95_seconds: 0.11149627960112411
+    n_parameters: 10
+    failed_folds: 0
+    fold_rmses:
+    - 0.003910336258161301
+    - 0.0029196576368815943
+    - 0.003201908578756852
+    - 0.0032236917911468406
+    - 0.003486794245998
+    fold_maes:
+    - 0.0023697760349229028
+    - 0.001865413788177612
+    - 0.0019196830176973871
+    - 0.0019438575243028167
+    - 0.001598014450779466
+- service: cartservice
+  namespace: default
+  target_metric: cpu
+  horizon_seconds: 30
+  forecaster: holt_winters
+  params:
+    period_seconds: 60
+    sample_interval_seconds: 15
+    refit_each_predict: true
+  validation:
+    selection_reason: lowest RMSE (0.0137)
+    rmse_vs_mae_selection_agrees: true
+    mean_rmse: 0.013735820479316544
+    mean_mae: 0.008883444692805198
+    mean_pinball_q70: 0.004430226666700078
+    inference_p95_seconds: 0.11540879199164919
+    n_parameters: 10
+    failed_folds: 0
+    fold_rmses:
+    - 0.015823896350217276
+    - 0.01248620242996814
+    - 0.012860725991207645
+    - 0.014091103377850156
+    - 0.013417174247339505
+    fold_maes:
+    - 0.011225018797364178
+    - 0.008539379918421335
+    - 0.008247367894025448
+    - 0.00914741924182979
+    - 0.007258037612385238
+- service: checkoutservice
+  namespace: default
+  target_metric: cpu
+  horizon_seconds: 30
+  forecaster: holt_winters
+  params:
+    period_seconds: 60
+    sample_interval_seconds: 15
+    refit_each_predict: true
+  validation:
+    selection_reason: lowest RMSE (0.0043)
+    rmse_vs_mae_selection_agrees: true
+    mean_rmse: 0.004343027192506042
+    mean_mae: 0.002773279152336894
+    mean_pinball_q70: 0.001384784809107294
+    inference_p95_seconds: 0.08787681279936806
+    n_parameters: 10
+    failed_folds: 0
+    fold_rmses:
+    - 0.004915052827163508
+    - 0.0038918312280815347
+    - 0.004473101052003418
+    - 0.004186698770746449
+    - 0.004248452084535298
+    fold_maes:
+    - 0.003302292370107603
+    - 0.0025398609457679988
+    - 0.0028588734557029164
+    - 0.002826296751118616
+    - 0.0023390722389873366
+- service: currencyservice
+  namespace: default
+  target_metric: cpu
+  horizon_seconds: 30
+  forecaster: holt_winters
+  params:
+    period_seconds: 60
+    sample_interval_seconds: 15
+    refit_each_predict: true
+  validation:
+    selection_reason: lowest RMSE (0.0167)
+    rmse_vs_mae_selection_agrees: true
+    mean_rmse: 0.016739852921489405
+    mean_mae: 0.010028969850307195
+    mean_pinball_q70: 0.00500000676889852
+    inference_p95_seconds: 0.10500313381198793
+    n_parameters: 10
+    failed_folds: 0
+    fold_rmses:
+    - 0.019057435558426702
+    - 0.016037508482706398
+    - 0.016156941218793255
+    - 0.015769339866641953
+    - 0.016678039480878714
+    fold_maes:
+    - 0.013075236649121892
+    - 0.010172238829428039
+    - 0.009701124953540407
+    - 0.009994844853912662
+    - 0.0072014039655329785
+- service: emailservice
+  namespace: default
+  target_metric: cpu
+  horizon_seconds: 30
+  forecaster: holt_winters
+  params:
+    period_seconds: 60
+    sample_interval_seconds: 15
+    refit_each_predict: true
+  validation:
+    selection_reason: lowest RMSE (0.0020)
+    rmse_vs_mae_selection_agrees: true
+    mean_rmse: 0.0019910048875073916
+    mean_mae: 0.0012685642070459683
+    mean_pinball_q70: 0.0006340923349464354
+    inference_p95_seconds: 0.09294279459863901
+    n_parameters: 10
+    failed_folds: 0
+    fold_rmses:
+    - 0.0024132451304958026
+    - 0.002055613351759887
+    - 0.0018000102502053338
+    - 0.002058722511693881
+    - 0.0016274331933820536
+    fold_maes:
+    - 0.0016306639632211362
+    - 0.001293617114769098
+    - 0.001126061302399062
+    - 0.0013227907880610516
+    - 0.0009696878667794929
+- service: frontend
+  namespace: default
+  target_metric: cpu
+  horizon_seconds: 30
+  forecaster: holt_winters
+  params:
+    period_seconds: 60
+    sample_interval_seconds: 15
+    refit_each_predict: true
+  validation:
+    selection_reason: lowest RMSE (0.0212)
+    rmse_vs_mae_selection_agrees: true
+    mean_rmse: 0.02124217553192437
+    mean_mae: 0.012516415923450989
+    mean_pinball_q70: 0.006222205338161835
+    inference_p95_seconds: 0.0945918566081673
+    n_parameters: 10
+    failed_folds: 0
+    fold_rmses:
+    - 0.022740190800235892
+    - 0.02230506682091249
+    - 0.017955557727284653
+    - 0.018461902342265628
+    - 0.024748159968923194
+    fold_maes:
+    - 0.015160677287864547
+    - 0.014184793905638773
+    - 0.011275957799011017
+    - 0.011035298910804276
+    - 0.010925351713936325
+- service: paymentservice
+  namespace: default
+  target_metric: cpu
+  horizon_seconds: 30
+  forecaster: holt_winters
+  params:
+    period_seconds: 60
+    sample_interval_seconds: 15
+    refit_each_predict: true
+  validation:
+    selection_reason: lowest RMSE (0.0008)
+    rmse_vs_mae_selection_agrees: true
+    mean_rmse: 0.000794330574348521
+    mean_mae: 0.0005047955046682961
+    mean_pinball_q70: 0.00025205763612037933
+    inference_p95_seconds: 0.09385189519380219
+    n_parameters: 10
+    failed_folds: 0
+    fold_rmses:
+    - 0.0009205364723528662
+    - 0.000755708067194403
+    - 0.000832492165625192
+    - 0.0007180312816623142
+    - 0.0007448848849078299
+    fold_maes:
+    - 0.0006142649716313788
+    - 0.0004800920217946178
+    - 0.0005347424537364029
+    - 0.0004694608480901677
+    - 0.00042541722808891373
+- service: productcatalogservice
+  namespace: default
+  target_metric: cpu
+  horizon_seconds: 30
+  forecaster: holt_winters
+  params:
+    period_seconds: 60
+    sample_interval_seconds: 15
+    refit_each_predict: true
+  validation:
+    selection_reason: lowest RMSE (0.0088)
+    rmse_vs_mae_selection_agrees: true
+    mean_rmse: 0.008767697200919772
+    mean_mae: 0.00498290835984295
+    mean_pinball_q70: 0.0024759461372861626
+    inference_p95_seconds: 0.10485322918975726
+    n_parameters: 10
+    failed_folds: 0
+    fold_rmses:
+    - 0.01099010575445985
+    - 0.009185730421260275
+    - 0.007988823240726063
+    - 0.007337738402009119
+    - 0.00833608818614355
+    fold_maes:
+    - 0.006637392223909622
+    - 0.005521597255823263
+    - 0.004570510225793761
+    - 0.004288337232643413
+    - 0.003896704861044691
+- service: recommendationservice
+  namespace: default
+  target_metric: cpu
+  horizon_seconds: 30
+  forecaster: lstm
+  params: {}
+  validation:
+    selection_reason: RMSE tied; broken by lowest p95 inference latency (1.2 ms)
+    rmse_vs_mae_selection_agrees: false
+    mean_rmse: 0.024498137428301748
+    mean_mae: 0.014560899128442209
+    mean_pinball_q70: 0.006886551429362897
+    inference_p95_seconds: 0.0012347626092378049
+    n_parameters: 17217
+    failed_folds: 0
+    fold_rmses:
+    - 0.03532208464784896
+    - 0.022127608268391396
+    - 0.022095019544657493
+    - 0.02134502265868332
+    - 0.02160095202192757
+    fold_maes:
+    - 0.023336533885393092
+    - 0.012210029650545157
+    - 0.012997827873025699
+    - 0.010820667269976407
+    - 0.013439436963270691
+  artifact_path: models/recommendationservice-h30-lstm
+- service: shippingservice
+  namespace: default
+  target_metric: cpu
+  horizon_seconds: 30
+  forecaster: holt_winters
+  params:
+    period_seconds: 60
+    sample_interval_seconds: 15
+    refit_each_predict: true
+  validation:
+    selection_reason: lowest RMSE (0.0021)
+    rmse_vs_mae_selection_agrees: true
+    mean_rmse: 0.0020883823850723015
+    mean_mae: 0.0013066476259696897
+    mean_pinball_q70: 0.0006515435821975847
+    inference_p95_seconds: 0.09299185260315426
+    n_parameters: 10
+    failed_folds: 0
+    fold_rmses:
+    - 0.002453887836344059
+    - 0.0017301537705728901
+    - 0.0019993324649907824
+    - 0.0019606749943273604
+    - 0.0022978628591264158
+    fold_maes:
+    - 0.00164862784732806
+    - 0.0011256992420276737
+    - 0.0012548596241167011
+    - 0.0012804358093918887
+    - 0.001223615606984125
+selection_csv: /home/ubuntu/hybrid-autoscaler/experiments/results/phase3_20260709T001052Z_selection.csv
+h1_csv: /home/ubuntu/hybrid-autoscaler/experiments/results/phase3_20260709T001052Z_h1.csv

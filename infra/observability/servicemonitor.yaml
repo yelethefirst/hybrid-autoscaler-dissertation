@@ -1,0 +1,36 @@
+# servicemonitor.yaml
+#
+# Tells Prometheus to scrape Online Boutique services. We rely on Online Boutique's
+# own application instrumentation for per-service request rate, error rate and
+# response-time histograms (§3.5).
+#
+# Note: Online Boutique v0.10.5 services do not all expose a Prometheus endpoint
+# out of the box. For services that do not, we collect their request/error/latency
+# data from the cAdvisor and kube-state-metrics signals (always available), and
+# Phase 5 supplements with wrk2 client-side response-time histograms for the
+# externally measured tail-latency numbers.
+#
+# This ServiceMonitor catches any service that opts in via the label
+#     monitoring.hybrid-autoscaler/scrape: "true"
+# so we can add per-service scrapes incrementally without modifying Online Boutique.
+
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: online-boutique-services
+  namespace: monitoring
+  labels:
+    release: kube-prometheus-stack       # match the helm release name
+spec:
+  namespaceSelector:
+    matchNames:
+      - default
+  selector:
+    matchLabels:
+      monitoring.hybrid-autoscaler/scrape: "true"
+  endpoints:
+    - port: metrics                      # services must expose a port named 'metrics'
+      interval: 15s                      # §3.5 — 15s scrape interval
+      path: /metrics
+      scheme: http
+      honorLabels: true

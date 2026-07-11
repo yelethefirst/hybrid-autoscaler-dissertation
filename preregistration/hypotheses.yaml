@@ -1,0 +1,186 @@
+# yaml-language-server: $schema=./schema.json
+# preregistration/hypotheses.yaml
+#
+# Pre-registration for the Hybrid Predictive Autoscaler A/B experiment.
+# To be frozen on OSF before the final measured runs begin.
+#
+# All statistical tests are pre-specified here. No exploratory analysis
+# will be reported as confirmatory.
+#
+# Reference: Nosek et al. (2018). The preregistration revolution. PNAS.
+
+name: >
+  Intelligent Predictive and Explainable Autoscaling for Kubernetes
+  Microservices Using Hybrid Time-Series Forecasting and LLMs
+
+principal_investigator: Omoyele Sodiq Olabode
+institution: York St John University
+year: 2026
+
+freeze_date: "2026-07-03"   # frozen prior to canonical A/B experiment run
+osf_url: "https://osf.io/srewu"   # cite this URL in §3.11/§3.12
+
+freeze_context:
+  # Everything recorded here was finalised BEFORE the canonical A/B run.
+  # Nothing below may be changed after this date without creating a new
+  # registered report entry.
+
+  phase3_status: >
+    H1 confirmed on real burst campaign data (2026-07-02 to 2026-07-03).
+    8 of 10 services showed a selected forecaster beating Seasonal Naive
+    at Holm-corrected p < 0.05. Model registry frozen at:
+    experiments/results/phase3_20260703T090249Z_model_registry.yaml
+
+  selected_forecasters:
+    adservice: holt_winters
+    cartservice: holt_winters
+    checkoutservice: holt_winters
+    currencyservice: xgboost
+    emailservice: xgboost
+    frontend: xgboost
+    paymentservice: xgboost
+    productcatalogservice: holt_winters
+    recommendationservice: xgboost
+    shippingservice: xgboost
+
+  rho_values:
+    # Calibrated analytically: cpu_limit x 0.50 (target_utilisation).
+    # Empirically validated against burst campaign P80 CPU (docs/IMPLEMENTATION_LOG.md §C.2).
+    adservice: 0.1500
+    cartservice: 0.1500
+    checkoutservice: 0.1000
+    currencyservice: 0.1000
+    emailservice: 0.1000
+    frontend: 0.1000
+    paymentservice: 0.1000
+    productcatalogservice: 0.1000
+    recommendationservice: 0.1000
+    shippingservice: 0.1000
+
+  primary_service_for_ab: frontend
+  # frontend and currencyservice are the only services where observed P80 CPU
+  # exceeds rho (54% and 60% utilisation respectively). The A/B experiment
+  # targets frontend as the primary service; currencyservice scales as a
+  # downstream dependency.
+
+  controller_config: controller/configs/ab/frontend-ab.yaml
+  model_registry: experiments/results/phase3_20260703T090249Z_model_registry.yaml
+  trial_plan: experiments/trial_plans/canonical-10-trials.yaml
+  cluster: kind v0.32.0, Kubernetes v1.33.12, 3 nodes
+  k8s_context: kind-kind
+
+  lstm_status: >
+    LSTM excluded from Phase 3 real-data run due to CPU bottleneck (DEV-010).
+    MPS device placement added to lstm_model.py (Finding 5.7); re-run with
+    MPS planned but results not available at freeze time. If LSTM changes any
+    service winner, a deviation entry will be added and the registry updated
+    before the A/B run begins.
+
+design:
+  type: 2x4_AB
+  factor_autoscaler: [hpa, hybrid]
+  factor_workload: [burst, ramp, periodic, trace_replay]
+  n_trials_per_cell: 10
+  randomisation: pre-specified random order in trial_plans/canonical-10-trials.yaml
+  seed: 42
+  unit_of_analysis: trial
+  deployment: kind-local cluster, kind v0.32.0, Kubernetes v1.33.12
+
+exclusion_criteria:
+  - Trial where wrk2 reports > 5% connection errors (infrastructure issue)
+  - Trial where controller evidence bundle has < 10 decision rows (cluster instability)
+  - Trial stopped early by operator
+
+primary_outcomes:
+  p95_latency_ms:
+    description: wrk2 p95 latency, coordinated-omission-corrected
+    lower_is_better: true
+  replica_seconds:
+    description: sum(spec.replicas × 15s) over trial duration
+    lower_is_better: true
+
+secondary_outcomes:
+  p99_latency_ms:
+    description: wrk2 p99 latency
+    lower_is_better: true
+  oscillation_count:
+    description: number of replica direction reversals in evidence bundle
+    lower_is_better: true
+  time_to_stability_seconds:
+    description: seconds until replicas first reach steady state after workload onset
+    lower_is_better: true
+  success_rate:
+    description: 1 - error_rate, from wrk2
+    lower_is_better: false
+
+hypotheses:
+  H0:
+    label: No latency difference
+    statement: >
+      The Hybrid controller produces the same p95 latency as Kubernetes HPA
+      across all workload types.
+    null: mu_hybrid == mu_hpa
+    alternative: mu_hybrid != mu_hpa
+    test: paired-t
+    alpha: 0.05
+    correction: Holm-Bonferroni across 4 workloads
+    effect_size: cohens_d_z
+    confidence_interval: BCa 95% bootstrap
+
+  H1:
+    label: Better forecasting than Seasonal Naive
+    statement: >
+      At least one selected forecaster (per Phase 3) achieves lower cross-validated
+      RMSE than Seasonal Naive on real campaign data, at Holm-corrected p < 0.05.
+    null: RMSE_candidate >= RMSE_baseline for all services
+    alternative: RMSE_candidate < RMSE_baseline for at least one service
+    test: one-sided-paired-t per service, Holm-Bonferroni across services
+    alpha: 0.05
+    note: Already proven on synthetic data (Phase 3); this is the real-data replication.
+
+  H2:
+    label: Replica-seconds efficiency
+    statement: >
+      The Hybrid controller uses fewer replica-seconds than HPA across burst and
+      ramp workloads (resource efficiency).
+    null: replica_seconds_hybrid >= replica_seconds_hpa
+    alternative: replica_seconds_hybrid < replica_seconds_hpa
+    test: one-sided-paired-t
+    alpha: 0.05
+    correction: Holm-Bonferroni
+    effect_size: cohens_d_z
+    confidence_interval: BCa 95% bootstrap
+
+  H3:
+    label: Reduced oscillation
+    statement: >
+      The Hybrid controller produces fewer replica-count oscillations than HPA.
+    null: oscillation_hybrid >= oscillation_hpa
+    alternative: oscillation_hybrid < oscillation_hpa
+    test: one-sided Wilcoxon signed-rank (oscillation counts are non-negative integers)
+    alpha: 0.05
+    note: Non-parametric because oscillation counts are skewed and bounded below at 0.
+
+  H4:
+    label: LLM narrative faithfulness
+    statement: >
+      The LLM narrator achieves FActScore >= 0.8 on n=30 narrative samples
+      (precision: fraction of atomic claims supported by the evidence bundle).
+    null: FActScore < 0.8
+    alternative: FActScore >= 0.8
+    test: one-sample Wilcoxon signed-rank against mu_0 = 0.8
+    alpha: 0.05
+    note: >
+      FActScore is computed by the GPT-4o-mini judge decomposing each narrative
+      into atomic claims and verifying each against the evidence bundle context.
+      30 samples from Phase 5 hybrid trials, one narrative per trial.
+
+statistical_analysis:
+  library: scipy.stats, numpy, pingouin
+  bootstrap_method: BCa
+  bootstrap_n: 10000
+  bootstrap_seed: 42
+  multiple_comparisons: Holm-Bonferroni (H0 across workloads; H1 across services)
+  report_format: >
+    For each hypothesis: test statistic, p-value, 95% BCa CI for effect size,
+    Cohen's d_z or r, Holm-corrected p, verdict (reject/fail-to-reject H_null).

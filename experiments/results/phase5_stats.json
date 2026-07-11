@@ -1,0 +1,219 @@
+[
+  {
+    "hypothesis": "H0",
+    "outcome": "p95_latency_ms",
+    "workload": "burst",
+    "n_pairs": 10,
+    "mean_hybrid": 59.8311,
+    "mean_hpa": 100.4012,
+    "mean_diff": -40.5701,
+    "t_stat": -4.5532,
+    "p_value": 0.00138,
+    "holm_p": 0.004139,
+    "holm_threshold": 0.016667,
+    "significant": true,
+    "cohens_d_z": -1.4398,
+    "bca_ci": [
+      -55.9511,
+      -22.2752
+    ],
+    "verdict": "reject H_null"
+  },
+  {
+    "hypothesis": "H0",
+    "outcome": "p95_latency_ms",
+    "workload": "periodic",
+    "n_pairs": 10,
+    "mean_hybrid": 399.2977,
+    "mean_hpa": 373.3783,
+    "mean_diff": 25.9195,
+    "t_stat": 0.8417,
+    "p_value": 0.421749,
+    "holm_p": 0.421749,
+    "holm_threshold": 0.05,
+    "significant": false,
+    "cohens_d_z": 0.2662,
+    "bca_ci": [
+      -8.1789,
+      121.5419
+    ],
+    "verdict": "fail to reject H_null"
+  },
+  {
+    "hypothesis": "H0",
+    "outcome": "p95_latency_ms",
+    "workload": "ramp",
+    "n_pairs": 10,
+    "mean_hybrid": 33.2202,
+    "mean_hpa": 244.5017,
+    "mean_diff": -211.2815,
+    "t_stat": -42.6974,
+    "p_value": 0.0,
+    "holm_p": 0.0,
+    "holm_threshold": 0.0125,
+    "significant": true,
+    "cohens_d_z": -13.5021,
+    "bca_ci": [
+      -216.6607,
+      -195.6351
+    ],
+    "verdict": "reject H_null"
+  },
+  {
+    "hypothesis": "H0",
+    "outcome": "p95_latency_ms",
+    "workload": "trace_replay",
+    "n_pairs": 10,
+    "mean_hybrid": 975.0184,
+    "mean_hpa": 1089.051,
+    "mean_diff": -114.0326,
+    "t_stat": -2.7955,
+    "p_value": 0.020866,
+    "holm_p": 0.041731,
+    "holm_threshold": 0.025,
+    "significant": true,
+    "cohens_d_z": -0.884,
+    "bca_ci": [
+      -218.7499,
+      -54.8405
+    ],
+    "verdict": "reject H_null"
+  },
+  {
+    "hypothesis": "H0",
+    "outcome": "p99_latency_ms",
+    "workload": "burst",
+    "n_pairs": 10,
+    "mean_hybrid": 62803.0,
+    "mean_hpa": 102540.0,
+    "mean_diff": -39737.0,
+    "t_stat": -4.5421,
+    "p_value": 0.001402,
+    "holm_p": 0.004205,
+    "holm_threshold": 0.016667,
+    "significant": true,
+    "cohens_d_z": -1.4363,
+    "bca_ci": [
+      -54925.0586,
+      -22122.3213
+    ],
+    "verdict": "reject H_null"
+  },
+  {
+    "hypothesis": "H0",
+    "outcome": "p99_latency_ms",
+    "workload": "periodic",
+    "n_pairs": 10,
+    "mean_hybrid": 419880.0,
+    "mean_hpa": 391200.0,
+    "mean_diff": 28680.0,
+    "t_stat": 0.89,
+    "p_value": 0.396614,
+    "holm_p": 0.396614,
+    "holm_threshold": 0.05,
+    "significant": false,
+    "cohens_d_z": 0.2815,
+    "bca_ci": [
+      -6840.0,
+      128815.4342
+    ],
+    "verdict": "fail to reject H_null"
+  },
+  {
+    "hypothesis": "H0",
+    "outcome": "p99_latency_ms",
+    "workload": "ramp",
+    "n_pairs": 10,
+    "mean_hybrid": 37626.0,
+    "mean_hpa": 254280.0,
+    "mean_diff": -216654.0,
+    "t_stat": -39.3173,
+    "p_value": 0.0,
+    "holm_p": 0.0,
+    "holm_threshold": 0.0125,
+    "significant": true,
+    "cohens_d_z": -12.4332,
+    "bca_ci": [
+      -222602.4618,
+      -199327.8845
+    ],
+    "verdict": "reject H_null"
+  },
+  {
+    "hypothesis": "H0",
+    "outcome": "p99_latency_ms",
+    "workload": "trace_replay",
+    "n_pairs": 10,
+    "mean_hybrid": 1020660.0,
+    "mean_hpa": 1125780.0,
+    "mean_diff": -105120.0,
+    "t_stat": -2.7772,
+    "p_value": 0.0215,
+    "holm_p": 0.042999,
+    "holm_threshold": 0.025,
+    "significant": true,
+    "cohens_d_z": -0.8782,
+    "bca_ci": [
+      -203196.3691,
+      -50662.8898
+    ],
+    "verdict": "reject H_null"
+  },
+  {
+    "hypothesis": "H2",
+    "outcome": "replica_seconds",
+    "workload": "burst",
+    "n_pairs": 10,
+    "mean_hybrid": 3999.0,
+    "mean_hpa": 735.0,
+    "mean_diff": 3264.0,
+    "t_stat": 64.435,
+    "p_value": 1.0,
+    "holm_p": null,
+    "holm_threshold": null,
+    "significant": false,
+    "cohens_d_z": 20.3761,
+    "bca_ci": [
+      3168.0,
+      3352.5
+    ],
+    "verdict": "fail to reject H_null"
+  },
+  {
+    "hypothesis": "H2",
+    "outcome": "replica_seconds",
+    "workload": "ramp",
+    "n_pairs": 10,
+    "mean_hybrid": 11485.5,
+    "mean_hpa": 1530.0,
+    "mean_diff": 9955.5,
+    "t_stat": 252.4428,
+    "p_value": 1.0,
+    "holm_p": null,
+    "holm_threshold": null,
+    "significant": false,
+    "cohens_d_z": 79.8294,
+    "bca_ci": [
+      9868.5,
+      10018.5
+    ],
+    "verdict": "fail to reject H_null"
+  },
+  {
+    "hypothesis": "H3",
+    "outcome": "oscillation_count",
+    "workload": null,
+    "n_pairs": 0,
+    "mean_hybrid": NaN,
+    "mean_hpa": NaN,
+    "mean_diff": NaN,
+    "t_stat": null,
+    "p_value": NaN,
+    "holm_p": null,
+    "holm_threshold": null,
+    "significant": false,
+    "cohens_d_z": null,
+    "bca_ci": null,
+    "verdict": "fail to reject H_null"
+  }
+]

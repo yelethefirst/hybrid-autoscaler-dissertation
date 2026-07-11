@@ -1,0 +1,11 @@
+# Copy to terraform.tfvars (gitignored) and set your values.
+# Only allowed_ssh_cidr is required — every other default IS the §3.10-A spec.
+
+# Your current public IP as a /32 (check with: curl -s ifconfig.me)
+allowed_ssh_cidr = "203.0.113.7/32"
+
+# Uncomment only if deviating from the committed spec — and record the
+# deviation in docs/deviations.md:
+# instance_type       = "m7i.4xlarge"          # documented capacity fallback
+# ssh_public_key_path = "~/.ssh/id_ed25519.pub"
+# aws_profile         = "argon"
