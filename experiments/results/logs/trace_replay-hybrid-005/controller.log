@@ -1,0 +1,143 @@
+▶  evidence path override: experiments/results/trace_replay-hybrid-005-evidence.jsonl
+▶  config loaded: service=frontend namespace=default
+▶  model registry loaded: phase3_20260709T001052Z_model_registry.yaml → holt_winters for frontend
+▶  starting control loop (tick=15s, horizon=30s, forecaster=holt_winters)
+2026-07-10T12:40:36Z INFO controller.k8s_actuator: scaled deployment=frontend ns=default from=1 to=3
+2026-07-10T12:40:36Z INFO controller.loop: tick service=frontend state=SCALE_LIMITED replicas 1→3 forecast=0.179 sigma=0.017
+2026-07-10T12:40:50Z INFO controller.k8s_actuator: scaled deployment=frontend ns=default from=3 to=5
+2026-07-10T12:40:50Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 3→5 forecast=0.180 sigma=0.017
+2026-07-10T12:41:05Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 5→5 forecast=0.177 sigma=0.018
+2026-07-10T12:41:20Z INFO controller.k8s_actuator: scaled deployment=frontend ns=default from=5 to=4
+2026-07-10T12:41:20Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 5→4 forecast=0.174 sigma=0.017
+2026-07-10T12:41:35Z INFO controller.k8s_actuator: scaled deployment=frontend ns=default from=4 to=5
+2026-07-10T12:41:35Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 4→5 forecast=0.188 sigma=0.017
+2026-07-10T12:41:50Z INFO controller.k8s_actuator: scaled deployment=frontend ns=default from=5 to=7
+2026-07-10T12:41:50Z INFO controller.loop: tick service=frontend state=SCALE_LIMITED replicas 5→7 forecast=0.322 sigma=0.027
+2026-07-10T12:42:05Z INFO controller.k8s_actuator: scaled deployment=frontend ns=default from=7 to=8
+2026-07-10T12:42:05Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 7→8 forecast=0.417 sigma=0.028
+2026-07-10T12:42:20Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.329 sigma=0.029
+2026-07-10T12:42:35Z INFO controller.k8s_actuator: scaled deployment=frontend ns=default from=8 to=7
+2026-07-10T12:42:35Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→7 forecast=0.293 sigma=0.031
+2026-07-10T12:42:50Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 7→7 forecast=0.289 sigma=0.031
+2026-07-10T12:43:05Z INFO controller.k8s_actuator: scaled deployment=frontend ns=default from=7 to=8
+2026-07-10T12:43:05Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 7→8 forecast=0.332 sigma=0.030
+2026-07-10T12:43:20Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.334 sigma=0.031
+2026-07-10T12:43:35Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.309 sigma=0.033
+2026-07-10T12:43:50Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.333 sigma=0.031
+2026-07-10T12:44:05Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.340 sigma=0.033
+2026-07-10T12:44:20Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.383 sigma=0.031
+2026-07-10T12:44:35Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.387 sigma=0.032
+2026-07-10T12:44:50Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.374 sigma=0.034
+2026-07-10T12:45:05Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.393 sigma=0.032
+2026-07-10T12:45:20Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.334 sigma=0.034
+2026-07-10T12:45:35Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.341 sigma=0.033
+2026-07-10T12:45:50Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.372 sigma=0.033
+2026-07-10T12:46:05Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.366 sigma=0.033
+2026-07-10T12:46:20Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.357 sigma=0.032
+2026-07-10T12:46:35Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.380 sigma=0.032
+2026-07-10T12:46:50Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.390 sigma=0.031
+2026-07-10T12:47:05Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.369 sigma=0.032
+2026-07-10T12:47:20Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.338 sigma=0.033
+2026-07-10T12:47:35Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.356 sigma=0.033
+2026-07-10T12:47:50Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.355 sigma=0.032
+2026-07-10T12:48:05Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.367 sigma=0.032
+2026-07-10T12:48:20Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.340 sigma=0.034
+2026-07-10T12:48:35Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.380 sigma=0.033
+2026-07-10T12:48:50Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.396 sigma=0.031
+2026-07-10T12:49:05Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.348 sigma=0.032
+2026-07-10T12:49:20Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.404 sigma=0.034
+2026-07-10T12:49:35Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.402 sigma=0.031
+2026-07-10T12:49:50Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.400 sigma=0.031
+2026-07-10T12:50:05Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.402 sigma=0.031
+2026-07-10T12:50:20Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.477 sigma=0.031
+2026-07-10T12:50:35Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.497 sigma=0.032
+2026-07-10T12:50:50Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.523 sigma=0.029
+2026-07-10T12:51:05Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.431 sigma=0.032
+2026-07-10T12:51:20Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.391 sigma=0.033
+2026-07-10T12:51:35Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.330 sigma=0.035
+2026-07-10T12:51:50Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.444 sigma=0.032
+2026-07-10T12:52:05Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.484 sigma=0.034
+2026-07-10T12:52:20Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.511 sigma=0.035
+2026-07-10T12:52:35Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.409 sigma=0.039
+2026-07-10T12:52:50Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.332 sigma=0.039
+2026-07-10T12:53:05Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.317 sigma=0.035
+2026-07-10T12:53:20Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.356 sigma=0.036
+2026-07-10T12:53:35Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.344 sigma=0.036
+2026-07-10T12:53:50Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.300 sigma=0.038
+2026-07-10T12:54:05Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.300 sigma=0.036
+2026-07-10T12:54:20Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.325 sigma=0.035
+2026-07-10T12:54:35Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.300 sigma=0.036
+2026-07-10T12:54:50Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.305 sigma=0.035
+2026-07-10T12:55:05Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.305 sigma=0.035
+2026-07-10T12:55:20Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.373 sigma=0.037
+2026-07-10T12:55:35Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.412 sigma=0.036
+2026-07-10T12:55:50Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.353 sigma=0.039
+2026-07-10T12:56:05Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.325 sigma=0.038
+2026-07-10T12:56:20Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.340 sigma=0.037
+2026-07-10T12:56:35Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.360 sigma=0.036
+2026-07-10T12:56:50Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.322 sigma=0.038
+2026-07-10T12:57:05Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.308 sigma=0.038
+2026-07-10T12:57:20Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.387 sigma=0.035
+2026-07-10T12:57:35Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.418 sigma=0.035
+2026-07-10T12:57:50Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.386 sigma=0.037
+2026-07-10T12:58:05Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.322 sigma=0.037
+2026-07-10T12:58:20Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.326 sigma=0.038
+2026-07-10T12:58:35Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.320 sigma=0.037
+2026-07-10T12:58:50Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.318 sigma=0.037
+2026-07-10T12:59:05Z INFO controller.k8s_actuator: scaled deployment=frontend ns=default from=8 to=7
+2026-07-10T12:59:05Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→7 forecast=0.256 sigma=0.035
+2026-07-10T12:59:20Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 7→7 forecast=0.296 sigma=0.035
+2026-07-10T12:59:35Z INFO controller.k8s_actuator: scaled deployment=frontend ns=default from=7 to=8
+2026-07-10T12:59:35Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 7→8 forecast=0.376 sigma=0.033
+2026-07-10T12:59:50Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.346 sigma=0.035
+2026-07-10T13:00:05Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.322 sigma=0.035
+2026-07-10T13:00:20Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.353 sigma=0.033
+2026-07-10T13:00:35Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.398 sigma=0.033
+2026-07-10T13:00:50Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.385 sigma=0.039
+2026-07-10T13:01:05Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.372 sigma=0.039
+2026-07-10T13:01:20Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.387 sigma=0.039
+2026-07-10T13:01:35Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.396 sigma=0.038
+2026-07-10T13:01:50Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.381 sigma=0.034
+2026-07-10T13:02:05Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.377 sigma=0.036
+2026-07-10T13:02:20Z INFO controller.k8s_actuator: scaled deployment=frontend ns=default from=8 to=7
+2026-07-10T13:02:20Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→7 forecast=0.295 sigma=0.028
+2026-07-10T13:02:35Z INFO controller.k8s_actuator: scaled deployment=frontend ns=default from=7 to=8
+2026-07-10T13:02:35Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 7→8 forecast=0.362 sigma=0.024
+2026-07-10T13:02:50Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.351 sigma=0.029
+2026-07-10T13:03:05Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.392 sigma=0.029
+2026-07-10T13:03:20Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.460 sigma=0.027
+2026-07-10T13:03:35Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.449 sigma=0.031
+2026-07-10T13:03:50Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.443 sigma=0.029
+2026-07-10T13:04:05Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.406 sigma=0.030
+2026-07-10T13:04:20Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.405 sigma=0.031
+2026-07-10T13:04:35Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.347 sigma=0.033
+2026-07-10T13:04:50Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.389 sigma=0.029
+2026-07-10T13:05:05Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.388 sigma=0.028
+2026-07-10T13:05:20Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.318 sigma=0.030
+2026-07-10T13:05:35Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.344 sigma=0.028
+2026-07-10T13:05:50Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.317 sigma=0.029
+2026-07-10T13:06:05Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.333 sigma=0.028
+2026-07-10T13:06:20Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.360 sigma=0.027
+2026-07-10T13:06:35Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.342 sigma=0.028
+2026-07-10T13:06:50Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.357 sigma=0.027
+2026-07-10T13:07:05Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.326 sigma=0.029
+2026-07-10T13:07:20Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.327 sigma=0.028
+2026-07-10T13:07:35Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.334 sigma=0.027
+2026-07-10T13:07:50Z INFO controller.k8s_actuator: scaled deployment=frontend ns=default from=8 to=7
+2026-07-10T13:07:50Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→7 forecast=0.284 sigma=0.029
+2026-07-10T13:08:05Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 7→7 forecast=0.304 sigma=0.029
+2026-07-10T13:08:20Z INFO controller.k8s_actuator: scaled deployment=frontend ns=default from=7 to=8
+2026-07-10T13:08:20Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 7→8 forecast=0.332 sigma=0.028
+2026-07-10T13:08:35Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.360 sigma=0.026
+2026-07-10T13:08:50Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.311 sigma=0.028
+2026-07-10T13:09:05Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.320 sigma=0.029
+2026-07-10T13:09:20Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.348 sigma=0.027
+2026-07-10T13:09:35Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.333 sigma=0.028
+2026-07-10T13:09:50Z INFO controller.k8s_actuator: scaled deployment=frontend ns=default from=8 to=7
+2026-07-10T13:09:50Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→7 forecast=0.302 sigma=0.029
+2026-07-10T13:10:05Z INFO controller.k8s_actuator: scaled deployment=frontend ns=default from=7 to=8
+2026-07-10T13:10:05Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 7→8 forecast=0.308 sigma=0.029
+2026-07-10T13:10:20Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.344 sigma=0.028
+2026-07-10T13:10:35Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 8→8 forecast=0.358 sigma=0.029
+2026-07-10T13:10:48Z INFO controller.loop: received signal 15 — stopping after current tick
+✅  stopped after 121 tick(s). Evidence: experiments/results/trace_replay-hybrid-005-evidence.jsonl

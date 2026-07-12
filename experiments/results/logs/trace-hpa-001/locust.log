@@ -1,0 +1,32 @@
+Traceback (most recent call last):
+  File "/Users/omoyeleolabode/Documents/ysj school work/Dissertation/hybrid-autoscaler/.venv/bin/locust", line 12, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/Users/omoyeleolabode/Documents/ysj school work/Dissertation/hybrid-autoscaler/.venv/lib/python3.11/site-packages/locust/main.py", line 161, in main
+    ) = merge_locustfiles_content(locustfiles)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/omoyeleolabode/Documents/ysj school work/Dissertation/hybrid-autoscaler/.venv/lib/python3.11/site-packages/locust/main.py", line 135, in merge_locustfiles_content
+    user_classes, shape_classes = load_locustfile(_locustfile)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/omoyeleolabode/Documents/ysj school work/Dissertation/hybrid-autoscaler/.venv/lib/python3.11/site-packages/locust/util/load_locustfile.py", line 71, in load_locustfile
+    loader.exec_module(imported)
+  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/Users/omoyeleolabode/Documents/ysj school work/Dissertation/hybrid-autoscaler/experiments/workloads/trace_replay.py", line 37, in <module>
+    from .user import BoutiqueUser  # noqa: F401
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ImportError: attempted relative import with no known parent package
+Exception ignored in: <function _removeHandlerRef at 0x1032777e0>
+Traceback (most recent call last):
+  File "/Users/omoyeleolabode/.local/share/uv/python/cpython-3.11.13-macos-aarch64-none/lib/python3.11/logging/__init__.py", line 855, in _removeHandlerRef
+  File "/Users/omoyeleolabode/.local/share/uv/python/cpython-3.11.13-macos-aarch64-none/lib/python3.11/logging/__init__.py", line 235, in _acquireLock
+  File "/Users/omoyeleolabode/.local/share/uv/python/cpython-3.11.13-macos-aarch64-none/lib/python3.11/threading.py", line 164, in acquire
+  File "/Users/omoyeleolabode/Documents/ysj school work/Dissertation/hybrid-autoscaler/.venv/lib/python3.11/site-packages/gevent/thread.py", line 81, in get_ident
+RuntimeError: greenlet is being finalized
+Exception ignored in: <function _removeHandlerRef at 0x1032777e0>
+Traceback (most recent call last):
+  File "/Users/omoyeleolabode/.local/share/uv/python/cpython-3.11.13-macos-aarch64-none/lib/python3.11/logging/__init__.py", line 855, in _removeHandlerRef
+  File "/Users/omoyeleolabode/.local/share/uv/python/cpython-3.11.13-macos-aarch64-none/lib/python3.11/logging/__init__.py", line 235, in _acquireLock
+  File "/Users/omoyeleolabode/.local/share/uv/python/cpython-3.11.13-macos-aarch64-none/lib/python3.11/threading.py", line 164, in acquire
+  File "/Users/omoyeleolabode/Documents/ysj school work/Dissertation/hybrid-autoscaler/.venv/lib/python3.11/site-packages/gevent/thread.py", line 81, in get_ident
+RuntimeError: greenlet is being finalized

@@ -1,0 +1,6 @@
+▶  config loaded: service=frontend namespace=default
+▶  model registry loaded: phase3_20260703T090249Z_model_registry.yaml → xgboost for frontend
+▶  starting control loop (tick=15s, horizon=30s, forecaster=xgboost)
+2026-07-03T16:43:48Z INFO controller.loop: tick service=frontend state=NOMINAL replicas 1→1 forecast=0.002 sigma=0.012
+2026-07-03T16:43:53Z INFO controller.loop: received signal 15 — stopping after current tick
+✅  stopped after 1 tick(s). Evidence: experiments/results/ab-frontend.jsonl

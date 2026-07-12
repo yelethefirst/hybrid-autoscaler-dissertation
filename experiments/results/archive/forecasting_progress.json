@@ -1,0 +1,10 @@
+{
+  "updated_at_utc": "2026-07-09T09:53:05.642741+00:00",
+  "service": "shippingservice",
+  "fold": 5,
+  "n_folds": 5,
+  "model": "lstm",
+  "model_index": 4,
+  "n_models": 4,
+  "phase": "fitting"
+}

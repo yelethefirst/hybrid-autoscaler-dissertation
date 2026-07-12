@@ -99,3 +99,10 @@ infra/terraform/crash.log
 
 # Ansible — real inventory contains the VM IP; the example is committed
 infra/ansible/inventory.ini
+
+# These must come LAST — they override the global *.log and logs/ rules above
+# to re-admit specific experiment result directories for full reproducibility
+!experiments/results/logs/
+!experiments/results/logs/**
+!experiments/results/archive/
+!experiments/results/archive/**

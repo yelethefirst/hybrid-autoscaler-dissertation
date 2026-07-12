@@ -1,0 +1,71 @@
+=== Starting trial: periodic-hybrid-001 ===
+2026-07-03T18:08:45Z INFO __main__: plan: canonical-ab-10-trials  trials: 1  result_log: experiments/results/results_canonical-ab-10-trials.jsonl
+2026-07-03T18:08:45Z INFO __main__: trial 1/1
+2026-07-03T18:08:45Z INFO __main__: ======================================================================
+2026-07-03T18:08:45Z INFO __main__: TRIAL periodic-hybrid-001  autoscaler=hybrid  workload=periodic
+2026-07-03T18:08:45Z INFO __main__: ======================================================================
+2026-07-03T18:08:45Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-03T18:08:45Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-03T18:08:45Z INFO __main__: starting hybrid controller: uv run python -m controller.main --config controller/configs/ab/frontend-ab.yaml --prometheus-url http://localhost:9090 --model-registry experiments/results/phase3_20260703T090249Z_model_registry.yaml
+2026-07-03T18:08:50Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/periodic.py --host http://localhost:30080 --headless --users 500 --spawn-rate 50 -t 1800s --csv experiments/results/periodic-hybrid-001-locust
+2026-07-03T18:08:52Z WARNING __main__: wrk2 not found; using hey (no coordinated-omission correction, DEV-013)
+2026-07-03T18:08:52Z INFO __main__: running hey: hey -c 100 -z 600s -q 1 http://localhost:30080/
+2026-07-03T18:19:02Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-03T18:19:02Z INFO __main__: trial periodic-hybrid-001 done: p95=1649.9ms replica_s=1035 error=none
+✅  1 trial(s) written to experiments/results/results_canonical-ab-10-trials.jsonl
+=== Done: periodic-hybrid-001 ===
+=== Starting trial: periodic-hpa-001 ===
+2026-07-03T18:19:02Z INFO __main__: plan: canonical-ab-10-trials  trials: 1  result_log: experiments/results/results_canonical-ab-10-trials.jsonl
+2026-07-03T18:19:02Z INFO __main__: trial 1/1
+2026-07-03T18:19:02Z INFO __main__: ======================================================================
+2026-07-03T18:19:02Z INFO __main__: TRIAL periodic-hpa-001  autoscaler=hpa  workload=periodic
+2026-07-03T18:19:02Z INFO __main__: ======================================================================
+2026-07-03T18:19:02Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-03T18:19:02Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-03T18:19:02Z INFO __main__: installing HPA: kubectl -n default apply -f experiments/hpa/frontend-hpa.yaml
+horizontalpodautoscaler.autoscaling/frontend created
+2026-07-03T18:19:02Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/periodic.py --host http://localhost:30080 --headless --users 500 --spawn-rate 50 -t 1800s --csv experiments/results/periodic-hpa-001-locust
+2026-07-03T18:19:04Z WARNING __main__: wrk2 not found; using hey (no coordinated-omission correction, DEV-013)
+2026-07-03T18:19:04Z INFO __main__: running hey: hey -c 100 -z 600s -q 1 http://localhost:30080/
+2026-07-03T18:29:05Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+horizontalpodautoscaler.autoscaling "frontend" deleted from default namespace
+2026-07-03T18:29:05Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-03T18:29:05Z INFO __main__: trial periodic-hpa-001 done: p95=1697.0ms replica_s=615 error=none
+✅  1 trial(s) written to experiments/results/results_canonical-ab-10-trials.jsonl
+=== Done: periodic-hpa-001 ===
+=== Starting trial: trace-hybrid-001 ===
+2026-07-03T18:29:05Z INFO __main__: plan: canonical-ab-10-trials  trials: 1  result_log: experiments/results/results_canonical-ab-10-trials.jsonl
+2026-07-03T18:29:05Z INFO __main__: trial 1/1
+2026-07-03T18:29:05Z INFO __main__: ======================================================================
+2026-07-03T18:29:05Z INFO __main__: TRIAL trace-hybrid-001  autoscaler=hybrid  workload=trace_replay
+2026-07-03T18:29:05Z INFO __main__: ======================================================================
+2026-07-03T18:29:05Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-03T18:29:05Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-03T18:29:05Z INFO __main__: starting hybrid controller: uv run python -m controller.main --config controller/configs/ab/frontend-ab.yaml --prometheus-url http://localhost:9090 --model-registry experiments/results/phase3_20260703T090249Z_model_registry.yaml
+2026-07-03T18:29:10Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/trace_replay.py --host http://localhost:30080 --headless --users 500 --spawn-rate 50 -t 1800s --csv experiments/results/trace-hybrid-001-locust
+2026-07-03T18:29:12Z WARNING __main__: wrk2 not found; using hey (no coordinated-omission correction, DEV-013)
+2026-07-03T18:29:12Z INFO __main__: running hey: hey -c 100 -z 300s -q 1 http://localhost:30080/
+2026-07-03T18:34:23Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-03T18:34:23Z INFO __main__: trial trace-hybrid-001 done: p95=1159.5ms replica_s=450 error=none
+✅  1 trial(s) written to experiments/results/results_canonical-ab-10-trials.jsonl
+=== Done: trace-hybrid-001 ===
+=== Starting trial: trace-hpa-001 ===
+2026-07-03T18:34:23Z INFO __main__: plan: canonical-ab-10-trials  trials: 1  result_log: experiments/results/results_canonical-ab-10-trials.jsonl
+2026-07-03T18:34:23Z INFO __main__: trial 1/1
+2026-07-03T18:34:23Z INFO __main__: ======================================================================
+2026-07-03T18:34:23Z INFO __main__: TRIAL trace-hpa-001  autoscaler=hpa  workload=trace_replay
+2026-07-03T18:34:23Z INFO __main__: ======================================================================
+2026-07-03T18:34:23Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-03T18:34:23Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-03T18:34:23Z INFO __main__: installing HPA: kubectl -n default apply -f experiments/hpa/frontend-hpa.yaml
+horizontalpodautoscaler.autoscaling/frontend created
+2026-07-03T18:34:23Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/trace_replay.py --host http://localhost:30080 --headless --users 500 --spawn-rate 50 -t 1800s --csv experiments/results/trace-hpa-001-locust
+2026-07-03T18:34:25Z WARNING __main__: wrk2 not found; using hey (no coordinated-omission correction, DEV-013)
+2026-07-03T18:34:25Z INFO __main__: running hey: hey -c 100 -z 300s -q 1 http://localhost:30080/
+2026-07-03T18:39:25Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+horizontalpodautoscaler.autoscaling "frontend" deleted from default namespace
+2026-07-03T18:39:25Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-03T18:39:26Z INFO __main__: trial trace-hpa-001 done: p95=1637.4ms replica_s=315 error=none
+✅  1 trial(s) written to experiments/results/results_canonical-ab-10-trials.jsonl
+=== Done: trace-hpa-001 ===
+ALL REMAINING TRIALS DONE

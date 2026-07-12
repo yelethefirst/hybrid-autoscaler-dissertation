@@ -1,0 +1,1102 @@
+2026-07-09T14:13:27Z INFO __main__: plan: canonical-ab-v2  trials: 84  result_log: experiments/results/results_canonical-ab-v2.jsonl
+2026-07-09T14:13:27Z INFO __main__: trial 1/84
+2026-07-09T14:13:27Z INFO __main__: ======================================================================
+2026-07-09T14:13:27Z INFO __main__: TRIAL burst-hpa-003  autoscaler=hpa  workload=burst
+2026-07-09T14:13:27Z INFO __main__: ======================================================================
+2026-07-09T14:13:27Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-09T14:13:27Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-09T14:13:27Z INFO __main__: installing HPA: kubectl -n default apply -f experiments/hpa/frontend-hpa.yaml
+horizontalpodautoscaler.autoscaling/frontend created
+2026-07-09T14:13:27Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/burst.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 50 -t 720s --csv experiments/results/burst-hpa-003-locust
+2026-07-09T14:13:35Z INFO __main__: waiting 300s for measurement phase (offset=300s)
+2026-07-09T14:18:35Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d120s -R100 --latency http://localhost:30080/
+2026-07-09T14:25:28Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+horizontalpodautoscaler.autoscaling "frontend" deleted
+2026-07-09T14:25:28Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-09T14:25:28Z INFO __main__: trial burst-hpa-003 done: p95=0.0ms replica_s=720 error=none
+2026-07-09T14:25:28Z INFO __main__: trial 2/84
+2026-07-09T14:25:28Z INFO __main__: ======================================================================
+2026-07-09T14:25:28Z INFO __main__: TRIAL burst-hybrid-003  autoscaler=hybrid  workload=burst
+2026-07-09T14:25:28Z INFO __main__: ======================================================================
+2026-07-09T14:25:28Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-09T14:25:29Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-09T14:25:29Z INFO __main__: starting hybrid controller: uv run python -m controller.main --config controller/configs/ab/frontend-ab.yaml --prometheus-url http://localhost:9090 --model-registry experiments/results/phase3_20260709T001052Z_model_registry.yaml --evidence-path experiments/results/burst-hybrid-003-evidence.jsonl
+2026-07-09T14:25:34Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/burst.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 50 -t 720s --csv experiments/results/burst-hybrid-003-locust
+2026-07-09T14:25:42Z INFO __main__: waiting 300s for measurement phase (offset=300s)
+2026-07-09T14:30:42Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d120s -R100 --latency http://localhost:30080/
+2026-07-09T14:37:45Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-09T14:37:46Z INFO __main__: trial burst-hybrid-003 done: p95=0.0ms replica_s=3675 error=none
+2026-07-09T14:37:46Z INFO __main__: trial 3/84
+2026-07-09T14:37:46Z INFO __main__: ======================================================================
+2026-07-09T14:37:46Z INFO __main__: TRIAL burst-hybrid-006  autoscaler=hybrid  workload=burst
+2026-07-09T14:37:46Z INFO __main__: ======================================================================
+2026-07-09T14:37:46Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-09T14:37:46Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-09T14:37:46Z INFO __main__: starting hybrid controller: uv run python -m controller.main --config controller/configs/ab/frontend-ab.yaml --prometheus-url http://localhost:9090 --model-registry experiments/results/phase3_20260709T001052Z_model_registry.yaml --evidence-path experiments/results/burst-hybrid-006-evidence.jsonl
+2026-07-09T14:37:51Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/burst.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 50 -t 720s --csv experiments/results/burst-hybrid-006-locust
+2026-07-09T14:37:59Z INFO __main__: waiting 300s for measurement phase (offset=300s)
+2026-07-09T14:42:59Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d120s -R100 --latency http://localhost:30080/
+2026-07-09T14:50:02Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-09T14:50:02Z INFO __main__: trial burst-hybrid-006 done: p95=0.0ms replica_s=3840 error=none
+2026-07-09T14:50:02Z INFO __main__: trial 4/84
+2026-07-09T14:50:02Z INFO __main__: ======================================================================
+2026-07-09T14:50:02Z INFO __main__: TRIAL burst-hpa-006  autoscaler=hpa  workload=burst
+2026-07-09T14:50:02Z INFO __main__: ======================================================================
+2026-07-09T14:50:02Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-09T14:50:02Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-09T14:50:02Z INFO __main__: installing HPA: kubectl -n default apply -f experiments/hpa/frontend-hpa.yaml
+horizontalpodautoscaler.autoscaling/frontend created
+2026-07-09T14:50:02Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/burst.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 50 -t 720s --csv experiments/results/burst-hpa-006-locust
+2026-07-09T14:50:10Z INFO __main__: waiting 300s for measurement phase (offset=300s)
+2026-07-09T14:55:10Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d120s -R100 --latency http://localhost:30080/
+2026-07-09T15:02:03Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+horizontalpodautoscaler.autoscaling "frontend" deleted
+2026-07-09T15:02:03Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-09T15:02:03Z INFO __main__: trial burst-hpa-006 done: p95=0.0ms replica_s=780 error=none
+2026-07-09T15:02:03Z INFO __main__: trial 5/84
+2026-07-09T15:02:03Z INFO __main__: ======================================================================
+2026-07-09T15:02:03Z INFO __main__: TRIAL burst-hpa-008  autoscaler=hpa  workload=burst
+2026-07-09T15:02:03Z INFO __main__: ======================================================================
+2026-07-09T15:02:03Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-09T15:02:03Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-09T15:02:03Z INFO __main__: installing HPA: kubectl -n default apply -f experiments/hpa/frontend-hpa.yaml
+horizontalpodautoscaler.autoscaling/frontend created
+2026-07-09T15:02:04Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/burst.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 50 -t 720s --csv experiments/results/burst-hpa-008-locust
+2026-07-09T15:02:12Z INFO __main__: waiting 300s for measurement phase (offset=300s)
+2026-07-09T15:07:12Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d120s -R100 --latency http://localhost:30080/
+2026-07-09T15:14:05Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+horizontalpodautoscaler.autoscaling "frontend" deleted
+2026-07-09T15:14:05Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-09T15:14:05Z INFO __main__: trial burst-hpa-008 done: p95=0.0ms replica_s=720 error=none
+2026-07-09T15:14:05Z INFO __main__: trial 6/84
+2026-07-09T15:14:05Z INFO __main__: ======================================================================
+2026-07-09T15:14:05Z INFO __main__: TRIAL burst-hybrid-008  autoscaler=hybrid  workload=burst
+2026-07-09T15:14:05Z INFO __main__: ======================================================================
+2026-07-09T15:14:05Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-09T15:14:05Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-09T15:14:05Z INFO __main__: starting hybrid controller: uv run python -m controller.main --config controller/configs/ab/frontend-ab.yaml --prometheus-url http://localhost:9090 --model-registry experiments/results/phase3_20260709T001052Z_model_registry.yaml --evidence-path experiments/results/burst-hybrid-008-evidence.jsonl
+2026-07-09T15:14:10Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/burst.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 50 -t 720s --csv experiments/results/burst-hybrid-008-locust
+2026-07-09T15:14:18Z INFO __main__: waiting 300s for measurement phase (offset=300s)
+2026-07-09T15:19:18Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d120s -R100 --latency http://localhost:30080/
+2026-07-09T15:26:21Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-09T15:26:21Z INFO __main__: trial burst-hybrid-008 done: p95=0.0ms replica_s=3915 error=none
+2026-07-09T15:26:21Z INFO __main__: trial 7/84
+2026-07-09T15:26:21Z INFO __main__: ======================================================================
+2026-07-09T15:26:21Z INFO __main__: TRIAL burst-hpa-009  autoscaler=hpa  workload=burst
+2026-07-09T15:26:21Z INFO __main__: ======================================================================
+2026-07-09T15:26:21Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-09T15:26:21Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-09T15:26:21Z INFO __main__: installing HPA: kubectl -n default apply -f experiments/hpa/frontend-hpa.yaml
+horizontalpodautoscaler.autoscaling/frontend created
+2026-07-09T15:26:22Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/burst.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 50 -t 720s --csv experiments/results/burst-hpa-009-locust
+2026-07-09T15:26:30Z INFO __main__: waiting 300s for measurement phase (offset=300s)
+2026-07-09T15:31:30Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d120s -R100 --latency http://localhost:30080/
+2026-07-09T15:38:22Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+horizontalpodautoscaler.autoscaling "frontend" deleted
+2026-07-09T15:38:22Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-09T15:38:23Z INFO __main__: trial burst-hpa-009 done: p95=0.0ms replica_s=720 error=none
+2026-07-09T15:38:23Z INFO __main__: trial 8/84
+2026-07-09T15:38:23Z INFO __main__: ======================================================================
+2026-07-09T15:38:23Z INFO __main__: TRIAL burst-hybrid-009  autoscaler=hybrid  workload=burst
+2026-07-09T15:38:23Z INFO __main__: ======================================================================
+2026-07-09T15:38:23Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-09T15:38:23Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-09T15:38:23Z INFO __main__: starting hybrid controller: uv run python -m controller.main --config controller/configs/ab/frontend-ab.yaml --prometheus-url http://localhost:9090 --model-registry experiments/results/phase3_20260709T001052Z_model_registry.yaml --evidence-path experiments/results/burst-hybrid-009-evidence.jsonl
+2026-07-09T15:38:28Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/burst.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 50 -t 720s --csv experiments/results/burst-hybrid-009-locust
+2026-07-09T15:38:36Z INFO __main__: waiting 300s for measurement phase (offset=300s)
+2026-07-09T15:43:36Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d120s -R100 --latency http://localhost:30080/
+2026-07-09T15:50:39Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-09T15:50:39Z INFO __main__: trial burst-hybrid-009 done: p95=0.0ms replica_s=4080 error=none
+2026-07-09T15:50:39Z INFO __main__: trial 9/84
+2026-07-09T15:50:39Z INFO __main__: ======================================================================
+2026-07-09T15:50:39Z INFO __main__: TRIAL burst-hybrid-007  autoscaler=hybrid  workload=burst
+2026-07-09T15:50:39Z INFO __main__: ======================================================================
+2026-07-09T15:50:39Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-09T15:50:39Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-09T15:50:39Z INFO __main__: starting hybrid controller: uv run python -m controller.main --config controller/configs/ab/frontend-ab.yaml --prometheus-url http://localhost:9090 --model-registry experiments/results/phase3_20260709T001052Z_model_registry.yaml --evidence-path experiments/results/burst-hybrid-007-evidence.jsonl
+2026-07-09T15:50:44Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/burst.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 50 -t 720s --csv experiments/results/burst-hybrid-007-locust
+2026-07-09T15:50:52Z INFO __main__: waiting 300s for measurement phase (offset=300s)
+2026-07-09T15:55:52Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d120s -R100 --latency http://localhost:30080/
+2026-07-09T16:02:55Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-09T16:02:55Z INFO __main__: trial burst-hybrid-007 done: p95=0.0ms replica_s=4260 error=none
+2026-07-09T16:02:55Z INFO __main__: trial 10/84
+2026-07-09T16:02:55Z INFO __main__: ======================================================================
+2026-07-09T16:02:55Z INFO __main__: TRIAL burst-hpa-007  autoscaler=hpa  workload=burst
+2026-07-09T16:02:55Z INFO __main__: ======================================================================
+2026-07-09T16:02:55Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-09T16:02:56Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-09T16:02:56Z INFO __main__: installing HPA: kubectl -n default apply -f experiments/hpa/frontend-hpa.yaml
+horizontalpodautoscaler.autoscaling/frontend created
+2026-07-09T16:02:56Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/burst.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 50 -t 720s --csv experiments/results/burst-hpa-007-locust
+2026-07-09T16:03:04Z INFO __main__: waiting 300s for measurement phase (offset=300s)
+2026-07-09T16:08:04Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d120s -R100 --latency http://localhost:30080/
+2026-07-09T16:14:57Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+horizontalpodautoscaler.autoscaling "frontend" deleted
+2026-07-09T16:14:57Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-09T16:14:57Z INFO __main__: trial burst-hpa-007 done: p95=0.0ms replica_s=720 error=none
+2026-07-09T16:14:57Z INFO __main__: trial 11/84
+2026-07-09T16:14:57Z INFO __main__: ======================================================================
+2026-07-09T16:14:57Z INFO __main__: TRIAL burst-hpa-002  autoscaler=hpa  workload=burst
+2026-07-09T16:14:57Z INFO __main__: ======================================================================
+2026-07-09T16:14:57Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-09T16:14:57Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-09T16:14:57Z INFO __main__: installing HPA: kubectl -n default apply -f experiments/hpa/frontend-hpa.yaml
+horizontalpodautoscaler.autoscaling/frontend created
+2026-07-09T16:14:57Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/burst.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 50 -t 720s --csv experiments/results/burst-hpa-002-locust
+2026-07-09T16:15:05Z INFO __main__: waiting 300s for measurement phase (offset=300s)
+2026-07-09T16:20:05Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d120s -R100 --latency http://localhost:30080/
+2026-07-09T16:26:58Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+horizontalpodautoscaler.autoscaling "frontend" deleted
+2026-07-09T16:26:58Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-09T16:26:58Z INFO __main__: trial burst-hpa-002 done: p95=0.0ms replica_s=720 error=none
+2026-07-09T16:26:58Z INFO __main__: trial 12/84
+2026-07-09T16:26:58Z INFO __main__: ======================================================================
+2026-07-09T16:26:58Z INFO __main__: TRIAL burst-hybrid-002  autoscaler=hybrid  workload=burst
+2026-07-09T16:26:58Z INFO __main__: ======================================================================
+2026-07-09T16:26:58Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-09T16:26:59Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-09T16:26:59Z INFO __main__: starting hybrid controller: uv run python -m controller.main --config controller/configs/ab/frontend-ab.yaml --prometheus-url http://localhost:9090 --model-registry experiments/results/phase3_20260709T001052Z_model_registry.yaml --evidence-path experiments/results/burst-hybrid-002-evidence.jsonl
+2026-07-09T16:27:04Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/burst.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 50 -t 720s --csv experiments/results/burst-hybrid-002-locust
+2026-07-09T16:27:12Z INFO __main__: waiting 300s for measurement phase (offset=300s)
+2026-07-09T16:32:12Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d120s -R100 --latency http://localhost:30080/
+2026-07-09T16:39:14Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-09T16:39:15Z INFO __main__: trial burst-hybrid-002 done: p95=0.0ms replica_s=4035 error=none
+2026-07-09T16:39:15Z INFO __main__: trial 13/84
+2026-07-09T16:39:15Z INFO __main__: ======================================================================
+2026-07-09T16:39:15Z INFO __main__: TRIAL burst-hybrid-005  autoscaler=hybrid  workload=burst
+2026-07-09T16:39:15Z INFO __main__: ======================================================================
+2026-07-09T16:39:15Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-09T16:39:15Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-09T16:39:15Z INFO __main__: starting hybrid controller: uv run python -m controller.main --config controller/configs/ab/frontend-ab.yaml --prometheus-url http://localhost:9090 --model-registry experiments/results/phase3_20260709T001052Z_model_registry.yaml --evidence-path experiments/results/burst-hybrid-005-evidence.jsonl
+2026-07-09T16:39:20Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/burst.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 50 -t 720s --csv experiments/results/burst-hybrid-005-locust
+2026-07-09T16:39:28Z INFO __main__: waiting 300s for measurement phase (offset=300s)
+2026-07-09T16:44:28Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d120s -R100 --latency http://localhost:30080/
+2026-07-09T16:51:31Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-09T16:51:31Z INFO __main__: trial burst-hybrid-005 done: p95=0.0ms replica_s=3960 error=none
+2026-07-09T16:51:31Z INFO __main__: trial 14/84
+2026-07-09T16:51:31Z INFO __main__: ======================================================================
+2026-07-09T16:51:31Z INFO __main__: TRIAL burst-hpa-005  autoscaler=hpa  workload=burst
+2026-07-09T16:51:31Z INFO __main__: ======================================================================
+2026-07-09T16:51:31Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-09T16:51:31Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-09T16:51:31Z INFO __main__: installing HPA: kubectl -n default apply -f experiments/hpa/frontend-hpa.yaml
+horizontalpodautoscaler.autoscaling/frontend created
+2026-07-09T16:51:31Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/burst.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 50 -t 720s --csv experiments/results/burst-hpa-005-locust
+2026-07-09T16:51:39Z INFO __main__: waiting 300s for measurement phase (offset=300s)
+2026-07-09T16:56:39Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d120s -R100 --latency http://localhost:30080/
+2026-07-09T17:03:32Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+horizontalpodautoscaler.autoscaling "frontend" deleted
+2026-07-09T17:03:32Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-09T17:03:32Z INFO __main__: trial burst-hpa-005 done: p95=0.0ms replica_s=810 error=none
+2026-07-09T17:03:32Z INFO __main__: trial 15/84
+2026-07-09T17:03:32Z INFO __main__: ======================================================================
+2026-07-09T17:03:32Z INFO __main__: TRIAL burst-hybrid-001  autoscaler=hybrid  workload=burst
+2026-07-09T17:03:32Z INFO __main__: ======================================================================
+2026-07-09T17:03:32Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-09T17:03:33Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-09T17:03:33Z INFO __main__: starting hybrid controller: uv run python -m controller.main --config controller/configs/ab/frontend-ab.yaml --prometheus-url http://localhost:9090 --model-registry experiments/results/phase3_20260709T001052Z_model_registry.yaml --evidence-path experiments/results/burst-hybrid-001-evidence.jsonl
+2026-07-09T17:03:38Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/burst.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 50 -t 720s --csv experiments/results/burst-hybrid-001-locust
+2026-07-09T17:03:46Z INFO __main__: waiting 300s for measurement phase (offset=300s)
+2026-07-09T17:08:46Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d120s -R100 --latency http://localhost:30080/
+2026-07-09T17:15:49Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-09T17:15:49Z INFO __main__: trial burst-hybrid-001 done: p95=0.0ms replica_s=4020 error=none
+2026-07-09T17:15:49Z INFO __main__: trial 16/84
+2026-07-09T17:15:49Z INFO __main__: ======================================================================
+2026-07-09T17:15:49Z INFO __main__: TRIAL burst-hpa-001  autoscaler=hpa  workload=burst
+2026-07-09T17:15:49Z INFO __main__: ======================================================================
+2026-07-09T17:15:49Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-09T17:15:49Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-09T17:15:49Z INFO __main__: installing HPA: kubectl -n default apply -f experiments/hpa/frontend-hpa.yaml
+horizontalpodautoscaler.autoscaling/frontend created
+2026-07-09T17:15:49Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/burst.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 50 -t 720s --csv experiments/results/burst-hpa-001-locust
+2026-07-09T17:15:57Z INFO __main__: waiting 300s for measurement phase (offset=300s)
+2026-07-09T17:20:57Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d120s -R100 --latency http://localhost:30080/
+2026-07-09T17:27:50Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+horizontalpodautoscaler.autoscaling "frontend" deleted
+2026-07-09T17:27:50Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-09T17:27:50Z INFO __main__: trial burst-hpa-001 done: p95=0.0ms replica_s=720 error=none
+2026-07-09T17:27:50Z INFO __main__: trial 17/84
+2026-07-09T17:27:50Z INFO __main__: ======================================================================
+2026-07-09T17:27:50Z INFO __main__: TRIAL burst-hpa-010  autoscaler=hpa  workload=burst
+2026-07-09T17:27:50Z INFO __main__: ======================================================================
+2026-07-09T17:27:50Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-09T17:27:51Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-09T17:27:51Z INFO __main__: installing HPA: kubectl -n default apply -f experiments/hpa/frontend-hpa.yaml
+horizontalpodautoscaler.autoscaling/frontend created
+2026-07-09T17:27:51Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/burst.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 50 -t 720s --csv experiments/results/burst-hpa-010-locust
+2026-07-09T17:27:59Z INFO __main__: waiting 300s for measurement phase (offset=300s)
+2026-07-09T17:32:59Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d120s -R100 --latency http://localhost:30080/
+2026-07-09T17:39:52Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+horizontalpodautoscaler.autoscaling "frontend" deleted
+2026-07-09T17:39:52Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-09T17:39:52Z INFO __main__: trial burst-hpa-010 done: p95=0.0ms replica_s=720 error=none
+2026-07-09T17:39:52Z INFO __main__: trial 18/84
+2026-07-09T17:39:52Z INFO __main__: ======================================================================
+2026-07-09T17:39:52Z INFO __main__: TRIAL burst-hybrid-010  autoscaler=hybrid  workload=burst
+2026-07-09T17:39:52Z INFO __main__: ======================================================================
+2026-07-09T17:39:52Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-09T17:39:52Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-09T17:39:52Z INFO __main__: starting hybrid controller: uv run python -m controller.main --config controller/configs/ab/frontend-ab.yaml --prometheus-url http://localhost:9090 --model-registry experiments/results/phase3_20260709T001052Z_model_registry.yaml --evidence-path experiments/results/burst-hybrid-010-evidence.jsonl
+2026-07-09T17:39:57Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/burst.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 50 -t 720s --csv experiments/results/burst-hybrid-010-locust
+2026-07-09T17:40:05Z INFO __main__: waiting 300s for measurement phase (offset=300s)
+2026-07-09T17:45:05Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d120s -R100 --latency http://localhost:30080/
+2026-07-09T17:52:08Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-09T17:52:08Z INFO __main__: trial burst-hybrid-010 done: p95=0.0ms replica_s=4215 error=none
+2026-07-09T17:52:08Z INFO __main__: trial 19/84
+2026-07-09T17:52:08Z INFO __main__: ======================================================================
+2026-07-09T17:52:08Z INFO __main__: TRIAL burst-hpa-004  autoscaler=hpa  workload=burst
+2026-07-09T17:52:08Z INFO __main__: ======================================================================
+2026-07-09T17:52:08Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-09T17:52:08Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-09T17:52:08Z INFO __main__: installing HPA: kubectl -n default apply -f experiments/hpa/frontend-hpa.yaml
+horizontalpodautoscaler.autoscaling/frontend created
+2026-07-09T17:52:08Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/burst.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 50 -t 720s --csv experiments/results/burst-hpa-004-locust
+2026-07-09T17:52:16Z INFO __main__: waiting 300s for measurement phase (offset=300s)
+2026-07-09T17:57:16Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d120s -R100 --latency http://localhost:30080/
+2026-07-09T18:04:09Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+horizontalpodautoscaler.autoscaling "frontend" deleted
+2026-07-09T18:04:09Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-09T18:04:09Z INFO __main__: trial burst-hpa-004 done: p95=0.0ms replica_s=720 error=none
+2026-07-09T18:04:09Z INFO __main__: trial 20/84
+2026-07-09T18:04:09Z INFO __main__: ======================================================================
+2026-07-09T18:04:09Z INFO __main__: TRIAL burst-hybrid-004  autoscaler=hybrid  workload=burst
+2026-07-09T18:04:09Z INFO __main__: ======================================================================
+2026-07-09T18:04:09Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-09T18:04:10Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-09T18:04:10Z INFO __main__: starting hybrid controller: uv run python -m controller.main --config controller/configs/ab/frontend-ab.yaml --prometheus-url http://localhost:9090 --model-registry experiments/results/phase3_20260709T001052Z_model_registry.yaml --evidence-path experiments/results/burst-hybrid-004-evidence.jsonl
+2026-07-09T18:04:15Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/burst.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 50 -t 720s --csv experiments/results/burst-hybrid-004-locust
+2026-07-09T18:04:23Z INFO __main__: waiting 300s for measurement phase (offset=300s)
+2026-07-09T18:09:23Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d120s -R100 --latency http://localhost:30080/
+2026-07-09T18:16:26Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-09T18:16:26Z INFO __main__: trial burst-hybrid-004 done: p95=0.0ms replica_s=3990 error=none
+2026-07-09T18:16:26Z INFO __main__: trial 21/84
+2026-07-09T18:16:26Z INFO __main__: ======================================================================
+2026-07-09T18:16:26Z INFO __main__: TRIAL aa-burst-hpaA-001  autoscaler=hpa  workload=burst
+2026-07-09T18:16:26Z INFO __main__: ======================================================================
+2026-07-09T18:16:26Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-09T18:16:26Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-09T18:16:26Z INFO __main__: installing HPA: kubectl -n default apply -f experiments/hpa/frontend-hpa.yaml
+horizontalpodautoscaler.autoscaling/frontend created
+2026-07-09T18:16:26Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/burst.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 50 -t 720s --csv experiments/results/aa-burst-hpaA-001-locust
+2026-07-09T18:16:34Z INFO __main__: waiting 300s for measurement phase (offset=300s)
+2026-07-09T18:21:34Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d120s -R100 --latency http://localhost:30080/
+2026-07-09T18:28:27Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+horizontalpodautoscaler.autoscaling "frontend" deleted
+2026-07-09T18:28:27Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-09T18:28:27Z INFO __main__: trial aa-burst-hpaA-001 done: p95=0.0ms replica_s=720 error=none
+2026-07-09T18:28:27Z INFO __main__: trial 22/84
+2026-07-09T18:28:27Z INFO __main__: ======================================================================
+2026-07-09T18:28:27Z INFO __main__: TRIAL aa-burst-hpaB-001  autoscaler=hpa  workload=burst
+2026-07-09T18:28:27Z INFO __main__: ======================================================================
+2026-07-09T18:28:27Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-09T18:28:28Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-09T18:28:28Z INFO __main__: installing HPA: kubectl -n default apply -f experiments/hpa/frontend-hpa.yaml
+horizontalpodautoscaler.autoscaling/frontend created
+2026-07-09T18:28:28Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/burst.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 50 -t 720s --csv experiments/results/aa-burst-hpaB-001-locust
+2026-07-09T18:28:36Z INFO __main__: waiting 300s for measurement phase (offset=300s)
+2026-07-09T18:33:36Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d120s -R100 --latency http://localhost:30080/
+2026-07-09T18:40:29Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+horizontalpodautoscaler.autoscaling "frontend" deleted
+2026-07-09T18:40:29Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-09T18:40:29Z INFO __main__: trial aa-burst-hpaB-001 done: p95=0.0ms replica_s=720 error=none
+2026-07-09T18:40:29Z INFO __main__: trial 23/84
+2026-07-09T18:40:29Z INFO __main__: ======================================================================
+2026-07-09T18:40:29Z INFO __main__: TRIAL aa-burst-hpaA-002  autoscaler=hpa  workload=burst
+2026-07-09T18:40:29Z INFO __main__: ======================================================================
+2026-07-09T18:40:29Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-09T18:40:29Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-09T18:40:29Z INFO __main__: installing HPA: kubectl -n default apply -f experiments/hpa/frontend-hpa.yaml
+horizontalpodautoscaler.autoscaling/frontend created
+2026-07-09T18:40:29Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/burst.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 50 -t 720s --csv experiments/results/aa-burst-hpaA-002-locust
+2026-07-09T18:40:37Z INFO __main__: waiting 300s for measurement phase (offset=300s)
+2026-07-09T18:45:37Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d120s -R100 --latency http://localhost:30080/
+2026-07-09T18:52:30Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+horizontalpodautoscaler.autoscaling "frontend" deleted
+2026-07-09T18:52:30Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-09T18:52:30Z INFO __main__: trial aa-burst-hpaA-002 done: p95=0.0ms replica_s=720 error=none
+2026-07-09T18:52:30Z INFO __main__: trial 24/84
+2026-07-09T18:52:30Z INFO __main__: ======================================================================
+2026-07-09T18:52:30Z INFO __main__: TRIAL aa-burst-hpaB-002  autoscaler=hpa  workload=burst
+2026-07-09T18:52:30Z INFO __main__: ======================================================================
+2026-07-09T18:52:30Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-09T18:52:31Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-09T18:52:31Z INFO __main__: installing HPA: kubectl -n default apply -f experiments/hpa/frontend-hpa.yaml
+horizontalpodautoscaler.autoscaling/frontend created
+2026-07-09T18:52:31Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/burst.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 50 -t 720s --csv experiments/results/aa-burst-hpaB-002-locust
+2026-07-09T18:52:39Z INFO __main__: waiting 300s for measurement phase (offset=300s)
+2026-07-09T18:57:39Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d120s -R100 --latency http://localhost:30080/
+2026-07-09T19:04:32Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+horizontalpodautoscaler.autoscaling "frontend" deleted
+2026-07-09T19:04:32Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-09T19:04:32Z INFO __main__: trial aa-burst-hpaB-002 done: p95=0.0ms replica_s=720 error=none
+2026-07-09T19:04:32Z INFO __main__: trial 25/84
+2026-07-09T19:04:32Z INFO __main__: ======================================================================
+2026-07-09T19:04:32Z INFO __main__: TRIAL periodic-hybrid-003  autoscaler=hybrid  workload=periodic
+2026-07-09T19:04:32Z INFO __main__: ======================================================================
+2026-07-09T19:04:32Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-09T19:04:32Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-09T19:04:32Z INFO __main__: starting hybrid controller: uv run python -m controller.main --config controller/configs/ab/frontend-ab.yaml --prometheus-url http://localhost:9090 --model-registry experiments/results/phase3_20260709T001052Z_model_registry.yaml --evidence-path experiments/results/periodic-hybrid-003-evidence.jsonl
+2026-07-09T19:04:37Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/periodic.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 50 -t 1800s --csv experiments/results/periodic-hybrid-003-locust
+2026-07-09T19:04:45Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d600s -R100 --latency http://localhost:30080/
+2026-07-09T19:34:48Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-09T19:34:48Z INFO __main__: trial periodic-hybrid-003 done: p95=0.0ms replica_s=13365 error=none
+2026-07-09T19:34:48Z INFO __main__: trial 26/84
+2026-07-09T19:34:48Z INFO __main__: ======================================================================
+2026-07-09T19:34:48Z INFO __main__: TRIAL periodic-hpa-003  autoscaler=hpa  workload=periodic
+2026-07-09T19:34:48Z INFO __main__: ======================================================================
+2026-07-09T19:34:48Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-09T19:34:49Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-09T19:34:49Z INFO __main__: installing HPA: kubectl -n default apply -f experiments/hpa/frontend-hpa.yaml
+horizontalpodautoscaler.autoscaling/frontend created
+2026-07-09T19:34:49Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/periodic.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 50 -t 1800s --csv experiments/results/periodic-hpa-003-locust
+2026-07-09T19:34:57Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d600s -R100 --latency http://localhost:30080/
+2026-07-09T20:04:50Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+horizontalpodautoscaler.autoscaling "frontend" deleted
+2026-07-09T20:04:50Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-09T20:04:50Z INFO __main__: trial periodic-hpa-003 done: p95=0.0ms replica_s=1800 error=none
+2026-07-09T20:04:50Z INFO __main__: trial 27/84
+2026-07-09T20:04:50Z INFO __main__: ======================================================================
+2026-07-09T20:04:50Z INFO __main__: TRIAL trace_replay-hybrid-003  autoscaler=hybrid  workload=trace_replay
+2026-07-09T20:04:50Z INFO __main__: ======================================================================
+2026-07-09T20:04:50Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-09T20:04:50Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-09T20:04:50Z INFO __main__: starting hybrid controller: uv run python -m controller.main --config controller/configs/ab/frontend-ab.yaml --prometheus-url http://localhost:9090 --model-registry experiments/results/phase3_20260709T001052Z_model_registry.yaml --evidence-path experiments/results/trace_replay-hybrid-003-evidence.jsonl
+2026-07-09T20:04:55Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/trace_replay.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 50 -t 1800s --csv experiments/results/trace_replay-hybrid-003-locust
+2026-07-09T20:05:03Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d1800s -R100 --latency http://localhost:30080/
+2026-07-09T20:35:06Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-09T20:35:06Z INFO __main__: trial trace_replay-hybrid-003 done: p95=0.0ms replica_s=13995 error=none
+2026-07-09T20:35:06Z INFO __main__: trial 28/84
+2026-07-09T20:35:06Z INFO __main__: ======================================================================
+2026-07-09T20:35:06Z INFO __main__: TRIAL trace_replay-hpa-003  autoscaler=hpa  workload=trace_replay
+2026-07-09T20:35:06Z INFO __main__: ======================================================================
+2026-07-09T20:35:06Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-09T20:35:07Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-09T20:35:07Z INFO __main__: installing HPA: kubectl -n default apply -f experiments/hpa/frontend-hpa.yaml
+horizontalpodautoscaler.autoscaling/frontend created
+2026-07-09T20:35:07Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/trace_replay.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 50 -t 1800s --csv experiments/results/trace_replay-hpa-003-locust
+2026-07-09T20:35:15Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d1800s -R100 --latency http://localhost:30080/
+2026-07-09T21:05:15Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+horizontalpodautoscaler.autoscaling "frontend" deleted
+2026-07-09T21:05:15Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-09T21:05:15Z INFO __main__: trial trace_replay-hpa-003 done: p95=0.0ms replica_s=1815 error=none
+2026-07-09T21:05:15Z INFO __main__: trial 29/84
+2026-07-09T21:05:15Z INFO __main__: ======================================================================
+2026-07-09T21:05:15Z INFO __main__: TRIAL periodic-hybrid-004  autoscaler=hybrid  workload=periodic
+2026-07-09T21:05:15Z INFO __main__: ======================================================================
+2026-07-09T21:05:15Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-09T21:05:15Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-09T21:05:15Z INFO __main__: starting hybrid controller: uv run python -m controller.main --config controller/configs/ab/frontend-ab.yaml --prometheus-url http://localhost:9090 --model-registry experiments/results/phase3_20260709T001052Z_model_registry.yaml --evidence-path experiments/results/periodic-hybrid-004-evidence.jsonl
+2026-07-09T21:05:20Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/periodic.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 50 -t 1800s --csv experiments/results/periodic-hybrid-004-locust
+2026-07-09T21:05:28Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d600s -R100 --latency http://localhost:30080/
+2026-07-09T21:35:31Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-09T21:35:32Z INFO __main__: trial periodic-hybrid-004 done: p95=0.0ms replica_s=12870 error=none
+2026-07-09T21:35:32Z INFO __main__: trial 30/84
+2026-07-09T21:35:32Z INFO __main__: ======================================================================
+2026-07-09T21:35:32Z INFO __main__: TRIAL periodic-hpa-004  autoscaler=hpa  workload=periodic
+2026-07-09T21:35:32Z INFO __main__: ======================================================================
+2026-07-09T21:35:32Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-09T21:35:32Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-09T21:35:32Z INFO __main__: installing HPA: kubectl -n default apply -f experiments/hpa/frontend-hpa.yaml
+horizontalpodautoscaler.autoscaling/frontend created
+2026-07-09T21:35:32Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/periodic.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 50 -t 1800s --csv experiments/results/periodic-hpa-004-locust
+2026-07-09T21:35:40Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d600s -R100 --latency http://localhost:30080/
+2026-07-09T22:05:33Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+horizontalpodautoscaler.autoscaling "frontend" deleted
+2026-07-09T22:05:33Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-09T22:05:33Z INFO __main__: trial periodic-hpa-004 done: p95=0.0ms replica_s=1905 error=none
+2026-07-09T22:05:33Z INFO __main__: trial 31/84
+2026-07-09T22:05:33Z INFO __main__: ======================================================================
+2026-07-09T22:05:33Z INFO __main__: TRIAL ramp-hpa-010  autoscaler=hpa  workload=ramp
+2026-07-09T22:05:33Z INFO __main__: ======================================================================
+2026-07-09T22:05:33Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-09T22:05:33Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-09T22:05:33Z INFO __main__: installing HPA: kubectl -n default apply -f experiments/hpa/frontend-hpa.yaml
+horizontalpodautoscaler.autoscaling/frontend created
+2026-07-09T22:05:34Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/ramp.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 1 -t 1500s --csv experiments/results/ramp-hpa-010-locust
+2026-07-09T22:05:42Z INFO __main__: waiting 600s for measurement phase (offset=600s)
+2026-07-09T22:15:42Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d300s -R100 --latency http://localhost:30080/
+2026-07-09T22:30:35Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+horizontalpodautoscaler.autoscaling "frontend" deleted
+2026-07-09T22:30:35Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-09T22:30:35Z INFO __main__: trial ramp-hpa-010 done: p95=0.0ms replica_s=1500 error=none
+2026-07-09T22:30:35Z INFO __main__: trial 32/84
+2026-07-09T22:30:35Z INFO __main__: ======================================================================
+2026-07-09T22:30:35Z INFO __main__: TRIAL ramp-hybrid-010  autoscaler=hybrid  workload=ramp
+2026-07-09T22:30:35Z INFO __main__: ======================================================================
+2026-07-09T22:30:35Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-09T22:30:35Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-09T22:30:35Z INFO __main__: starting hybrid controller: uv run python -m controller.main --config controller/configs/ab/frontend-ab.yaml --prometheus-url http://localhost:9090 --model-registry experiments/results/phase3_20260709T001052Z_model_registry.yaml --evidence-path experiments/results/ramp-hybrid-010-evidence.jsonl
+2026-07-09T22:30:40Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/ramp.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 1 -t 1500s --csv experiments/results/ramp-hybrid-010-locust
+2026-07-09T22:30:48Z INFO __main__: waiting 600s for measurement phase (offset=600s)
+2026-07-09T22:40:48Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d300s -R100 --latency http://localhost:30080/
+2026-07-09T22:55:51Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-09T22:55:51Z INFO __main__: trial ramp-hybrid-010 done: p95=0.0ms replica_s=11535 error=none
+2026-07-09T22:55:51Z INFO __main__: trial 33/84
+2026-07-09T22:55:51Z INFO __main__: ======================================================================
+2026-07-09T22:55:51Z INFO __main__: TRIAL periodic-hybrid-010  autoscaler=hybrid  workload=periodic
+2026-07-09T22:55:51Z INFO __main__: ======================================================================
+2026-07-09T22:55:51Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-09T22:55:51Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-09T22:55:51Z INFO __main__: starting hybrid controller: uv run python -m controller.main --config controller/configs/ab/frontend-ab.yaml --prometheus-url http://localhost:9090 --model-registry experiments/results/phase3_20260709T001052Z_model_registry.yaml --evidence-path experiments/results/periodic-hybrid-010-evidence.jsonl
+2026-07-09T22:55:56Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/periodic.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 50 -t 1800s --csv experiments/results/periodic-hybrid-010-locust
+2026-07-09T22:56:04Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d600s -R100 --latency http://localhost:30080/
+2026-07-09T23:26:07Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-09T23:26:08Z INFO __main__: trial periodic-hybrid-010 done: p95=0.0ms replica_s=13515 error=none
+2026-07-09T23:26:08Z INFO __main__: trial 34/84
+2026-07-09T23:26:08Z INFO __main__: ======================================================================
+2026-07-09T23:26:08Z INFO __main__: TRIAL periodic-hpa-010  autoscaler=hpa  workload=periodic
+2026-07-09T23:26:08Z INFO __main__: ======================================================================
+2026-07-09T23:26:08Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-09T23:26:08Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-09T23:26:08Z INFO __main__: installing HPA: kubectl -n default apply -f experiments/hpa/frontend-hpa.yaml
+horizontalpodautoscaler.autoscaling/frontend created
+2026-07-09T23:26:08Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/periodic.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 50 -t 1800s --csv experiments/results/periodic-hpa-010-locust
+2026-07-09T23:26:16Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d600s -R100 --latency http://localhost:30080/
+2026-07-09T23:56:09Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+horizontalpodautoscaler.autoscaling "frontend" deleted
+2026-07-09T23:56:09Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-09T23:56:09Z INFO __main__: trial periodic-hpa-010 done: p95=0.0ms replica_s=1800 error=none
+2026-07-09T23:56:09Z INFO __main__: trial 35/84
+2026-07-09T23:56:09Z INFO __main__: ======================================================================
+2026-07-09T23:56:09Z INFO __main__: TRIAL trace_replay-hpa-009  autoscaler=hpa  workload=trace_replay
+2026-07-09T23:56:09Z INFO __main__: ======================================================================
+2026-07-09T23:56:09Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-09T23:56:09Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-09T23:56:09Z INFO __main__: installing HPA: kubectl -n default apply -f experiments/hpa/frontend-hpa.yaml
+horizontalpodautoscaler.autoscaling/frontend created
+2026-07-09T23:56:09Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/trace_replay.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 50 -t 1800s --csv experiments/results/trace_replay-hpa-009-locust
+2026-07-09T23:56:17Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d1800s -R100 --latency http://localhost:30080/
+2026-07-10T00:26:17Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+horizontalpodautoscaler.autoscaling "frontend" deleted
+2026-07-10T00:26:17Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T00:26:17Z INFO __main__: trial trace_replay-hpa-009 done: p95=0.0ms replica_s=1815 error=none
+2026-07-10T00:26:17Z INFO __main__: trial 36/84
+2026-07-10T00:26:17Z INFO __main__: ======================================================================
+2026-07-10T00:26:17Z INFO __main__: TRIAL trace_replay-hybrid-009  autoscaler=hybrid  workload=trace_replay
+2026-07-10T00:26:17Z INFO __main__: ======================================================================
+2026-07-10T00:26:17Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T00:26:18Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-10T00:26:18Z INFO __main__: starting hybrid controller: uv run python -m controller.main --config controller/configs/ab/frontend-ab.yaml --prometheus-url http://localhost:9090 --model-registry experiments/results/phase3_20260709T001052Z_model_registry.yaml --evidence-path experiments/results/trace_replay-hybrid-009-evidence.jsonl
+2026-07-10T00:26:23Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/trace_replay.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 50 -t 1800s --csv experiments/results/trace_replay-hybrid-009-locust
+2026-07-10T00:26:31Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d1800s -R100 --latency http://localhost:30080/
+2026-07-10T00:56:34Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T00:56:34Z INFO __main__: trial trace_replay-hybrid-009 done: p95=0.0ms replica_s=13785 error=none
+2026-07-10T00:56:34Z INFO __main__: trial 37/84
+2026-07-10T00:56:34Z INFO __main__: ======================================================================
+2026-07-10T00:56:34Z INFO __main__: TRIAL ramp-hybrid-002  autoscaler=hybrid  workload=ramp
+2026-07-10T00:56:34Z INFO __main__: ======================================================================
+2026-07-10T00:56:34Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T00:56:34Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-10T00:56:34Z INFO __main__: starting hybrid controller: uv run python -m controller.main --config controller/configs/ab/frontend-ab.yaml --prometheus-url http://localhost:9090 --model-registry experiments/results/phase3_20260709T001052Z_model_registry.yaml --evidence-path experiments/results/ramp-hybrid-002-evidence.jsonl
+2026-07-10T00:56:39Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/ramp.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 1 -t 1500s --csv experiments/results/ramp-hybrid-002-locust
+2026-07-10T00:56:47Z INFO __main__: waiting 600s for measurement phase (offset=600s)
+2026-07-10T01:06:47Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d300s -R100 --latency http://localhost:30080/
+2026-07-10T01:21:50Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T01:21:50Z INFO __main__: trial ramp-hybrid-002 done: p95=0.0ms replica_s=11505 error=none
+2026-07-10T01:21:50Z INFO __main__: trial 38/84
+2026-07-10T01:21:50Z INFO __main__: ======================================================================
+2026-07-10T01:21:50Z INFO __main__: TRIAL ramp-hpa-002  autoscaler=hpa  workload=ramp
+2026-07-10T01:21:50Z INFO __main__: ======================================================================
+2026-07-10T01:21:50Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T01:21:51Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-10T01:21:51Z INFO __main__: installing HPA: kubectl -n default apply -f experiments/hpa/frontend-hpa.yaml
+horizontalpodautoscaler.autoscaling/frontend created
+2026-07-10T01:21:51Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/ramp.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 1 -t 1500s --csv experiments/results/ramp-hpa-002-locust
+2026-07-10T01:21:59Z INFO __main__: waiting 600s for measurement phase (offset=600s)
+2026-07-10T01:31:59Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d300s -R100 --latency http://localhost:30080/
+2026-07-10T01:46:52Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+horizontalpodautoscaler.autoscaling "frontend" deleted
+2026-07-10T01:46:52Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T01:46:52Z INFO __main__: trial ramp-hpa-002 done: p95=0.0ms replica_s=1500 error=none
+2026-07-10T01:46:52Z INFO __main__: trial 39/84
+2026-07-10T01:46:52Z INFO __main__: ======================================================================
+2026-07-10T01:46:52Z INFO __main__: TRIAL ramp-hybrid-001  autoscaler=hybrid  workload=ramp
+2026-07-10T01:46:52Z INFO __main__: ======================================================================
+2026-07-10T01:46:52Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T01:46:52Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-10T01:46:52Z INFO __main__: starting hybrid controller: uv run python -m controller.main --config controller/configs/ab/frontend-ab.yaml --prometheus-url http://localhost:9090 --model-registry experiments/results/phase3_20260709T001052Z_model_registry.yaml --evidence-path experiments/results/ramp-hybrid-001-evidence.jsonl
+2026-07-10T01:46:57Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/ramp.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 1 -t 1500s --csv experiments/results/ramp-hybrid-001-locust
+2026-07-10T01:47:05Z INFO __main__: waiting 600s for measurement phase (offset=600s)
+2026-07-10T01:57:05Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d300s -R100 --latency http://localhost:30080/
+2026-07-10T02:12:08Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T02:12:08Z INFO __main__: trial ramp-hybrid-001 done: p95=0.0ms replica_s=11505 error=none
+2026-07-10T02:12:08Z INFO __main__: trial 40/84
+2026-07-10T02:12:08Z INFO __main__: ======================================================================
+2026-07-10T02:12:08Z INFO __main__: TRIAL ramp-hpa-001  autoscaler=hpa  workload=ramp
+2026-07-10T02:12:08Z INFO __main__: ======================================================================
+2026-07-10T02:12:08Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T02:12:09Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-10T02:12:09Z INFO __main__: installing HPA: kubectl -n default apply -f experiments/hpa/frontend-hpa.yaml
+horizontalpodautoscaler.autoscaling/frontend created
+2026-07-10T02:12:09Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/ramp.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 1 -t 1500s --csv experiments/results/ramp-hpa-001-locust
+2026-07-10T02:12:17Z INFO __main__: waiting 600s for measurement phase (offset=600s)
+2026-07-10T02:22:17Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d300s -R100 --latency http://localhost:30080/
+2026-07-10T02:37:10Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+horizontalpodautoscaler.autoscaling "frontend" deleted
+2026-07-10T02:37:10Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T02:37:10Z INFO __main__: trial ramp-hpa-001 done: p95=0.0ms replica_s=1500 error=none
+2026-07-10T02:37:10Z INFO __main__: trial 41/84
+2026-07-10T02:37:10Z INFO __main__: ======================================================================
+2026-07-10T02:37:10Z INFO __main__: TRIAL periodic-hybrid-006  autoscaler=hybrid  workload=periodic
+2026-07-10T02:37:10Z INFO __main__: ======================================================================
+2026-07-10T02:37:10Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T02:37:10Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-10T02:37:10Z INFO __main__: starting hybrid controller: uv run python -m controller.main --config controller/configs/ab/frontend-ab.yaml --prometheus-url http://localhost:9090 --model-registry experiments/results/phase3_20260709T001052Z_model_registry.yaml --evidence-path experiments/results/periodic-hybrid-006-evidence.jsonl
+2026-07-10T02:37:15Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/periodic.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 50 -t 1800s --csv experiments/results/periodic-hybrid-006-locust
+2026-07-10T02:37:23Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d600s -R100 --latency http://localhost:30080/
+2026-07-10T03:07:26Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T03:07:26Z INFO __main__: trial periodic-hybrid-006 done: p95=0.0ms replica_s=13485 error=none
+2026-07-10T03:07:26Z INFO __main__: trial 42/84
+2026-07-10T03:07:26Z INFO __main__: ======================================================================
+2026-07-10T03:07:26Z INFO __main__: TRIAL periodic-hpa-006  autoscaler=hpa  workload=periodic
+2026-07-10T03:07:26Z INFO __main__: ======================================================================
+2026-07-10T03:07:26Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T03:07:26Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-10T03:07:26Z INFO __main__: installing HPA: kubectl -n default apply -f experiments/hpa/frontend-hpa.yaml
+horizontalpodautoscaler.autoscaling/frontend created
+2026-07-10T03:07:27Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/periodic.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 50 -t 1800s --csv experiments/results/periodic-hpa-006-locust
+2026-07-10T03:07:35Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d600s -R100 --latency http://localhost:30080/
+2026-07-10T03:37:28Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+horizontalpodautoscaler.autoscaling "frontend" deleted
+2026-07-10T03:37:28Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T03:37:28Z INFO __main__: trial periodic-hpa-006 done: p95=0.0ms replica_s=1800 error=none
+2026-07-10T03:37:28Z INFO __main__: trial 43/84
+2026-07-10T03:37:28Z INFO __main__: ======================================================================
+2026-07-10T03:37:28Z INFO __main__: TRIAL ramp-hybrid-004  autoscaler=hybrid  workload=ramp
+2026-07-10T03:37:28Z INFO __main__: ======================================================================
+2026-07-10T03:37:28Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T03:37:28Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-10T03:37:28Z INFO __main__: starting hybrid controller: uv run python -m controller.main --config controller/configs/ab/frontend-ab.yaml --prometheus-url http://localhost:9090 --model-registry experiments/results/phase3_20260709T001052Z_model_registry.yaml --evidence-path experiments/results/ramp-hybrid-004-evidence.jsonl
+2026-07-10T03:37:33Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/ramp.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 1 -t 1500s --csv experiments/results/ramp-hybrid-004-locust
+2026-07-10T03:37:41Z INFO __main__: waiting 600s for measurement phase (offset=600s)
+2026-07-10T03:47:41Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d300s -R100 --latency http://localhost:30080/
+2026-07-10T04:02:44Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T04:02:44Z INFO __main__: trial ramp-hybrid-004 done: p95=0.0ms replica_s=11415 error=none
+2026-07-10T04:02:44Z INFO __main__: trial 44/84
+2026-07-10T04:02:44Z INFO __main__: ======================================================================
+2026-07-10T04:02:44Z INFO __main__: TRIAL ramp-hpa-004  autoscaler=hpa  workload=ramp
+2026-07-10T04:02:44Z INFO __main__: ======================================================================
+2026-07-10T04:02:44Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T04:02:44Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-10T04:02:44Z INFO __main__: installing HPA: kubectl -n default apply -f experiments/hpa/frontend-hpa.yaml
+horizontalpodautoscaler.autoscaling/frontend created
+2026-07-10T04:02:45Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/ramp.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 1 -t 1500s --csv experiments/results/ramp-hpa-004-locust
+2026-07-10T04:02:53Z INFO __main__: waiting 600s for measurement phase (offset=600s)
+2026-07-10T04:12:53Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d300s -R100 --latency http://localhost:30080/
+2026-07-10T04:27:46Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+horizontalpodautoscaler.autoscaling "frontend" deleted
+2026-07-10T04:27:46Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T04:27:46Z INFO __main__: trial ramp-hpa-004 done: p95=0.0ms replica_s=1590 error=none
+2026-07-10T04:27:46Z INFO __main__: trial 45/84
+2026-07-10T04:27:46Z INFO __main__: ======================================================================
+2026-07-10T04:27:46Z INFO __main__: TRIAL trace_replay-hpa-008  autoscaler=hpa  workload=trace_replay
+2026-07-10T04:27:46Z INFO __main__: ======================================================================
+2026-07-10T04:27:46Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T04:27:46Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-10T04:27:46Z INFO __main__: installing HPA: kubectl -n default apply -f experiments/hpa/frontend-hpa.yaml
+horizontalpodautoscaler.autoscaling/frontend created
+2026-07-10T04:27:46Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/trace_replay.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 50 -t 1800s --csv experiments/results/trace_replay-hpa-008-locust
+2026-07-10T04:27:54Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d1800s -R100 --latency http://localhost:30080/
+2026-07-10T04:57:54Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+horizontalpodautoscaler.autoscaling "frontend" deleted
+2026-07-10T04:57:54Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T04:57:54Z INFO __main__: trial trace_replay-hpa-008 done: p95=0.0ms replica_s=1815 error=none
+2026-07-10T04:57:54Z INFO __main__: trial 46/84
+2026-07-10T04:57:54Z INFO __main__: ======================================================================
+2026-07-10T04:57:54Z INFO __main__: TRIAL trace_replay-hybrid-008  autoscaler=hybrid  workload=trace_replay
+2026-07-10T04:57:54Z INFO __main__: ======================================================================
+2026-07-10T04:57:54Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T04:57:55Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-10T04:57:55Z INFO __main__: starting hybrid controller: uv run python -m controller.main --config controller/configs/ab/frontend-ab.yaml --prometheus-url http://localhost:9090 --model-registry experiments/results/phase3_20260709T001052Z_model_registry.yaml --evidence-path experiments/results/trace_replay-hybrid-008-evidence.jsonl
+2026-07-10T04:58:00Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/trace_replay.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 50 -t 1800s --csv experiments/results/trace_replay-hybrid-008-locust
+2026-07-10T04:58:08Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d1800s -R100 --latency http://localhost:30080/
+2026-07-10T05:28:11Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T05:28:11Z INFO __main__: trial trace_replay-hybrid-008 done: p95=0.0ms replica_s=14040 error=none
+2026-07-10T05:28:11Z INFO __main__: trial 47/84
+2026-07-10T05:28:11Z INFO __main__: ======================================================================
+2026-07-10T05:28:11Z INFO __main__: TRIAL periodic-hpa-001  autoscaler=hpa  workload=periodic
+2026-07-10T05:28:11Z INFO __main__: ======================================================================
+2026-07-10T05:28:11Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T05:28:11Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-10T05:28:11Z INFO __main__: installing HPA: kubectl -n default apply -f experiments/hpa/frontend-hpa.yaml
+horizontalpodautoscaler.autoscaling/frontend created
+2026-07-10T05:28:11Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/periodic.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 50 -t 1800s --csv experiments/results/periodic-hpa-001-locust
+2026-07-10T05:28:19Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d600s -R100 --latency http://localhost:30080/
+2026-07-10T05:58:12Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+horizontalpodautoscaler.autoscaling "frontend" deleted
+2026-07-10T05:58:12Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T05:58:12Z INFO __main__: trial periodic-hpa-001 done: p95=0.0ms replica_s=1800 error=none
+2026-07-10T05:58:12Z INFO __main__: trial 48/84
+2026-07-10T05:58:12Z INFO __main__: ======================================================================
+2026-07-10T05:58:12Z INFO __main__: TRIAL periodic-hybrid-001  autoscaler=hybrid  workload=periodic
+2026-07-10T05:58:12Z INFO __main__: ======================================================================
+2026-07-10T05:58:12Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T05:58:12Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-10T05:58:12Z INFO __main__: starting hybrid controller: uv run python -m controller.main --config controller/configs/ab/frontend-ab.yaml --prometheus-url http://localhost:9090 --model-registry experiments/results/phase3_20260709T001052Z_model_registry.yaml --evidence-path experiments/results/periodic-hybrid-001-evidence.jsonl
+2026-07-10T05:58:17Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/periodic.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 50 -t 1800s --csv experiments/results/periodic-hybrid-001-locust
+2026-07-10T05:58:25Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d600s -R100 --latency http://localhost:30080/
+2026-07-10T06:28:28Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T06:28:28Z INFO __main__: trial periodic-hybrid-001 done: p95=0.0ms replica_s=13425 error=none
+2026-07-10T06:28:28Z INFO __main__: trial 49/84
+2026-07-10T06:28:28Z INFO __main__: ======================================================================
+2026-07-10T06:28:28Z INFO __main__: TRIAL ramp-hybrid-005  autoscaler=hybrid  workload=ramp
+2026-07-10T06:28:28Z INFO __main__: ======================================================================
+2026-07-10T06:28:28Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T06:28:29Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-10T06:28:29Z INFO __main__: starting hybrid controller: uv run python -m controller.main --config controller/configs/ab/frontend-ab.yaml --prometheus-url http://localhost:9090 --model-registry experiments/results/phase3_20260709T001052Z_model_registry.yaml --evidence-path experiments/results/ramp-hybrid-005-evidence.jsonl
+2026-07-10T06:28:34Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/ramp.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 1 -t 1500s --csv experiments/results/ramp-hybrid-005-locust
+2026-07-10T06:28:42Z INFO __main__: waiting 600s for measurement phase (offset=600s)
+2026-07-10T06:38:42Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d300s -R100 --latency http://localhost:30080/
+2026-07-10T06:53:45Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T06:53:45Z INFO __main__: trial ramp-hybrid-005 done: p95=0.0ms replica_s=11370 error=none
+2026-07-10T06:53:45Z INFO __main__: trial 50/84
+2026-07-10T06:53:45Z INFO __main__: ======================================================================
+2026-07-10T06:53:45Z INFO __main__: TRIAL ramp-hpa-005  autoscaler=hpa  workload=ramp
+2026-07-10T06:53:45Z INFO __main__: ======================================================================
+2026-07-10T06:53:45Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T06:53:45Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-10T06:53:45Z INFO __main__: installing HPA: kubectl -n default apply -f experiments/hpa/frontend-hpa.yaml
+horizontalpodautoscaler.autoscaling/frontend created
+2026-07-10T06:53:45Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/ramp.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 1 -t 1500s --csv experiments/results/ramp-hpa-005-locust
+2026-07-10T06:53:53Z INFO __main__: waiting 600s for measurement phase (offset=600s)
+2026-07-10T07:03:53Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d300s -R100 --latency http://localhost:30080/
+2026-07-10T07:18:46Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+horizontalpodautoscaler.autoscaling "frontend" deleted
+2026-07-10T07:18:46Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T07:18:46Z INFO __main__: trial ramp-hpa-005 done: p95=0.0ms replica_s=1605 error=none
+2026-07-10T07:18:46Z INFO __main__: trial 51/84
+2026-07-10T07:18:46Z INFO __main__: ======================================================================
+2026-07-10T07:18:46Z INFO __main__: TRIAL trace_replay-hybrid-002  autoscaler=hybrid  workload=trace_replay
+2026-07-10T07:18:46Z INFO __main__: ======================================================================
+2026-07-10T07:18:46Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T07:18:47Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-10T07:18:47Z INFO __main__: starting hybrid controller: uv run python -m controller.main --config controller/configs/ab/frontend-ab.yaml --prometheus-url http://localhost:9090 --model-registry experiments/results/phase3_20260709T001052Z_model_registry.yaml --evidence-path experiments/results/trace_replay-hybrid-002-evidence.jsonl
+2026-07-10T07:18:52Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/trace_replay.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 50 -t 1800s --csv experiments/results/trace_replay-hybrid-002-locust
+2026-07-10T07:19:00Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d1800s -R100 --latency http://localhost:30080/
+2026-07-10T07:49:03Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T07:49:03Z INFO __main__: trial trace_replay-hybrid-002 done: p95=0.0ms replica_s=14100 error=none
+2026-07-10T07:49:03Z INFO __main__: trial 52/84
+2026-07-10T07:49:03Z INFO __main__: ======================================================================
+2026-07-10T07:49:03Z INFO __main__: TRIAL trace_replay-hpa-002  autoscaler=hpa  workload=trace_replay
+2026-07-10T07:49:03Z INFO __main__: ======================================================================
+2026-07-10T07:49:03Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T07:49:03Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-10T07:49:03Z INFO __main__: installing HPA: kubectl -n default apply -f experiments/hpa/frontend-hpa.yaml
+horizontalpodautoscaler.autoscaling/frontend created
+2026-07-10T07:49:03Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/trace_replay.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 50 -t 1800s --csv experiments/results/trace_replay-hpa-002-locust
+2026-07-10T07:49:11Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d1800s -R100 --latency http://localhost:30080/
+2026-07-10T08:19:11Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+horizontalpodautoscaler.autoscaling "frontend" deleted
+2026-07-10T08:19:12Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T08:19:12Z INFO __main__: trial trace_replay-hpa-002 done: p95=0.0ms replica_s=1920 error=none
+2026-07-10T08:19:12Z INFO __main__: trial 53/84
+2026-07-10T08:19:12Z INFO __main__: ======================================================================
+2026-07-10T08:19:12Z INFO __main__: TRIAL periodic-hybrid-007  autoscaler=hybrid  workload=periodic
+2026-07-10T08:19:12Z INFO __main__: ======================================================================
+2026-07-10T08:19:12Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T08:19:12Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-10T08:19:12Z INFO __main__: starting hybrid controller: uv run python -m controller.main --config controller/configs/ab/frontend-ab.yaml --prometheus-url http://localhost:9090 --model-registry experiments/results/phase3_20260709T001052Z_model_registry.yaml --evidence-path experiments/results/periodic-hybrid-007-evidence.jsonl
+2026-07-10T08:19:17Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/periodic.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 50 -t 1800s --csv experiments/results/periodic-hybrid-007-locust
+2026-07-10T08:19:25Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d600s -R100 --latency http://localhost:30080/
+2026-07-10T08:49:28Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T08:49:28Z INFO __main__: trial periodic-hybrid-007 done: p95=0.0ms replica_s=13275 error=none
+2026-07-10T08:49:28Z INFO __main__: trial 54/84
+2026-07-10T08:49:28Z INFO __main__: ======================================================================
+2026-07-10T08:49:28Z INFO __main__: TRIAL periodic-hpa-007  autoscaler=hpa  workload=periodic
+2026-07-10T08:49:28Z INFO __main__: ======================================================================
+2026-07-10T08:49:28Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T08:49:28Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-10T08:49:28Z INFO __main__: installing HPA: kubectl -n default apply -f experiments/hpa/frontend-hpa.yaml
+horizontalpodautoscaler.autoscaling/frontend created
+2026-07-10T08:49:29Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/periodic.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 50 -t 1800s --csv experiments/results/periodic-hpa-007-locust
+2026-07-10T08:49:37Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d600s -R100 --latency http://localhost:30080/
+2026-07-10T09:19:30Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+horizontalpodautoscaler.autoscaling "frontend" deleted
+2026-07-10T09:19:30Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T09:19:30Z INFO __main__: trial periodic-hpa-007 done: p95=0.0ms replica_s=1905 error=none
+2026-07-10T09:19:30Z INFO __main__: trial 55/84
+2026-07-10T09:19:30Z INFO __main__: ======================================================================
+2026-07-10T09:19:30Z INFO __main__: TRIAL periodic-hybrid-009  autoscaler=hybrid  workload=periodic
+2026-07-10T09:19:30Z INFO __main__: ======================================================================
+2026-07-10T09:19:30Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T09:19:31Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-10T09:19:31Z INFO __main__: starting hybrid controller: uv run python -m controller.main --config controller/configs/ab/frontend-ab.yaml --prometheus-url http://localhost:9090 --model-registry experiments/results/phase3_20260709T001052Z_model_registry.yaml --evidence-path experiments/results/periodic-hybrid-009-evidence.jsonl
+2026-07-10T09:19:36Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/periodic.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 50 -t 1800s --csv experiments/results/periodic-hybrid-009-locust
+2026-07-10T09:19:44Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d600s -R100 --latency http://localhost:30080/
+2026-07-10T09:49:47Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T09:49:47Z INFO __main__: trial periodic-hybrid-009 done: p95=0.0ms replica_s=12885 error=none
+2026-07-10T09:49:47Z INFO __main__: trial 56/84
+2026-07-10T09:49:47Z INFO __main__: ======================================================================
+2026-07-10T09:49:47Z INFO __main__: TRIAL periodic-hpa-009  autoscaler=hpa  workload=periodic
+2026-07-10T09:49:47Z INFO __main__: ======================================================================
+2026-07-10T09:49:47Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T09:49:47Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-10T09:49:47Z INFO __main__: installing HPA: kubectl -n default apply -f experiments/hpa/frontend-hpa.yaml
+horizontalpodautoscaler.autoscaling/frontend created
+2026-07-10T09:49:47Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/periodic.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 50 -t 1800s --csv experiments/results/periodic-hpa-009-locust
+2026-07-10T09:49:55Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d600s -R100 --latency http://localhost:30080/
+2026-07-10T10:19:49Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+horizontalpodautoscaler.autoscaling "frontend" deleted
+2026-07-10T10:19:49Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T10:19:49Z INFO __main__: trial periodic-hpa-009 done: p95=0.0ms replica_s=1905 error=none
+2026-07-10T10:19:49Z INFO __main__: trial 57/84
+2026-07-10T10:19:49Z INFO __main__: ======================================================================
+2026-07-10T10:19:49Z INFO __main__: TRIAL ramp-hybrid-008  autoscaler=hybrid  workload=ramp
+2026-07-10T10:19:49Z INFO __main__: ======================================================================
+2026-07-10T10:19:49Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T10:19:49Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-10T10:19:49Z INFO __main__: starting hybrid controller: uv run python -m controller.main --config controller/configs/ab/frontend-ab.yaml --prometheus-url http://localhost:9090 --model-registry experiments/results/phase3_20260709T001052Z_model_registry.yaml --evidence-path experiments/results/ramp-hybrid-008-evidence.jsonl
+2026-07-10T10:19:54Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/ramp.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 1 -t 1500s --csv experiments/results/ramp-hybrid-008-locust
+2026-07-10T10:20:02Z INFO __main__: waiting 600s for measurement phase (offset=600s)
+2026-07-10T10:30:02Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d300s -R100 --latency http://localhost:30080/
+2026-07-10T10:45:05Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T10:45:05Z INFO __main__: trial ramp-hybrid-008 done: p95=0.0ms replica_s=11460 error=none
+2026-07-10T10:45:05Z INFO __main__: trial 58/84
+2026-07-10T10:45:05Z INFO __main__: ======================================================================
+2026-07-10T10:45:05Z INFO __main__: TRIAL ramp-hpa-008  autoscaler=hpa  workload=ramp
+2026-07-10T10:45:05Z INFO __main__: ======================================================================
+2026-07-10T10:45:05Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T10:45:06Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-10T10:45:06Z INFO __main__: installing HPA: kubectl -n default apply -f experiments/hpa/frontend-hpa.yaml
+horizontalpodautoscaler.autoscaling/frontend created
+2026-07-10T10:45:06Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/ramp.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 1 -t 1500s --csv experiments/results/ramp-hpa-008-locust
+2026-07-10T10:45:14Z INFO __main__: waiting 600s for measurement phase (offset=600s)
+2026-07-10T10:55:14Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d300s -R100 --latency http://localhost:30080/
+2026-07-10T11:10:07Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+horizontalpodautoscaler.autoscaling "frontend" deleted
+2026-07-10T11:10:07Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T11:10:07Z INFO __main__: trial ramp-hpa-008 done: p95=0.0ms replica_s=1500 error=none
+2026-07-10T11:10:07Z INFO __main__: trial 59/84
+2026-07-10T11:10:07Z INFO __main__: ======================================================================
+2026-07-10T11:10:07Z INFO __main__: TRIAL periodic-hpa-008  autoscaler=hpa  workload=periodic
+2026-07-10T11:10:07Z INFO __main__: ======================================================================
+2026-07-10T11:10:07Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T11:10:07Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-10T11:10:07Z INFO __main__: installing HPA: kubectl -n default apply -f experiments/hpa/frontend-hpa.yaml
+horizontalpodautoscaler.autoscaling/frontend created
+2026-07-10T11:10:07Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/periodic.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 50 -t 1800s --csv experiments/results/periodic-hpa-008-locust
+2026-07-10T11:10:15Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d600s -R100 --latency http://localhost:30080/
+2026-07-10T11:40:09Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+horizontalpodautoscaler.autoscaling "frontend" deleted
+2026-07-10T11:40:09Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T11:40:09Z INFO __main__: trial periodic-hpa-008 done: p95=0.0ms replica_s=1800 error=none
+2026-07-10T11:40:09Z INFO __main__: trial 60/84
+2026-07-10T11:40:09Z INFO __main__: ======================================================================
+2026-07-10T11:40:09Z INFO __main__: TRIAL periodic-hybrid-008  autoscaler=hybrid  workload=periodic
+2026-07-10T11:40:09Z INFO __main__: ======================================================================
+2026-07-10T11:40:09Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T11:40:10Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-10T11:40:10Z INFO __main__: starting hybrid controller: uv run python -m controller.main --config controller/configs/ab/frontend-ab.yaml --prometheus-url http://localhost:9090 --model-registry experiments/results/phase3_20260709T001052Z_model_registry.yaml --evidence-path experiments/results/periodic-hybrid-008-evidence.jsonl
+2026-07-10T11:40:15Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/periodic.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 50 -t 1800s --csv experiments/results/periodic-hybrid-008-locust
+2026-07-10T11:40:23Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d600s -R100 --latency http://localhost:30080/
+2026-07-10T12:10:26Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T12:10:26Z INFO __main__: trial periodic-hybrid-008 done: p95=0.0ms replica_s=13650 error=none
+2026-07-10T12:10:26Z INFO __main__: trial 61/84
+2026-07-10T12:10:26Z INFO __main__: ======================================================================
+2026-07-10T12:10:26Z INFO __main__: TRIAL trace_replay-hpa-005  autoscaler=hpa  workload=trace_replay
+2026-07-10T12:10:26Z INFO __main__: ======================================================================
+2026-07-10T12:10:26Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T12:10:26Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-10T12:10:26Z INFO __main__: installing HPA: kubectl -n default apply -f experiments/hpa/frontend-hpa.yaml
+horizontalpodautoscaler.autoscaling/frontend created
+2026-07-10T12:10:26Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/trace_replay.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 50 -t 1800s --csv experiments/results/trace_replay-hpa-005-locust
+2026-07-10T12:10:34Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d1800s -R100 --latency http://localhost:30080/
+2026-07-10T12:40:34Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+horizontalpodautoscaler.autoscaling "frontend" deleted
+2026-07-10T12:40:34Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T12:40:34Z INFO __main__: trial trace_replay-hpa-005 done: p95=0.0ms replica_s=1815 error=none
+2026-07-10T12:40:34Z INFO __main__: trial 62/84
+2026-07-10T12:40:34Z INFO __main__: ======================================================================
+2026-07-10T12:40:34Z INFO __main__: TRIAL trace_replay-hybrid-005  autoscaler=hybrid  workload=trace_replay
+2026-07-10T12:40:34Z INFO __main__: ======================================================================
+2026-07-10T12:40:34Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T12:40:35Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-10T12:40:35Z INFO __main__: starting hybrid controller: uv run python -m controller.main --config controller/configs/ab/frontend-ab.yaml --prometheus-url http://localhost:9090 --model-registry experiments/results/phase3_20260709T001052Z_model_registry.yaml --evidence-path experiments/results/trace_replay-hybrid-005-evidence.jsonl
+2026-07-10T12:40:40Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/trace_replay.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 50 -t 1800s --csv experiments/results/trace_replay-hybrid-005-locust
+2026-07-10T12:40:48Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d1800s -R100 --latency http://localhost:30080/
+2026-07-10T13:10:51Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T13:10:51Z INFO __main__: trial trace_replay-hybrid-005 done: p95=0.0ms replica_s=14115 error=none
+2026-07-10T13:10:51Z INFO __main__: trial 63/84
+2026-07-10T13:10:51Z INFO __main__: ======================================================================
+2026-07-10T13:10:51Z INFO __main__: TRIAL ramp-hpa-003  autoscaler=hpa  workload=ramp
+2026-07-10T13:10:51Z INFO __main__: ======================================================================
+2026-07-10T13:10:51Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T13:10:51Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-10T13:10:51Z INFO __main__: installing HPA: kubectl -n default apply -f experiments/hpa/frontend-hpa.yaml
+horizontalpodautoscaler.autoscaling/frontend created
+2026-07-10T13:10:51Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/ramp.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 1 -t 1500s --csv experiments/results/ramp-hpa-003-locust
+2026-07-10T13:10:59Z INFO __main__: waiting 600s for measurement phase (offset=600s)
+2026-07-10T13:20:59Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d300s -R100 --latency http://localhost:30080/
+2026-07-10T13:35:52Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+horizontalpodautoscaler.autoscaling "frontend" deleted
+2026-07-10T13:35:52Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T13:35:52Z INFO __main__: trial ramp-hpa-003 done: p95=0.0ms replica_s=1500 error=none
+2026-07-10T13:35:52Z INFO __main__: trial 64/84
+2026-07-10T13:35:52Z INFO __main__: ======================================================================
+2026-07-10T13:35:52Z INFO __main__: TRIAL ramp-hybrid-003  autoscaler=hybrid  workload=ramp
+2026-07-10T13:35:52Z INFO __main__: ======================================================================
+2026-07-10T13:35:52Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T13:35:52Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-10T13:35:52Z INFO __main__: starting hybrid controller: uv run python -m controller.main --config controller/configs/ab/frontend-ab.yaml --prometheus-url http://localhost:9090 --model-registry experiments/results/phase3_20260709T001052Z_model_registry.yaml --evidence-path experiments/results/ramp-hybrid-003-evidence.jsonl
+2026-07-10T13:35:57Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/ramp.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 1 -t 1500s --csv experiments/results/ramp-hybrid-003-locust
+2026-07-10T13:36:05Z INFO __main__: waiting 600s for measurement phase (offset=600s)
+2026-07-10T13:46:05Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d300s -R100 --latency http://localhost:30080/
+2026-07-10T14:01:08Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T14:01:08Z INFO __main__: trial ramp-hybrid-003 done: p95=0.0ms replica_s=11520 error=none
+2026-07-10T14:01:08Z INFO __main__: trial 65/84
+2026-07-10T14:01:08Z INFO __main__: ======================================================================
+2026-07-10T14:01:08Z INFO __main__: TRIAL trace_replay-hpa-010  autoscaler=hpa  workload=trace_replay
+2026-07-10T14:01:08Z INFO __main__: ======================================================================
+2026-07-10T14:01:08Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T14:01:09Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-10T14:01:09Z INFO __main__: installing HPA: kubectl -n default apply -f experiments/hpa/frontend-hpa.yaml
+horizontalpodautoscaler.autoscaling/frontend created
+2026-07-10T14:01:09Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/trace_replay.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 50 -t 1800s --csv experiments/results/trace_replay-hpa-010-locust
+2026-07-10T14:01:17Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d1800s -R100 --latency http://localhost:30080/
+2026-07-10T14:31:17Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+horizontalpodautoscaler.autoscaling "frontend" deleted
+2026-07-10T14:31:17Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T14:31:17Z INFO __main__: trial trace_replay-hpa-010 done: p95=0.0ms replica_s=1815 error=none
+2026-07-10T14:31:17Z INFO __main__: trial 66/84
+2026-07-10T14:31:17Z INFO __main__: ======================================================================
+2026-07-10T14:31:17Z INFO __main__: TRIAL trace_replay-hybrid-010  autoscaler=hybrid  workload=trace_replay
+2026-07-10T14:31:17Z INFO __main__: ======================================================================
+2026-07-10T14:31:17Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T14:31:17Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-10T14:31:17Z INFO __main__: starting hybrid controller: uv run python -m controller.main --config controller/configs/ab/frontend-ab.yaml --prometheus-url http://localhost:9090 --model-registry experiments/results/phase3_20260709T001052Z_model_registry.yaml --evidence-path experiments/results/trace_replay-hybrid-010-evidence.jsonl
+2026-07-10T14:31:22Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/trace_replay.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 50 -t 1800s --csv experiments/results/trace_replay-hybrid-010-locust
+2026-07-10T14:31:30Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d1800s -R100 --latency http://localhost:30080/
+2026-07-10T15:01:33Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T15:01:33Z INFO __main__: trial trace_replay-hybrid-010 done: p95=0.0ms replica_s=13980 error=none
+2026-07-10T15:01:33Z INFO __main__: trial 67/84
+2026-07-10T15:01:33Z INFO __main__: ======================================================================
+2026-07-10T15:01:33Z INFO __main__: TRIAL ramp-hpa-007  autoscaler=hpa  workload=ramp
+2026-07-10T15:01:33Z INFO __main__: ======================================================================
+2026-07-10T15:01:33Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T15:01:34Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-10T15:01:34Z INFO __main__: installing HPA: kubectl -n default apply -f experiments/hpa/frontend-hpa.yaml
+horizontalpodautoscaler.autoscaling/frontend created
+2026-07-10T15:01:34Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/ramp.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 1 -t 1500s --csv experiments/results/ramp-hpa-007-locust
+2026-07-10T15:01:42Z INFO __main__: waiting 600s for measurement phase (offset=600s)
+2026-07-10T15:11:42Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d300s -R100 --latency http://localhost:30080/
+2026-07-10T15:26:35Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+horizontalpodautoscaler.autoscaling "frontend" deleted
+2026-07-10T15:26:35Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T15:26:35Z INFO __main__: trial ramp-hpa-007 done: p95=0.0ms replica_s=1500 error=none
+2026-07-10T15:26:35Z INFO __main__: trial 68/84
+2026-07-10T15:26:35Z INFO __main__: ======================================================================
+2026-07-10T15:26:35Z INFO __main__: TRIAL ramp-hybrid-007  autoscaler=hybrid  workload=ramp
+2026-07-10T15:26:35Z INFO __main__: ======================================================================
+2026-07-10T15:26:35Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T15:26:35Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-10T15:26:35Z INFO __main__: starting hybrid controller: uv run python -m controller.main --config controller/configs/ab/frontend-ab.yaml --prometheus-url http://localhost:9090 --model-registry experiments/results/phase3_20260709T001052Z_model_registry.yaml --evidence-path experiments/results/ramp-hybrid-007-evidence.jsonl
+2026-07-10T15:26:40Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/ramp.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 1 -t 1500s --csv experiments/results/ramp-hybrid-007-locust
+2026-07-10T15:26:48Z INFO __main__: waiting 600s for measurement phase (offset=600s)
+2026-07-10T15:36:48Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d300s -R100 --latency http://localhost:30080/
+2026-07-10T15:51:51Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T15:51:51Z INFO __main__: trial ramp-hybrid-007 done: p95=0.0ms replica_s=11580 error=none
+2026-07-10T15:51:51Z INFO __main__: trial 69/84
+2026-07-10T15:51:51Z INFO __main__: ======================================================================
+2026-07-10T15:51:51Z INFO __main__: TRIAL trace_replay-hybrid-004  autoscaler=hybrid  workload=trace_replay
+2026-07-10T15:51:51Z INFO __main__: ======================================================================
+2026-07-10T15:51:51Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T15:51:52Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-10T15:51:52Z INFO __main__: starting hybrid controller: uv run python -m controller.main --config controller/configs/ab/frontend-ab.yaml --prometheus-url http://localhost:9090 --model-registry experiments/results/phase3_20260709T001052Z_model_registry.yaml --evidence-path experiments/results/trace_replay-hybrid-004-evidence.jsonl
+2026-07-10T15:51:57Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/trace_replay.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 50 -t 1800s --csv experiments/results/trace_replay-hybrid-004-locust
+2026-07-10T15:52:05Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d1800s -R100 --latency http://localhost:30080/
+2026-07-10T16:22:08Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T16:22:08Z INFO __main__: trial trace_replay-hybrid-004 done: p95=0.0ms replica_s=13950 error=none
+2026-07-10T16:22:08Z INFO __main__: trial 70/84
+2026-07-10T16:22:08Z INFO __main__: ======================================================================
+2026-07-10T16:22:08Z INFO __main__: TRIAL trace_replay-hpa-004  autoscaler=hpa  workload=trace_replay
+2026-07-10T16:22:08Z INFO __main__: ======================================================================
+2026-07-10T16:22:08Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T16:22:08Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-10T16:22:08Z INFO __main__: installing HPA: kubectl -n default apply -f experiments/hpa/frontend-hpa.yaml
+horizontalpodautoscaler.autoscaling/frontend created
+2026-07-10T16:22:08Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/trace_replay.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 50 -t 1800s --csv experiments/results/trace_replay-hpa-004-locust
+2026-07-10T16:22:16Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d1800s -R100 --latency http://localhost:30080/
+2026-07-10T16:52:16Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+horizontalpodautoscaler.autoscaling "frontend" deleted
+2026-07-10T16:52:16Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T16:52:17Z INFO __main__: trial trace_replay-hpa-004 done: p95=0.0ms replica_s=1815 error=none
+2026-07-10T16:52:17Z INFO __main__: trial 71/84
+2026-07-10T16:52:17Z INFO __main__: ======================================================================
+2026-07-10T16:52:17Z INFO __main__: TRIAL trace_replay-hpa-006  autoscaler=hpa  workload=trace_replay
+2026-07-10T16:52:17Z INFO __main__: ======================================================================
+2026-07-10T16:52:17Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T16:52:17Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-10T16:52:17Z INFO __main__: installing HPA: kubectl -n default apply -f experiments/hpa/frontend-hpa.yaml
+horizontalpodautoscaler.autoscaling/frontend created
+2026-07-10T16:52:17Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/trace_replay.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 50 -t 1800s --csv experiments/results/trace_replay-hpa-006-locust
+2026-07-10T16:52:25Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d1800s -R100 --latency http://localhost:30080/
+2026-07-10T17:22:25Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+horizontalpodautoscaler.autoscaling "frontend" deleted
+2026-07-10T17:22:25Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T17:22:25Z INFO __main__: trial trace_replay-hpa-006 done: p95=0.0ms replica_s=1815 error=none
+2026-07-10T17:22:25Z INFO __main__: trial 72/84
+2026-07-10T17:22:25Z INFO __main__: ======================================================================
+2026-07-10T17:22:25Z INFO __main__: TRIAL trace_replay-hybrid-006  autoscaler=hybrid  workload=trace_replay
+2026-07-10T17:22:25Z INFO __main__: ======================================================================
+2026-07-10T17:22:25Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T17:22:25Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-10T17:22:25Z INFO __main__: starting hybrid controller: uv run python -m controller.main --config controller/configs/ab/frontend-ab.yaml --prometheus-url http://localhost:9090 --model-registry experiments/results/phase3_20260709T001052Z_model_registry.yaml --evidence-path experiments/results/trace_replay-hybrid-006-evidence.jsonl
+2026-07-10T17:22:30Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/trace_replay.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 50 -t 1800s --csv experiments/results/trace_replay-hybrid-006-locust
+2026-07-10T17:22:38Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d1800s -R100 --latency http://localhost:30080/
+2026-07-10T17:52:41Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T17:52:42Z INFO __main__: trial trace_replay-hybrid-006 done: p95=0.0ms replica_s=13950 error=none
+2026-07-10T17:52:42Z INFO __main__: trial 73/84
+2026-07-10T17:52:42Z INFO __main__: ======================================================================
+2026-07-10T17:52:42Z INFO __main__: TRIAL ramp-hpa-006  autoscaler=hpa  workload=ramp
+2026-07-10T17:52:42Z INFO __main__: ======================================================================
+2026-07-10T17:52:42Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T17:52:42Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-10T17:52:42Z INFO __main__: installing HPA: kubectl -n default apply -f experiments/hpa/frontend-hpa.yaml
+horizontalpodautoscaler.autoscaling/frontend created
+2026-07-10T17:52:42Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/ramp.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 1 -t 1500s --csv experiments/results/ramp-hpa-006-locust
+2026-07-10T17:52:50Z INFO __main__: waiting 600s for measurement phase (offset=600s)
+2026-07-10T18:02:50Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d300s -R100 --latency http://localhost:30080/
+2026-07-10T18:17:43Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+horizontalpodautoscaler.autoscaling "frontend" deleted
+2026-07-10T18:17:43Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T18:17:43Z INFO __main__: trial ramp-hpa-006 done: p95=0.0ms replica_s=1605 error=none
+2026-07-10T18:17:43Z INFO __main__: trial 74/84
+2026-07-10T18:17:43Z INFO __main__: ======================================================================
+2026-07-10T18:17:43Z INFO __main__: TRIAL ramp-hybrid-006  autoscaler=hybrid  workload=ramp
+2026-07-10T18:17:43Z INFO __main__: ======================================================================
+2026-07-10T18:17:43Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T18:17:43Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-10T18:17:43Z INFO __main__: starting hybrid controller: uv run python -m controller.main --config controller/configs/ab/frontend-ab.yaml --prometheus-url http://localhost:9090 --model-registry experiments/results/phase3_20260709T001052Z_model_registry.yaml --evidence-path experiments/results/ramp-hybrid-006-evidence.jsonl
+2026-07-10T18:17:48Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/ramp.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 1 -t 1500s --csv experiments/results/ramp-hybrid-006-locust
+2026-07-10T18:17:56Z INFO __main__: waiting 600s for measurement phase (offset=600s)
+2026-07-10T18:27:56Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d300s -R100 --latency http://localhost:30080/
+2026-07-10T18:42:59Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T18:42:59Z INFO __main__: trial ramp-hybrid-006 done: p95=0.0ms replica_s=11370 error=none
+2026-07-10T18:42:59Z INFO __main__: trial 75/84
+2026-07-10T18:42:59Z INFO __main__: ======================================================================
+2026-07-10T18:42:59Z INFO __main__: TRIAL periodic-hybrid-002  autoscaler=hybrid  workload=periodic
+2026-07-10T18:42:59Z INFO __main__: ======================================================================
+2026-07-10T18:42:59Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T18:43:00Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-10T18:43:00Z INFO __main__: starting hybrid controller: uv run python -m controller.main --config controller/configs/ab/frontend-ab.yaml --prometheus-url http://localhost:9090 --model-registry experiments/results/phase3_20260709T001052Z_model_registry.yaml --evidence-path experiments/results/periodic-hybrid-002-evidence.jsonl
+2026-07-10T18:43:05Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/periodic.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 50 -t 1800s --csv experiments/results/periodic-hybrid-002-locust
+2026-07-10T18:43:13Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d600s -R100 --latency http://localhost:30080/
+2026-07-10T19:13:16Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T19:13:16Z INFO __main__: trial periodic-hybrid-002 done: p95=0.0ms replica_s=12315 error=none
+2026-07-10T19:13:16Z INFO __main__: trial 76/84
+2026-07-10T19:13:16Z INFO __main__: ======================================================================
+2026-07-10T19:13:16Z INFO __main__: TRIAL periodic-hpa-002  autoscaler=hpa  workload=periodic
+2026-07-10T19:13:16Z INFO __main__: ======================================================================
+2026-07-10T19:13:16Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T19:13:16Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-10T19:13:16Z INFO __main__: installing HPA: kubectl -n default apply -f experiments/hpa/frontend-hpa.yaml
+horizontalpodautoscaler.autoscaling/frontend created
+2026-07-10T19:13:16Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/periodic.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 50 -t 1800s --csv experiments/results/periodic-hpa-002-locust
+2026-07-10T19:13:24Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d600s -R100 --latency http://localhost:30080/
+2026-07-10T19:43:17Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+horizontalpodautoscaler.autoscaling "frontend" deleted
+2026-07-10T19:43:17Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T19:43:17Z INFO __main__: trial periodic-hpa-002 done: p95=0.0ms replica_s=1905 error=none
+2026-07-10T19:43:17Z INFO __main__: trial 77/84
+2026-07-10T19:43:17Z INFO __main__: ======================================================================
+2026-07-10T19:43:17Z INFO __main__: TRIAL trace_replay-hpa-007  autoscaler=hpa  workload=trace_replay
+2026-07-10T19:43:17Z INFO __main__: ======================================================================
+2026-07-10T19:43:17Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T19:43:18Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-10T19:43:18Z INFO __main__: installing HPA: kubectl -n default apply -f experiments/hpa/frontend-hpa.yaml
+horizontalpodautoscaler.autoscaling/frontend created
+2026-07-10T19:43:18Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/trace_replay.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 50 -t 1800s --csv experiments/results/trace_replay-hpa-007-locust
+2026-07-10T19:43:26Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d1800s -R100 --latency http://localhost:30080/
+2026-07-10T20:13:26Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+horizontalpodautoscaler.autoscaling "frontend" deleted
+2026-07-10T20:13:26Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T20:13:26Z INFO __main__: trial trace_replay-hpa-007 done: p95=0.0ms replica_s=1815 error=none
+2026-07-10T20:13:26Z INFO __main__: trial 78/84
+2026-07-10T20:13:26Z INFO __main__: ======================================================================
+2026-07-10T20:13:26Z INFO __main__: TRIAL trace_replay-hybrid-007  autoscaler=hybrid  workload=trace_replay
+2026-07-10T20:13:26Z INFO __main__: ======================================================================
+2026-07-10T20:13:26Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T20:13:26Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-10T20:13:26Z INFO __main__: starting hybrid controller: uv run python -m controller.main --config controller/configs/ab/frontend-ab.yaml --prometheus-url http://localhost:9090 --model-registry experiments/results/phase3_20260709T001052Z_model_registry.yaml --evidence-path experiments/results/trace_replay-hybrid-007-evidence.jsonl
+2026-07-10T20:13:31Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/trace_replay.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 50 -t 1800s --csv experiments/results/trace_replay-hybrid-007-locust
+2026-07-10T20:13:39Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d1800s -R100 --latency http://localhost:30080/
+2026-07-10T20:43:42Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T20:43:43Z INFO __main__: trial trace_replay-hybrid-007 done: p95=0.0ms replica_s=13500 error=none
+2026-07-10T20:43:43Z INFO __main__: trial 79/84
+2026-07-10T20:43:43Z INFO __main__: ======================================================================
+2026-07-10T20:43:43Z INFO __main__: TRIAL trace_replay-hybrid-001  autoscaler=hybrid  workload=trace_replay
+2026-07-10T20:43:43Z INFO __main__: ======================================================================
+2026-07-10T20:43:43Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T20:43:43Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-10T20:43:43Z INFO __main__: starting hybrid controller: uv run python -m controller.main --config controller/configs/ab/frontend-ab.yaml --prometheus-url http://localhost:9090 --model-registry experiments/results/phase3_20260709T001052Z_model_registry.yaml --evidence-path experiments/results/trace_replay-hybrid-001-evidence.jsonl
+2026-07-10T20:43:48Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/trace_replay.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 50 -t 1800s --csv experiments/results/trace_replay-hybrid-001-locust
+2026-07-10T20:43:56Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d1800s -R100 --latency http://localhost:30080/
+2026-07-10T21:13:59Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T21:13:59Z INFO __main__: trial trace_replay-hybrid-001 done: p95=0.0ms replica_s=13965 error=none
+2026-07-10T21:13:59Z INFO __main__: trial 80/84
+2026-07-10T21:13:59Z INFO __main__: ======================================================================
+2026-07-10T21:13:59Z INFO __main__: TRIAL trace_replay-hpa-001  autoscaler=hpa  workload=trace_replay
+2026-07-10T21:13:59Z INFO __main__: ======================================================================
+2026-07-10T21:13:59Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T21:14:09Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-10T21:14:09Z INFO __main__: installing HPA: kubectl -n default apply -f experiments/hpa/frontend-hpa.yaml
+horizontalpodautoscaler.autoscaling/frontend created
+2026-07-10T21:14:10Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/trace_replay.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 50 -t 1800s --csv experiments/results/trace_replay-hpa-001-locust
+2026-07-10T21:14:18Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d1800s -R100 --latency http://localhost:30080/
+2026-07-10T21:44:18Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+horizontalpodautoscaler.autoscaling "frontend" deleted
+2026-07-10T21:44:18Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T21:44:18Z INFO __main__: trial trace_replay-hpa-001 done: p95=0.0ms replica_s=1815 error=none
+2026-07-10T21:44:18Z INFO __main__: trial 81/84
+2026-07-10T21:44:18Z INFO __main__: ======================================================================
+2026-07-10T21:44:18Z INFO __main__: TRIAL periodic-hybrid-005  autoscaler=hybrid  workload=periodic
+2026-07-10T21:44:18Z INFO __main__: ======================================================================
+2026-07-10T21:44:18Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T21:44:18Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-10T21:44:18Z INFO __main__: starting hybrid controller: uv run python -m controller.main --config controller/configs/ab/frontend-ab.yaml --prometheus-url http://localhost:9090 --model-registry experiments/results/phase3_20260709T001052Z_model_registry.yaml --evidence-path experiments/results/periodic-hybrid-005-evidence.jsonl
+2026-07-10T21:44:23Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/periodic.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 50 -t 1800s --csv experiments/results/periodic-hybrid-005-locust
+2026-07-10T21:44:31Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d600s -R100 --latency http://localhost:30080/
+2026-07-10T22:14:34Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T22:14:34Z INFO __main__: trial periodic-hybrid-005 done: p95=0.0ms replica_s=13335 error=none
+2026-07-10T22:14:34Z INFO __main__: trial 82/84
+2026-07-10T22:14:34Z INFO __main__: ======================================================================
+2026-07-10T22:14:34Z INFO __main__: TRIAL periodic-hpa-005  autoscaler=hpa  workload=periodic
+2026-07-10T22:14:34Z INFO __main__: ======================================================================
+2026-07-10T22:14:34Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T22:14:34Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-10T22:14:34Z INFO __main__: installing HPA: kubectl -n default apply -f experiments/hpa/frontend-hpa.yaml
+horizontalpodautoscaler.autoscaling/frontend created
+2026-07-10T22:14:34Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/periodic.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 50 -t 1800s --csv experiments/results/periodic-hpa-005-locust
+2026-07-10T22:14:42Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d600s -R100 --latency http://localhost:30080/
+2026-07-10T22:44:36Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+horizontalpodautoscaler.autoscaling "frontend" deleted
+2026-07-10T22:44:36Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T22:44:36Z INFO __main__: trial periodic-hpa-005 done: p95=0.0ms replica_s=1800 error=none
+2026-07-10T22:44:36Z INFO __main__: trial 83/84
+2026-07-10T22:44:36Z INFO __main__: ======================================================================
+2026-07-10T22:44:36Z INFO __main__: TRIAL ramp-hpa-009  autoscaler=hpa  workload=ramp
+2026-07-10T22:44:36Z INFO __main__: ======================================================================
+2026-07-10T22:44:36Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T22:44:36Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-10T22:44:36Z INFO __main__: installing HPA: kubectl -n default apply -f experiments/hpa/frontend-hpa.yaml
+horizontalpodautoscaler.autoscaling/frontend created
+2026-07-10T22:44:37Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/ramp.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 1 -t 1500s --csv experiments/results/ramp-hpa-009-locust
+2026-07-10T22:44:45Z INFO __main__: waiting 600s for measurement phase (offset=600s)
+2026-07-10T22:54:45Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d300s -R100 --latency http://localhost:30080/
+2026-07-10T23:09:38Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+horizontalpodautoscaler.autoscaling "frontend" deleted
+2026-07-10T23:09:38Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T23:09:38Z INFO __main__: trial ramp-hpa-009 done: p95=0.0ms replica_s=1500 error=none
+2026-07-10T23:09:38Z INFO __main__: trial 84/84
+2026-07-10T23:09:38Z INFO __main__: ======================================================================
+2026-07-10T23:09:38Z INFO __main__: TRIAL ramp-hybrid-009  autoscaler=hybrid  workload=ramp
+2026-07-10T23:09:38Z INFO __main__: ======================================================================
+2026-07-10T23:09:38Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T23:09:38Z INFO __main__: cluster stable at 1 ready replicas
+2026-07-10T23:09:38Z INFO __main__: starting hybrid controller: uv run python -m controller.main --config controller/configs/ab/frontend-ab.yaml --prometheus-url http://localhost:9090 --model-registry experiments/results/phase3_20260709T001052Z_model_registry.yaml --evidence-path experiments/results/ramp-hybrid-009-evidence.jsonl
+2026-07-10T23:09:43Z INFO __main__: starting Locust: uv run locust -f experiments/workloads/ramp.py,experiments/workloads/user.py --host http://localhost:30080 --headless --users 500 --spawn-rate 1 -t 1500s --csv experiments/results/ramp-hybrid-009-locust
+2026-07-10T23:09:51Z INFO __main__: waiting 600s for measurement phase (offset=600s)
+2026-07-10T23:19:51Z INFO __main__: running wrk2: wrk2 -t4 -c100 -d300s -R100 --latency http://localhost:30080/
+2026-07-10T23:34:54Z INFO __main__: removing HPA: kubectl -n default delete hpa frontend --ignore-not-found=true
+2026-07-10T23:34:54Z INFO __main__: trial ramp-hybrid-009 done: p95=0.0ms replica_s=11595 error=none
+✅  84 trial(s) completed cleanly → experiments/results/results_canonical-ab-v2.jsonl

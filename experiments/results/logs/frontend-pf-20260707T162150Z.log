@@ -1,0 +1,115 @@
+Forwarding from 127.0.0.1:8080 -> 8080
+Forwarding from [::1]:8080 -> 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+E0707 16:26:57.244129   15855 portforward.go:391] "Unhandled Error" err="error copying from remote stream to local connection: readfrom tcp6 [::1]:8080->[::1]:52854: write tcp6 [::1]:8080->[::1]:52854: write: broken pipe"
+E0707 16:26:57.338257   15855 portforward.go:391] "Unhandled Error" err="error copying from remote stream to local connection: readfrom tcp6 [::1]:8080->[::1]:62124: write tcp6 [::1]:8080->[::1]:62124: write: broken pipe"
+E0707 16:26:57.338258   15855 portforward.go:391] "Unhandled Error" err="error copying from remote stream to local connection: readfrom tcp6 [::1]:8080->[::1]:52982: write tcp6 [::1]:8080->[::1]:52982: write: broken pipe"
+E0707 16:26:57.340731   15855 portforward.go:391] "Unhandled Error" err="error copying from remote stream to local connection: readfrom tcp6 [::1]:8080->[::1]:62160: write tcp6 [::1]:8080->[::1]:62160: write: broken pipe"
+E0707 16:26:57.343768   15855 portforward.go:391] "Unhandled Error" err="error copying from remote stream to local connection: readfrom tcp6 [::1]:8080->[::1]:62350: write tcp6 [::1]:8080->[::1]:62350: write: broken pipe"
+E0707 16:26:57.344384   15855 portforward.go:391] "Unhandled Error" err="error copying from remote stream to local connection: readfrom tcp6 [::1]:8080->[::1]:62268: write tcp6 [::1]:8080->[::1]:62268: write: broken pipe"
+E0707 16:26:57.344630   15855 portforward.go:391] "Unhandled Error" err="error copying from remote stream to local connection: readfrom tcp6 [::1]:8080->[::1]:62220: write tcp6 [::1]:8080->[::1]:62220: write: broken pipe"
+E0707 16:26:57.345955   15855 portforward.go:391] "Unhandled Error" err="error copying from remote stream to local connection: readfrom tcp6 [::1]:8080->[::1]:53050: write tcp6 [::1]:8080->[::1]:53050: write: broken pipe"
+E0707 16:26:57.386937   15855 portforward.go:391] "Unhandled Error" err="error copying from remote stream to local connection: readfrom tcp6 [::1]:8080->[::1]:62338: write tcp6 [::1]:8080->[::1]:62338: write: broken pipe"
+E0707 16:26:57.438394   15855 portforward.go:391] "Unhandled Error" err="error copying from remote stream to local connection: readfrom tcp6 [::1]:8080->[::1]:62140: write tcp6 [::1]:8080->[::1]:62140: write: broken pipe"
+E0707 16:26:57.438570   15855 portforward.go:391] "Unhandled Error" err="error copying from remote stream to local connection: readfrom tcp6 [::1]:8080->[::1]:62148: write tcp6 [::1]:8080->[::1]:62148: write: broken pipe"
+E0707 16:26:57.441747   15855 portforward.go:391] "Unhandled Error" err="error copying from remote stream to local connection: readfrom tcp6 [::1]:8080->[::1]:62176: write tcp6 [::1]:8080->[::1]:62176: write: broken pipe"
+E0707 16:26:57.486409   15855 portforward.go:391] "Unhandled Error" err="error copying from remote stream to local connection: readfrom tcp6 [::1]:8080->[::1]:62380: write tcp6 [::1]:8080->[::1]:62380: write: broken pipe"
+E0707 16:26:57.486524   15855 portforward.go:391] "Unhandled Error" err="error copying from remote stream to local connection: readfrom tcp6 [::1]:8080->[::1]:62398: write tcp6 [::1]:8080->[::1]:62398: write: broken pipe"
+E0707 16:26:57.487255   15855 portforward.go:391] "Unhandled Error" err="error copying from remote stream to local connection: readfrom tcp6 [::1]:8080->[::1]:62322: write tcp6 [::1]:8080->[::1]:62322: write: broken pipe"
+E0707 16:26:57.487843   15855 portforward.go:391] "Unhandled Error" err="error copying from remote stream to local connection: readfrom tcp6 [::1]:8080->[::1]:62200: write tcp6 [::1]:8080->[::1]:62200: write: broken pipe"
+E0707 16:26:57.537735   15855 portforward.go:391] "Unhandled Error" err="error copying from remote stream to local connection: readfrom tcp6 [::1]:8080->[::1]:62170: write tcp6 [::1]:8080->[::1]:62170: write: broken pipe"
+E0707 16:26:57.539026   15855 portforward.go:391] "Unhandled Error" err="error copying from remote stream to local connection: readfrom tcp6 [::1]:8080->[::1]:62308: write tcp6 [::1]:8080->[::1]:62308: write: broken pipe"
+E0707 16:26:57.539064   15855 portforward.go:391] "Unhandled Error" err="error copying from remote stream to local connection: readfrom tcp6 [::1]:8080->[::1]:62248: write tcp6 [::1]:8080->[::1]:62248: write: broken pipe"
+E0707 16:26:57.539288   15855 portforward.go:391] "Unhandled Error" err="error copying from remote stream to local connection: readfrom tcp6 [::1]:8080->[::1]:62410: write tcp6 [::1]:8080->[::1]:62410: write: broken pipe"
+E0707 16:26:57.544508   15855 portforward.go:391] "Unhandled Error" err="error copying from remote stream to local connection: readfrom tcp6 [::1]:8080->[::1]:62328: write tcp6 [::1]:8080->[::1]:62328: write: broken pipe"
+E0707 16:26:57.545330   15855 portforward.go:391] "Unhandled Error" err="error copying from remote stream to local connection: readfrom tcp6 [::1]:8080->[::1]:52988: write tcp6 [::1]:8080->[::1]:52988: write: broken pipe"
+E0707 16:26:57.546299   15855 portforward.go:391] "Unhandled Error" err="error copying from remote stream to local connection: readfrom tcp6 [::1]:8080->[::1]:62258: write tcp6 [::1]:8080->[::1]:62258: write: broken pipe"
+E0707 16:26:57.547113   15855 portforward.go:391] "Unhandled Error" err="error copying from remote stream to local connection: readfrom tcp6 [::1]:8080->[::1]:62412: write tcp6 [::1]:8080->[::1]:62412: write: broken pipe"
+E0707 16:26:57.637216   15855 portforward.go:391] "Unhandled Error" err="error copying from remote stream to local connection: readfrom tcp6 [::1]:8080->[::1]:62318: write tcp6 [::1]:8080->[::1]:62318: write: broken pipe"
+E0707 16:26:57.637813   15855 portforward.go:391] "Unhandled Error" err="error copying from remote stream to local connection: readfrom tcp6 [::1]:8080->[::1]:62234: write tcp6 [::1]:8080->[::1]:62234: write: broken pipe"
+E0707 16:26:57.640474   15855 portforward.go:391] "Unhandled Error" err="error copying from remote stream to local connection: readfrom tcp6 [::1]:8080->[::1]:62392: write tcp6 [::1]:8080->[::1]:62392: write: broken pipe"
+E0707 16:26:57.640526   15855 portforward.go:391] "Unhandled Error" err="error copying from remote stream to local connection: readfrom tcp6 [::1]:8080->[::1]:62282: write tcp6 [::1]:8080->[::1]:62282: write: broken pipe"
+E0707 16:26:57.640719   15855 portforward.go:391] "Unhandled Error" err="error copying from remote stream to local connection: readfrom tcp6 [::1]:8080->[::1]:62192: write tcp6 [::1]:8080->[::1]:62192: write: broken pipe"
+E0707 16:26:57.658936   15855 portforward.go:391] "Unhandled Error" err="error copying from remote stream to local connection: readfrom tcp6 [::1]:8080->[::1]:62358: write tcp6 [::1]:8080->[::1]:62358: write: broken pipe"
