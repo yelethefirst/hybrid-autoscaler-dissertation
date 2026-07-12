@@ -1,0 +1,14 @@
+Method,Name,Error,Occurrences,First Seen,Last Seen
+POST,/cart/checkout,RemoteDisconnected('Remote end closed connection without response'),4,2026-07-10T18:26:14Z,2026-07-10T18:26:29Z
+GET,/,RemoteDisconnected('Remote end closed connection without response'),29,2026-07-10T18:26:14Z,2026-07-10T18:26:29Z
+GET,/product/[id],RemoteDisconnected('Remote end closed connection without response'),3,2026-07-10T18:26:14Z,2026-07-10T18:26:14Z
+POST,/setCurrency,RemoteDisconnected('Remote end closed connection without response'),4,2026-07-10T18:26:14Z,2026-07-10T18:26:14Z
+POST,/cart [add],HTTPError('500 Server Error: Internal Server Error for url: /cart [add]'),8678,2026-07-10T18:28:14Z,2026-07-10T18:38:59Z
+POST,/cart [add],RemoteDisconnected('Remote end closed connection without response'),1,2026-07-10T18:26:14Z,2026-07-10T18:26:14Z
+POST,/setCurrency,HTTPError('500 Server Error: Internal Server Error for url: /setCurrency'),4460,2026-07-10T18:28:14Z,2026-07-10T18:38:59Z
+GET,/product/[id],"ChunkedEncodingError(ProtocolError('Connection broken: IncompleteRead(1912 bytes read, 136 more expected)', IncompleteRead(1912 bytes read, 136 more expected)))",1,2026-07-10T18:18:29Z,2026-07-10T18:18:29Z
+GET,/,HTTPError('500 Server Error: Internal Server Error for url: /'),35126,2026-07-10T18:28:14Z,2026-07-10T18:38:59Z
+GET,/cart,HTTPError('500 Server Error: Internal Server Error for url: /cart'),12575,2026-07-10T18:28:14Z,2026-07-10T18:38:59Z
+GET,/cart,RemoteDisconnected('Remote end closed connection without response'),1,2026-07-10T18:26:14Z,2026-07-10T18:26:14Z
+POST,/cart/checkout,HTTPError('500 Server Error: Internal Server Error for url: /cart/checkout'),8770,2026-07-10T18:28:14Z,2026-07-10T18:38:59Z
+GET,/product/[id],HTTPError('500 Server Error: Internal Server Error for url: /product/[id]'),25372,2026-07-10T18:28:14Z,2026-07-10T18:38:59Z

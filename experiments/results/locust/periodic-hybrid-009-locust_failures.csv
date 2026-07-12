@@ -1,0 +1,14 @@
+Method,Name,Error,Occurrences,First Seen,Last Seen
+POST,/cart/checkout,RemoteDisconnected('Remote end closed connection without response'),11,2026-07-10T09:24:01Z,2026-07-10T09:44:02Z
+GET,/,RemoteDisconnected('Remote end closed connection without response'),87,2026-07-10T09:24:01Z,2026-07-10T09:44:02Z
+GET,/product/[id],RemoteDisconnected('Remote end closed connection without response'),16,2026-07-10T09:27:16Z,2026-07-10T09:44:02Z
+POST,/setCurrency,RemoteDisconnected('Remote end closed connection without response'),11,2026-07-10T09:24:01Z,2026-07-10T09:44:02Z
+POST,/cart [add],HTTPError('500 Server Error: Internal Server Error for url: /cart [add]'),606,2026-07-10T09:22:24Z,2026-07-10T09:23:33Z
+POST,/cart [add],RemoteDisconnected('Remote end closed connection without response'),7,2026-07-10T09:32:16Z,2026-07-10T09:32:32Z
+POST,/setCurrency,HTTPError('500 Server Error: Internal Server Error for url: /setCurrency'),316,2026-07-10T09:22:24Z,2026-07-10T09:23:33Z
+GET,/,HTTPError('500 Server Error: Internal Server Error for url: /'),2611,2026-07-10T09:22:24Z,2026-07-10T09:23:33Z
+GET,/cart,HTTPError('500 Server Error: Internal Server Error for url: /cart'),836,2026-07-10T09:22:24Z,2026-07-10T09:23:33Z
+GET,/cart,RemoteDisconnected('Remote end closed connection without response'),5,2026-07-10T09:32:16Z,2026-07-10T09:44:02Z
+POST,/cart/checkout,"ConnectionResetError(104, 'Connection reset by peer')",1,2026-07-10T09:32:32Z,2026-07-10T09:32:32Z
+POST,/cart/checkout,HTTPError('500 Server Error: Internal Server Error for url: /cart/checkout'),586,2026-07-10T09:22:24Z,2026-07-10T09:23:32Z
+GET,/product/[id],HTTPError('500 Server Error: Internal Server Error for url: /product/[id]'),1790,2026-07-10T09:22:24Z,2026-07-10T09:23:33Z

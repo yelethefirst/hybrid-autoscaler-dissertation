@@ -1,0 +1,20 @@
+Method,Name,Error,Occurrences,First Seen,Last Seen
+POST,/setCurrency,"ConnectionResetError(104, 'Connection reset by peer')",1,2026-07-09T23:28:30Z,2026-07-09T23:28:30Z
+GET,/product/[id],"ConnectionResetError(104, 'Connection reset by peer')",6,2026-07-09T23:28:28Z,2026-07-09T23:28:28Z
+POST,/cart/checkout,RemoteDisconnected('Remote end closed connection without response'),58,2026-07-09T23:28:27Z,2026-07-09T23:28:28Z
+POST,/cart [add],"ChunkedEncodingError(ProtocolError('Connection broken: IncompleteRead(716 bytes read, 1332 more expected)', IncompleteRead(716 bytes read, 1332 more expected)))",2,2026-07-09T23:28:27Z,2026-07-09T23:28:28Z
+POST,/cart [add],"ChunkedEncodingError(ProtocolError('Connection broken: IncompleteRead(718 bytes read, 1330 more expected)', IncompleteRead(718 bytes read, 1330 more expected)))",1,2026-07-09T23:28:27Z,2026-07-09T23:28:27Z
+GET,/,"ChunkedEncodingError(ProtocolError('Connection broken: IncompleteRead(1898 bytes read, 150 more expected)', IncompleteRead(1898 bytes read, 150 more expected)))",21,2026-07-09T23:28:27Z,2026-07-09T23:28:28Z
+GET,/,RemoteDisconnected('Remote end closed connection without response'),188,2026-07-09T23:28:27Z,2026-07-09T23:28:28Z
+POST,/cart [add],"ChunkedEncodingError(ProtocolError('Connection broken: IncompleteRead(680 bytes read, 1368 more expected)', IncompleteRead(680 bytes read, 1368 more expected)))",1,2026-07-09T23:28:27Z,2026-07-09T23:28:27Z
+GET,/product/[id],RemoteDisconnected('Remote end closed connection without response'),88,2026-07-09T23:28:27Z,2026-07-09T23:28:28Z
+POST,/setCurrency,RemoteDisconnected('Remote end closed connection without response'),27,2026-07-09T23:28:27Z,2026-07-09T23:28:28Z
+GET,/,"ConnectionResetError(104, 'Connection reset by peer')",4,2026-07-09T23:28:28Z,2026-07-09T23:28:35Z
+POST,/setCurrency,"ChunkedEncodingError(ProtocolError('Connection broken: IncompleteRead(1898 bytes read, 150 more expected)', IncompleteRead(1898 bytes read, 150 more expected)))",3,2026-07-09T23:28:27Z,2026-07-09T23:28:28Z
+POST,/cart [add],"ChunkedEncodingError(ProtocolError('Connection broken: IncompleteRead(702 bytes read, 1346 more expected)', IncompleteRead(702 bytes read, 1346 more expected)))",1,2026-07-09T23:28:27Z,2026-07-09T23:28:27Z
+POST,/cart [add],RemoteDisconnected('Remote end closed connection without response'),24,2026-07-09T23:28:27Z,2026-07-09T23:28:28Z
+GET,/product/[id],"ChunkedEncodingError(ProtocolError('Connection broken: IncompleteRead(1912 bytes read, 136 more expected)', IncompleteRead(1912 bytes read, 136 more expected)))",3,2026-07-09T23:28:27Z,2026-07-09T23:28:28Z
+GET,/cart,RemoteDisconnected('Remote end closed connection without response'),41,2026-07-09T23:28:27Z,2026-07-09T23:28:28Z
+POST,/cart/checkout,"ChunkedEncodingError(ProtocolError('Connection broken: IncompleteRead(1912 bytes read, 136 more expected)', IncompleteRead(1912 bytes read, 136 more expected)))",14,2026-07-09T23:28:27Z,2026-07-09T23:28:28Z
+GET,/cart,"ChunkedEncodingError(ProtocolError('Connection broken: IncompleteRead(1912 bytes read, 136 more expected)', IncompleteRead(1912 bytes read, 136 more expected)))",2,2026-07-09T23:28:28Z,2026-07-09T23:28:28Z
+GET,/cart,"ConnectionResetError(104, 'Connection reset by peer')",2,2026-07-09T23:28:28Z,2026-07-09T23:28:28Z

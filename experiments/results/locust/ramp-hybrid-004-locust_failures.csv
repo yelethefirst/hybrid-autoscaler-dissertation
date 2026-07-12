@@ -1,0 +1,7 @@
+Method,Name,Error,Occurrences,First Seen,Last Seen
+POST,/cart [add],HTTPError('500 Server Error: Internal Server Error for url: /cart [add]'),8455,2026-07-10T03:48:24Z,2026-07-10T03:58:59Z
+POST,/setCurrency,HTTPError('500 Server Error: Internal Server Error for url: /setCurrency'),4370,2026-07-10T03:48:24Z,2026-07-10T03:58:56Z
+GET,/,HTTPError('500 Server Error: Internal Server Error for url: /'),34244,2026-07-10T03:48:24Z,2026-07-10T03:58:59Z
+GET,/cart,HTTPError('500 Server Error: Internal Server Error for url: /cart'),12352,2026-07-10T03:48:24Z,2026-07-10T03:58:59Z
+POST,/cart/checkout,HTTPError('500 Server Error: Internal Server Error for url: /cart/checkout'),8999,2026-07-10T03:48:24Z,2026-07-10T03:58:59Z
+GET,/product/[id],HTTPError('500 Server Error: Internal Server Error for url: /product/[id]'),25093,2026-07-10T03:48:24Z,2026-07-10T03:58:59Z

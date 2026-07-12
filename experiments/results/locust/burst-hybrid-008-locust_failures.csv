@@ -1,0 +1,7 @@
+Method,Name,Error,Occurrences,First Seen,Last Seen
+POST,/cart/checkout,RemoteDisconnected('Remote end closed connection without response'),1,2026-07-09T15:19:21Z,2026-07-09T15:19:21Z
+GET,/,RemoteDisconnected('Remote end closed connection without response'),33,2026-07-09T15:19:21Z,2026-07-09T15:19:21Z
+GET,/product/[id],RemoteDisconnected('Remote end closed connection without response'),21,2026-07-09T15:19:21Z,2026-07-09T15:19:21Z
+POST,/setCurrency,RemoteDisconnected('Remote end closed connection without response'),3,2026-07-09T15:19:21Z,2026-07-09T15:19:21Z
+POST,/cart [add],RemoteDisconnected('Remote end closed connection without response'),7,2026-07-09T15:19:21Z,2026-07-09T15:19:21Z
+GET,/cart,RemoteDisconnected('Remote end closed connection without response'),8,2026-07-09T15:19:21Z,2026-07-09T15:19:21Z

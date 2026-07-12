@@ -1,0 +1,6 @@
+Method,Name,Error,Occurrences,First Seen,Last Seen
+POST,/setCurrency,"ConnectionResetError(104, 'Connection reset by peer')",4,2026-07-10T19:15:31Z,2026-07-10T19:15:31Z
+GET,/product/[id],"ConnectionResetError(104, 'Connection reset by peer')",11,2026-07-10T19:15:31Z,2026-07-10T19:15:31Z
+GET,/,"ConnectionResetError(104, 'Connection reset by peer')",15,2026-07-10T19:15:31Z,2026-07-10T19:15:31Z
+POST,/cart [add],"ConnectionResetError(104, 'Connection reset by peer')",4,2026-07-10T19:15:31Z,2026-07-10T19:15:31Z
+GET,/cart,"ConnectionResetError(104, 'Connection reset by peer')",9,2026-07-10T19:15:31Z,2026-07-10T19:15:31Z

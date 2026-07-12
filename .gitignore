@@ -44,17 +44,26 @@ experiments/results/*
 !experiments/results/phase5_stats.json
 !experiments/results/phase7_narratives.jsonl
 !experiments/results/phase7_h4.json
-# selected model artefacts — the registry is useless without them (review 2026-07-05)
-!experiments/results/models/
-!experiments/results/models/**
 !experiments/results/phase4-frontend-fault.jsonl
 
-# Model artefacts
+# Model artefacts (global excludes — exceptions below re-admit committed artefacts)
 *.pt
 *.pkl
 *.joblib
 forecasting/artifacts/
 explain/artifacts/
+# selected model artefacts — exceptions must come after the *.pt/pkl/joblib rules above
+!experiments/results/models/
+!experiments/results/models/**
+# Phase 5 Hybrid controller per-trial evidence bundles (decisions + SHAP context)
+!experiments/results/evidence/
+!experiments/results/evidence/**
+# Phase 6 SHAP attribution outputs
+!experiments/results/shap/
+!experiments/results/shap/**
+# Per-trial Locust HTTP stats exports
+!experiments/results/locust/
+!experiments/results/locust/**
 
 # Jupyter
 .ipynb_checkpoints/

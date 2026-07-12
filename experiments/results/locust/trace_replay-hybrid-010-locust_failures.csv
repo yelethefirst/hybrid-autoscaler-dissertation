@@ -1,0 +1,11 @@
+Method,Name,Error,Occurrences,First Seen,Last Seen
+GET,/,RemoteDisconnected('Remote end closed connection without response'),1,2026-07-10T15:00:48Z,2026-07-10T15:00:48Z
+GET,/product/[id],RemoteDisconnected('Remote end closed connection without response'),1,2026-07-10T15:00:48Z,2026-07-10T15:00:48Z
+POST,/setCurrency,RemoteDisconnected('Remote end closed connection without response'),1,2026-07-10T14:36:18Z,2026-07-10T14:36:18Z
+POST,/cart [add],HTTPError('500 Server Error: Internal Server Error for url: /cart [add]'),846,2026-07-10T14:42:24Z,2026-07-10T14:44:23Z
+POST,/setCurrency,HTTPError('500 Server Error: Internal Server Error for url: /setCurrency'),470,2026-07-10T14:42:24Z,2026-07-10T14:44:23Z
+GET,/,HTTPError('500 Server Error: Internal Server Error for url: /'),3947,2026-07-10T14:42:24Z,2026-07-10T14:44:23Z
+GET,/cart,HTTPError('500 Server Error: Internal Server Error for url: /cart'),1263,2026-07-10T14:42:24Z,2026-07-10T14:44:22Z
+GET,/cart,RemoteDisconnected('Remote end closed connection without response'),1,2026-07-10T15:00:48Z,2026-07-10T15:00:48Z
+POST,/cart/checkout,HTTPError('500 Server Error: Internal Server Error for url: /cart/checkout'),859,2026-07-10T14:42:24Z,2026-07-10T14:44:22Z
+GET,/product/[id],HTTPError('500 Server Error: Internal Server Error for url: /product/[id]'),2564,2026-07-10T14:42:24Z,2026-07-10T14:44:23Z

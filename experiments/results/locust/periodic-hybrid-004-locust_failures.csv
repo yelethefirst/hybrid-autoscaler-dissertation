@@ -1,0 +1,8 @@
+Method,Name,Error,Occurrences,First Seen,Last Seen
+POST,/cart/checkout,RemoteDisconnected('Remote end closed connection without response'),8,2026-07-09T21:17:31Z,2026-07-09T21:29:16Z
+GET,/,RemoteDisconnected('Remote end closed connection without response'),57,2026-07-09T21:12:16Z,2026-07-09T21:29:16Z
+GET,/product/[id],RemoteDisconnected('Remote end closed connection without response'),10,2026-07-09T21:17:31Z,2026-07-09T21:33:16Z
+POST,/setCurrency,RemoteDisconnected('Remote end closed connection without response'),12,2026-07-09T21:12:16Z,2026-07-09T21:29:16Z
+POST,/cart [add],RemoteDisconnected('Remote end closed connection without response'),8,2026-07-09T21:13:01Z,2026-07-09T21:29:16Z
+GET,/cart,RemoteDisconnected('Remote end closed connection without response'),2,2026-07-09T21:17:31Z,2026-07-09T21:29:16Z
+POST,/cart/checkout,"ConnectionResetError(104, 'Connection reset by peer')",1,2026-07-09T21:29:16Z,2026-07-09T21:29:16Z
